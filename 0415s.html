@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>清血八味片企业微信</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    }
+
+    /* 手机窗口容器 */
+    .phone-container {
+      width: 375px;
+      height: 667px;
+      margin: 30px auto;
+      border: 12px solid #1a1a1a;
+      border-radius: 40px;
+      overflow: hidden;
+      position: relative;
+      background: #f5f5f5;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 0 30px rgba(0,0,0,0.2);
+    }
+
+    /* 顶部导航栏（文字居中） */
+    .top-bar {
+      background: #1677ff;
+      color: white;
+      padding: 14px 18px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+      font-weight: 500;
+    }
+
+    /* 聊天区域 */
+    .chat-box {
+      flex: 1;
+      padding: 15px;
+      overflow-y: auto;
+      background: #f5f5f5;
+    }
+
+    /* 滚动条美化 */
+    .chat-box::-webkit-scrollbar {
+      width: 4px;
+    }
+    .chat-box::-webkit-scrollbar-thumb {
+      background: #ccc;
+      border-radius: 4px;
+    }
+
+    /* 消息行 */
+    .message {
+      display: flex;
+      margin-bottom: 15px;
+      opacity: 0;
+      transform: translateY(10px);
+      animation: fadeIn 0.35s ease-out forwards;
+    }
+
+    /* 客服消息（左侧） */
+    .message.left {
+      justify-content: flex-start;
+    }
+
+    /* 用户消息（右侧） */
+    .message.right {
+      justify-content: flex-end;
+    }
+
+    /* 头像 */
+    .avatar {
+      width: 38px;
+      height: 38px;
+      border-radius: 6px;
+      margin: 0 8px;
+      flex-shrink: 0;
+    }
+
+    /* 气泡内容 */
+    .bubble {
+      max-width: 240px;
+      padding: 10px 14px;
+      border-radius: 10px;
+      font-size: 15px;
+      white-space: pre-line;
+      line-height: 1.5;
+      position: relative;
+      word-break: break-all;
+    }
+
+    /* 客服气泡 */
+    .left .bubble {
+      background: #ffffff;
+      color: #333;
+      border: 1px solid #e6e6e6;
+      border-top-left-radius: 4px;
+    }
+
+    /* 用户气泡 */
+    .right .bubble {
+      background: #95ec69;
+      color: #222;
+      border-top-right-radius: 4px;
+    }
+
+    /* 底部输入栏 */
+    .input-bar {
+      display: flex;
+      align-items: center;
+      padding: 8px 12px;
+      background: #ffffff;
+      border-top: 1px solid #eee;
+    }
+
+    .input-bar input {
+      flex: 1;
+      height: 38px;
+      border: 1px solid #e0e0e0;
+      border-radius: 20px;
+      padding: 0 16px;
+      font-size: 15px;
+      outline: none;
+      transition: border 0.2s;
+    }
+
+    .input-bar input:focus {
+      border-color: #1677ff;
+    }
+
+    .input-bar button {
+      margin-left: 10px;
+      height: 38px;
+      padding: 0 18px;
+      background: #1677ff;
+      color: white;
+      border: none;
+      border-radius: 20px;
+      font-size: 14px;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    .input-bar button:active {
+      background: #0d5cbd;
+    }
+
+    /* 弹出动画 */
+    @keyframes fadeIn {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="phone-container">
+    <!-- 顶部导航（已居中） -->
+    <div class="top-bar">清血八味片企业微信</div>
+
+    <!-- 聊天内容区 -->
+    <div class="chat-box" id="chatBox"></div>
+
+    <!-- 底部输入框 -->
+    <div class="input-bar">
+      <input type="text" id="inputMsg" placeholder="请输入消息..." disabled />
+      <button id="sendBtn">发送</button>
+    </div>
+  </div>
+
+  <script>
+    const chatBox = document.getElementById('chatBox');
+    const inputMsg = document.getElementById('inputMsg');
+    const sendBtn = document.getElementById('sendBtn');
+
+    // 工具：添加消息到页面
+    function addMessage(text, isLeft = true) {
+      const div = document.createElement('div');
+      div.className = isLeft ? 'message left' : 'message right';
+
+      // 头像已更换：左侧 = 专业女性医师白大褂头像
+      const avatar = isLeft
+        ? 'https://picsum.photos/id/64/200/200' // 女性医师/客服专业头像
+        : 'https://picsum.photos/200/200?random=2'; // 用户头像
+
+      // 核心修复：头像位置（客服左、用户右，完全符合企业微信样式）
+      if (isLeft) {
+        // 客服：头像在左
+        div.innerHTML = `
+          <img src="${avatar}" class="avatar">
+          <div class="bubble">${text}</div>
+        `;
+      } else {
+        // 用户：头像在右
+        div.innerHTML = `
+          <div class="bubble">${text}</div>
+          <img src="${avatar}" class="avatar">
+        `;
+      }
+      
+      chatBox.appendChild(div);
+      chatBox.scrollTop = chatBox.scrollHeight; // 自动滚动到底部
+    }
+
+    // 自动对话流程（整体速度放慢）
+    async function startChat() {
+      // 第1步：客服问候
+      await delay(1200);
+      addMessage('您好！我是本次活动的专属健康管家。为了更好地为您登记高血压病历，请按要求提供信息。');
+
+      // 第2步：客服提醒
+      await delay(1800);
+      addMessage('请提供您的：【姓名 + 电话 + 所在门店名称】。');
+
+      // 第3步：模拟用户输入
+      await delay(2000);
+      addMessage('王先生、13800001111、漱玉平民西门店', false);
+
+      // 第4步：客服反馈
+      await delay(1800);
+      addMessage('收到，正在为您进行高血压病历登记，请稍候...');
+
+      // 第5步：最终确认
+      await delay(1500);
+      addMessage('登记完毕！【报名完成】。后续具体的审核结果，我们的工作人员会通过电话与您详细沟通，请保持电话畅通。');
+
+      // 对话结束后启用输入框
+      inputMsg.disabled = false;
+      sendBtn.disabled = false;
+    }
+
+    // 延迟函数
+    function delay(ms) {
+      return new Promise(resolve => setTimeout(resolve, ms));
+    }
+
+    // 发送按钮事件
+    sendBtn.addEventListener('click', () => {
+      const text = inputMsg.value.trim();
+      if (!text) return;
+      addMessage(text, false);
+      inputMsg.value = '';
+    });
+
+    // 回车发送
+    inputMsg.addEventListener('keyup', e => {
+      if (e.key === 'Enter') sendBtn.click();
+    });
+
+    // 页面加载启动对话
+    window.addEventListener('DOMContentLoaded', startChat);
+  </script>
+</body>
+</html>

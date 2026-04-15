@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>防梗防猝公益活动 · 高血压患者沟通话术</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'PingFang SC', 'Microsoft YaHei', 'Noto Sans SC', sans-serif;
+    background: #f4f6f9;
+    color: #1a1a2e;
+    line-height: 1.7;
+    padding: 0 0 60px;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+    padding: 52px 40px 48px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 70% 60% at 50% 120%, rgba(227,108,57,.18) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .hero-badge {
+    display: inline-block;
+    background: rgba(227,108,57,.15);
+    color: #e36c39;
+    border: 1px solid rgba(227,108,57,.35);
+    border-radius: 20px;
+    font-size: 12px;
+    letter-spacing: .08em;
+    padding: 4px 14px;
+    margin-bottom: 18px;
+  }
+  .hero h1 {
+    font-size: 26px;
+    font-weight: 700;
+    color: #fff;
+    letter-spacing: .04em;
+    margin-bottom: 10px;
+  }
+  .hero p {
+    font-size: 14px;
+    color: rgba(255,255,255,.55);
+    max-width: 500px;
+    margin: 0 auto;
+  }
+
+  /* ── STATS BAR ── */
+  .stats-bar {
+    display: flex;
+    justify-content: center;
+    gap: 0;
+    background: #fff;
+    border-bottom: 1px solid #eaecf0;
+  }
+  .stat {
+    flex: 1;
+    max-width: 160px;
+    text-align: center;
+    padding: 20px 12px;
+    border-right: 1px solid #eaecf0;
+  }
+  .stat:last-child { border-right: none; }
+  .stat-num { font-size: 22px; font-weight: 700; color: #e36c39; }
+  .stat-label { font-size: 11px; color: #888; margin-top: 2px; }
+
+  /* ── MAIN ── */
+  .main { max-width: 980px; margin: 0 auto; padding: 36px 20px 0; }
+
+  /* ── TIMELINE ── */
+  .timeline { position: relative; }
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 28px;
+    top: 8px; bottom: 8px;
+    width: 2px;
+    background: linear-gradient(to bottom, #e36c39, #c0392b, #8e44ad, #2980b9, #27ae60, #16a085);
+    border-radius: 2px;
+  }
+
+  /* ── CARD ── */
+  .card {
+    position: relative;
+    margin-bottom: 28px;
+    padding-left: 72px;
+  }
+  .card-dot {
+    position: absolute;
+    left: 18px;
+    top: 20px;
+    width: 22px; height: 22px;
+    border-radius: 50%;
+    border: 3px solid #fff;
+    box-shadow: 0 0 0 2px currentColor;
+    z-index: 1;
+  }
+  .card-inner {
+    background: #fff;
+    border-radius: 14px;
+    box-shadow: 0 2px 12px rgba(0,0,0,.07);
+    overflow: hidden;
+    transition: box-shadow .2s;
+  }
+  .card-inner:hover { box-shadow: 0 6px 24px rgba(0,0,0,.12); }
+
+  /* card header */
+  .card-header {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 18px 22px 16px;
+    border-bottom: 1px solid #f0f2f5;
+    cursor: pointer;
+    user-select: none;
+  }
+  .phase-tag {
+    flex-shrink: 0;
+    font-size: 12px;
+    font-weight: 700;
+    padding: 4px 12px;
+    border-radius: 20px;
+    letter-spacing: .05em;
+  }
+  .card-header-text { flex: 1; }
+  .card-title { font-size: 15px; font-weight: 700; color: #1a1a2e; }
+  .card-meta { font-size: 12px; color: #999; margin-top: 2px; }
+  .toggle-btn {
+    width: 28px; height: 28px;
+    border-radius: 50%;
+    background: #f4f6f9;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+    font-size: 14px;
+    color: #888;
+    transition: transform .25s, background .2s;
+  }
+  .card-inner.open .toggle-btn { transform: rotate(180deg); background: #fdeee6; color: #e36c39; }
+
+  /* card body */
+  .card-body {
+    display: none;
+    padding: 0 22px 22px;
+  }
+  .card-inner.open .card-body { display: block; }
+
+  /* direction pill */
+  .direction-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: #f4f6f9;
+    border-radius: 8px;
+    padding: 8px 14px;
+    font-size: 13px;
+    color: #555;
+    margin: 16px 0 18px;
+    border-left: 3px solid #e36c39;
+  }
+  .direction-pill b { color: #1a1a2e; font-weight: 600; }
+
+  /* scenario tabs */
+  .scenarios { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 16px; }
+  .scene-tab {
+    font-size: 12px;
+    padding: 5px 13px;
+    border-radius: 20px;
+    cursor: pointer;
+    border: 1.5px solid #dde1e9;
+    background: #fff;
+    color: #888;
+    font-weight: 500;
+    transition: all .15s;
+  }
+  .scene-tab.active {
+    background: #1a1a2e;
+    color: #fff;
+    border-color: #1a1a2e;
+  }
+
+  /* script box */
+  .script-wrap { display: none; }
+  .script-wrap.active { display: block; }
+  .script-box {
+    background: #fafbfc;
+    border: 1px solid #eaecf0;
+    border-radius: 10px;
+    padding: 18px 20px;
+    font-size: 13.5px;
+    line-height: 1.85;
+    color: #333;
+    white-space: pre-wrap;
+    position: relative;
+  }
+  .script-box::before {
+    content: '话术';
+    position: absolute;
+    top: -1px; right: 14px;
+    background: #e36c39;
+    color: #fff;
+    font-size: 10px;
+    font-weight: 700;
+    padding: 2px 8px;
+    border-radius: 0 0 6px 6px;
+    letter-spacing: .05em;
+  }
+  .script-box em {
+    color: #c0392b;
+    font-style: normal;
+    font-weight: 600;
+  }
+  .script-box .scene-title {
+    font-size: 12px;
+    font-weight: 700;
+    color: #888;
+    letter-spacing: .06em;
+    margin-bottom: 10px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid #eaecf0;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .scene-dot {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    display: inline-block;
+  }
+
+  /* key points */
+  .key-points {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-top: 14px;
+  }
+  .kp {
+    font-size: 12px;
+    background: #fff;
+    border: 1px solid #dde1e9;
+    border-radius: 6px;
+    padding: 4px 10px;
+    color: #555;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+  .kp::before { content: '✓'; color: #27ae60; font-size: 11px; font-weight: 700; }
+
+  /* color themes per stage */
+  .c-red .card-dot { color: #e74c3c; }
+  .c-red .phase-tag { background: #fdecea; color: #c0392b; }
+
+  .c-orange .card-dot { color: #e36c39; }
+  .c-orange .phase-tag { background: #fdeee6; color: #e36c39; }
+
+  .c-amber .card-dot { color: #f39c12; }
+  .c-amber .phase-tag { background: #fef9ec; color: #e67e22; }
+
+  .c-blue .card-dot { color: #2980b9; }
+  .c-blue .phase-tag { background: #eaf4fd; color: #2980b9; }
+
+  .c-teal .card-dot { color: #16a085; }
+  .c-teal .phase-tag { background: #e6f7f4; color: #16a085; }
+
+  .c-purple .card-dot { color: #8e44ad; }
+  .c-purple .phase-tag { background: #f5eef8; color: #8e44ad; }
+
+  /* footer */
+  .footer {
+    text-align: center;
+    padding: 36px 20px 0;
+    font-size: 12px;
+    color: #bbb;
+  }
+
+  @media(max-width:600px) {
+    .stats-bar { flex-wrap: wrap; }
+    .stat { min-width: 80px; }
+    .hero { padding: 36px 20px 32px; }
+    .hero h1 { font-size: 20px; }
+    .card { padding-left: 54px; }
+    .timeline::before { left: 18px; }
+    .card-dot { left: 8px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="hero-badge">内部培训资料</div>
+  <h1>高血压患者阶段性沟通话术</h1>
+  <p>防梗防猝公益活动 · 客服沟通流程与话术指南</p>
+</div>
+
+<div class="stats-bar">
+  <div class="stat"><div class="stat-num">6</div><div class="stat-label">关键干预节点</div></div>
+  <div class="stat"><div class="stat-num">21</div><div class="stat-label">天完整周期</div></div>
+  <div class="stat"><div class="stat-num">10+</div><div class="stat-label">场景话术</div></div>
+  <div class="stat"><div class="stat-num">全程</div><div class="stat-label">一对一跟进</div></div>
+</div>
+
+<div class="main">
+<div class="timeline">
+
+  <!-- ① 血压异常 -->
+  <div class="card c-red">
+    <div class="card-dot"></div>
+    <div class="card-inner" id="c1">
+      <div class="card-header" onclick="toggle('c1')">
+        <span class="phase-tag">血压异常</span>
+        <div class="card-header-text">
+          <div class="card-title">紧急回访介入</div>
+          <div class="card-meta">了解饮食/用药情况 · 强调清血重要性</div>
+        </div>
+        <div class="toggle-btn">▾</div>
+      </div>
+      <div class="card-body">
+        <div class="direction-pill"><b>核心方向：</b>第一时间联系，建立紧迫感，引导认知"血液垃圾"危害</div>
+        <div class="scenarios">
+          <div class="scene-tab active" onclick="switchScene('c1', 's1a', this)">血压偏高</div>
+          <div class="scene-tab" onclick="switchScene('c1', 's1b', this)">压差过大</div>
+        </div>
+        <div class="script-wrap active" id="s1a">
+          <div class="script-box"><div class="scene-title"><span class="scene-dot" style="background:#e74c3c;"></span>场景 · 血压偏高</div>叔叔/阿姨你好，我是QX的小王，咱之前不是一直保持联系吗，刚刚我这边<em>紧急提醒</em>显示你今天上传的血压有异常，赶紧给你打个电话，问问是咋回事。
+
+你今天量的这血压有点太高了，我看你平时都是140/90以内，控制的还不错，今天咋量的这么高！我了解一下你最近的情况，给你找找原因——最近睡眠怎么样，有没有失眠睡不好？白天有没有干体力活累着了？还是饮食上吃的太好了，偏油腻了一些？降压药有没有按时用上？没有自己加减量吧？
+
+我跟你说，血压波动可是个要重视的大事！血压为什么会高，说通俗点，就是血液里垃圾太多造成血液粘稠，血液流动的时候携带着垃圾太多，流动的就慢，这些垃圾也会在血管壁上堆积。血管是有弹性的，一伸一缩的产生压力，把血液给泵出去，垃圾多了、血液稠了，泵出去的力就要更大，血压自然而然就高了。
+
+平时靠吃降压药，可能扩扩血管或者降降心率让压力减轻一点，血压下降。西药一般都是<em>治标不治本</em>的，要是你的血压跟今天一样出现波动升高的情况，说明你血液垃圾越来越多，血管越来越堵，光控制指标、不及时清理血液垃圾的话，很容易后期堵塞血管，引发<em>脑梗、心梗</em>！</div>
+        </div>
+        <div class="script-wrap" id="s1b">
+          <div class="script-box"><div class="scene-title"><span class="scene-dot" style="background:#c0392b;"></span>场景 · 压差过大</div>叔叔/阿姨，你今天上传的血压单个来看问题不大，但是最大的问题就是你的<em>高压和低压差的有点大了</em>！
+
+血管是有弹性的，你可以理解为气球，在承受范围内，一伸一缩的能恢复正常，但是一旦吹得太大了，就恢复不了原状了。血管也是一样的，你的高压和低压差的太大，只能反应出一个问题——就是你血管里垃圾太多，堆积在血液和血管里，造成你现在有<em>动脉硬化</em>了。
+
+不知道你有没有去检查过，压差大就是很典型的血管弹性变差、动脉硬化的表现。现在不及时治疗，光控制指标，再往后发展血液垃圾越来越多，血管越来越堵，不及时清理血液垃圾的话很容易后期堵塞血管，引发<em>脑梗、心梗</em>！</div>
+        </div>
+        <div class="key-points">
+          <div class="kp">体现主动关怀</div>
+          <div class="kp">询问生活习惯</div>
+          <div class="kp">引出"血液垃圾"概念</div>
+          <div class="kp">制造就医紧迫感</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ② 2天 -->
+  <div class="card c-orange">
+    <div class="card-dot"></div>
+    <div class="card-inner" id="c2">
+      <div class="card-header" onclick="toggle('c2')">
+        <span class="phase-tag">第 2 天</span>
+        <div class="card-header-text">
+          <div class="card-title">血压测量操作指导</div>
+          <div class="card-meta">核查顾客是否会自行上传血压数据</div>
+        </div>
+        <div class="toggle-btn">▾</div>
+      </div>
+      <div class="card-body">
+        <div class="direction-pill"><b>核心方向：</b>手把手教会操作，养成每日打卡习惯</div>
+        <div class="scenarios">
+          <div class="scene-tab active" onclick="switchScene('c2', 's2a', this)">线上邮寄</div>
+          <div class="scene-tab" onclick="switchScene('c2', 's2b', this)">线下领取（已指导）</div>
+          <div class="scene-tab" onclick="switchScene('c2', 's2c', this)">线下领取（未指导）</div>
+        </div>
+        <div class="script-wrap active" id="s2a">
+          <div class="script-box"><div class="scene-title"><span class="scene-dot" style="background:#e36c39;"></span>场景 · 线上邮寄</div>叔叔/阿姨，我是QX的小王，你不是参与我们的"防梗防猝公益活动"领取了一台血压计吗，这次给你打电话主要就是<em>教一下你血压计怎么使用，怎么上传每天测量的血压数值</em>，只有每天都坚持测量登记，才能更好地观测血压的变化，及时应对。
+
+<em>测量血压：</em>咱平时是不是也经常在家或者去药店量量血压，怎么量应该都会。血压数值在<em>早上和下午</em>最能反映真实水平，所以每天选一个固定时间点，比如早上7-9点，坐着缓个十分钟，戴好袖带，按"开始"，测量过程中尽量不要动弹和说话，等测量结束再拿下袖带。
+
+<em>上传血压数值：</em>咱挂了电话之后我微信上直接给你发一个上传的链接，你只需要点开这个链接进入，然后点开"血压记录"，添加上今天的测量结果就行。
+
+观测血压这件事是个长久的事儿，为了咱们自己的健康，一定要<em>坚持每天测量，按时上传</em>！</div>
+        </div>
+        <div class="script-wrap" id="s2b">
+          <div class="script-box"><div class="scene-title"><span class="scene-dot" style="background:#e36c39;"></span>场景 · 线下领取（店员已指导）</div>叔叔/阿姨你好，我是QX的小王，你不是参与我们的"防梗防猝公益活动"领取了一台血压计吗，现在是给你做个<em>回访</em>，当时去店里领血压计的时候，有没有教你怎么用和每天上传量的血压数值啊？
+
+<em>已学会操作：</em>那你这学会了没有，一定要每天坚持测量血压，按时上传测量的血压数值，咱不是为了完成任务，更多的是为了<em>更全面地观测你的血压变化情况，对症治疗</em>。</div>
+        </div>
+        <div class="script-wrap" id="s2c">
+          <div class="script-box"><div class="scene-title"><span class="scene-dot" style="background:#e36c39;"></span>场景 · 线下领取（未指导）</div>那我再跟你说说——第一步肯定是<em>每天坚持测量血压</em>，一般早上血压是最真实的，所以你可以每天早上7-9点测量；第二步就是<em>上传你量的血压数值</em>，咱挂了电话之后我微信上直接给你发一个上传的链接，你只需要点开这个链接进入，然后点开"血压记录"，添加上今天的测量结果就行。
+
+观测血压这件事是个长久的事儿，为了咱们自己的健康，一定要坚持每天测量，按时上传！</div>
+        </div>
+        <div class="key-points">
+          <div class="kp">手把手指导操作</div>
+          <div class="kp">发送微信链接跟进</div>
+          <div class="kp">强化习惯养成</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ③ 4天 -->
+  <div class="card c-amber">
+    <div class="card-dot"></div>
+    <div class="card-inner" id="c3">
+      <div class="card-header" onclick="toggle('c3')">
+        <span class="phase-tag">第 4 天</span>
+        <div class="card-header-text">
+          <div class="card-title">数据初步分析</div>
+          <div class="card-meta">对比血压数据 · 完成解读与转化工作</div>
+        </div>
+        <div class="toggle-btn">▾</div>
+      </div>
+      <div class="card-body">
+        <div class="direction-pill"><b>核心方向：</b>读数据 → 讲原理 → 引出联合用药治疗建议</div>
+        <div class="scenarios">
+          <div class="scene-tab active" onclick="switchScene('c3', 's3a', this)">血压平稳</div>
+          <div class="scene-tab" onclick="switchScene('c3', 's3b', this)">血压波动</div>
+        </div>
+        <div class="script-wrap active" id="s3a">
+          <div class="script-box"><div class="scene-title"><span class="scene-dot" style="background:#f39c12;"></span>场景 · 血压平稳</div>叔叔/阿姨，我是QX的小王，我看你也上传了四天的血压记录了，一定要坚持住，每天测量！
+
+你这四天的血压相对都比较平稳，没有太大的波动，这都是你早上服用完降压药之后量的吗？从数值来看，你的血压指标靠降压药控制的还可以。
+
+中医有一个治疗理念，叫做<em>"急则治标，缓则治本"</em>，现在你的血压控制在正常范围内，那就要开始找找造成你血压高的源头，从根本上来治疗，不要让它再加重。打个比方说，高血压患者哪怕指标控制住了，大多数人还是会有头晕头痛的症状，或者说刚得高血压的时候一种降压药就能把血压降下来，几年、十几年过去之后，得用两三种才能把指标降下来。这就是很典型的<em>治标不治本</em>的结果。
+
+随着年龄增长，代谢变慢，血液里各种代谢废物不能及时排出体外，就会堆积，造成血液粘稠，血管堵塞，这也就是造成血压高的<em>最主要因素</em>。想要平稳降血压，同时解决因为血压高带来的一系列不适症状，就要从根源清理血液里多余的代谢废物，让血液干净，血管畅通。
+
+你现在最合理的治疗方案就是<em>降压药控制指标 + 中成药清理血液垃圾，联合用药，标本兼治</em>，效果更好！
+
+你的血压才记录4天，还是要继续坚持测量上传，我也给你发一些高血压带来的症状方面的科普视频学习学习，这期间咱俩随时保持沟通。</div>
+        </div>
+        <div class="script-wrap" id="s3b">
+          <div class="script-box"><div class="scene-title"><span class="scene-dot" style="background:#e67e22;"></span>场景 · 血压波动</div>你这才测量登记4天的血压，数值就已经<em>出现过比较大的波动</em>了。你这每天测量是吃完降压药之后量的吗？吃完降压药之后还有波动，说明光用西药降指标有点控制不住，也意味着你可能<em>有动脉硬化或者斑块</em>的情况出现，一定要引起足够的重视。
+
+我跟你说，你现在不仅仅是要降指标了，得从造成血压波动的根源下手，平稳降血压。血压是怎么一点点升高的？最主要的是——随着年龄增长，代谢变慢，血液里各种代谢废物不能及时排出体外，就会堆积，造成血液粘稠，血管堵塞，血压也就随着升高了。
+
+对你现在，可能血液里多余的代谢废物附着在你的血管壁上，让你的血管壁越来越厚，形成斑块，不及时清理、软化血管，后期会越来越堵，直到<em>堵塞血管，发生心梗或者脑梗</em>。想要治疗的话，你就可以选择清血专利药——<em>清血八味片</em>。
+
+你的血压才记录4天，还是要继续坚持测量上传，咱俩随时保持沟通。</div>
+        </div>
+        <div class="key-points">
+          <div class="kp">数据说话增可信度</div>
+          <div class="kp">中医治本逻辑植入</div>
+          <div class="kp">分场景精准话术</div>
+          <div class="kp">首次提及产品名</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ④ 7天 -->
+  <div class="card c-blue">
+    <div class="card-dot"></div>
+    <div class="card-inner" id="c4">
+      <div class="card-header" onclick="toggle('c4')">
+        <span class="phase-tag">第 7 天</span>
+        <div class="card-header-text">
+          <div class="card-title">表扬 · 提醒</div>
+          <div class="card-meta">肯定打卡行为 · 血压分析报告 · 强化防梗防猝意识</div>
+        </div>
+        <div class="toggle-btn">▾</div>
+      </div>
+      <div class="card-body">
+        <div class="direction-pill"><b>核心方向：</b>正向激励 → 解读报告 → 引出清血八味片</div>
+        <div class="script-wrap active" id="s4a">
+          <div class="script-box"><div class="scene-title"><span class="scene-dot" style="background:#2980b9;"></span>统一话术</div>叔叔/阿姨，咱现在坚持测量上传血压数值已经<em>七天</em>了，非常棒！一定要坚持住！你这七天上传的数据，我们后台经过非常专业、详细的分析，给你生成了一份<em>专属你自己的血压分析报告</em>，我先跟你讲讲你的报告（具体报告内容，提前标记重点或痛点，跟患者口述一下）。根据你的报告来看，你现在的血压控制的还可以/不太理想/波动比较大（给患者下结论）。
+
+咱们为什么一定要每天坚持监测血压？一方面是及时关注血压波动，及时调整治疗方案；另一方面也是最重要的，是要<em>最大可能地预防心脑血管意外</em>的发生。血压一旦控制不好或出现波动太大，特别容易发生心脑血管意外，像咱东北这边，发生脑梗那属于很常见的，留下后遗症的也大有人在，我们肯定也不想因为没控制好血压，而造成这么严重的后果。
+
+那现在趁着指标能控制住，就要想办法从造成血压高的根源治疗。根源在哪儿，其实说白了就是血液出现了问题——血液里代谢废物太多，造成血液粘稠，血流不畅，对血管壁压力太大了；时间长了，垃圾越来越多，就会堆积在血管壁上，不及时清理，让血液干净，软化血管，早晚会因为血液垃圾越来越多堵塞血管，从而引发<em>脑梗、心梗</em>。
+
+想要治疗，就要服用清血专利药——有<em>三百年古方传承的清血八味片</em>！</div>
+        </div>
+        <div class="key-points">
+          <div class="kp">先表扬再教育</div>
+          <div class="kp">专属报告增专业感</div>
+          <div class="kp">地域化痛点强化</div>
+          <div class="kp">明确推荐产品</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ⑤ 10天 -->
+  <div class="card c-teal">
+    <div class="card-dot"></div>
+    <div class="card-inner" id="c5">
+      <div class="card-header" onclick="toggle('c5')">
+        <span class="phase-tag">第 10 天</span>
+        <div class="card-header-text">
+          <div class="card-title">数据阶段性分析</div>
+          <div class="card-meta">对比波动情况 · 讲解降压药局限性</div>
+        </div>
+        <div class="toggle-btn">▾</div>
+      </div>
+      <div class="card-body">
+        <div class="direction-pill"><b>核心方向：</b>扩血管/利尿/降心率仅治标 → 必须从血液根源下手 → 清血八味片</div>
+        <div class="script-wrap active" id="s5a">
+          <div class="script-box"><div class="scene-title"><span class="scene-dot" style="background:#16a085;"></span>统一话术</div>叔叔/阿姨，咱现在坚持测量上传血压数值已经<em>十天</em>了，非常棒！已经形成了很好的健康监测习惯，每天检测血压同样也是治疗疾病的一步！根据这十天的血压检测并结合在服的降压药，详细跟你讲讲你现在高血压的现状。
+
+通过十天高血压数据的监测，会发现血压是有波动的，波动本身属于正常情况，但是<em>波动太大是不正常的</em>，这说明咱身体里血管的弹性、血液的健康状态跟心脏泵血的力度都不理想。血管弹性太差会导致高压跟低压的数值相差太大；血液粘稠会导致脉压差较小；冠心病导致的心肌缺血会导致心率加快，心脏需要用更大的力去泵血，同样会导致血压升高。
+
+所以咱常用的降压药就是作用于血管、作用于心脏，目的是让血压降低，但是<em>无论哪种降压药都是有局限性的，仅仅是降低指标</em>的。想要血压稳定、不波动太厉害的话，就要从血液入手——血压是由于血液在血管里流淌时对血管壁施加的压力，想要从根源治疗高血压，就是<em>让血液健康、在血管里流淌顺畅</em>，就不会挤压血管壁导致血压升高；其次，健康血管不会引起内皮破损，不会导致斑块和血管硬化。
+
+所以要想血压稳定，<em>及时清理血液就选择清血八味片</em>——清血，通血管，防猝死。</div>
+        </div>
+        <div class="key-points">
+          <div class="kp">三类降压药作用机理</div>
+          <div class="kp">治标不治本逻辑深化</div>
+          <div class="kp">脉压差概念教育</div>
+          <div class="kp">强化产品必要性</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ⑥ 21天 -->
+  <div class="card c-purple">
+    <div class="card-dot"></div>
+    <div class="card-inner" id="c6">
+      <div class="card-header" onclick="toggle('c6')">
+        <span class="phase-tag">第 21 天</span>
+        <div class="card-header-text">
+          <div class="card-title">深度需求挖掘 · 促成转化</div>
+          <div class="card-meta">完整数据报告 · 关联清血护血管 · 推出复购优惠</div>
+        </div>
+        <div class="toggle-btn">▾</div>
+      </div>
+      <div class="card-body">
+        <div class="direction-pill"><b>核心方向：</b>完整报告 + 斑块/血栓危机感 + 契约金双倍抵扣限时优惠</div>
+        <div class="script-wrap active" id="s6a">
+          <div class="script-box"><div class="scene-title"><span class="scene-dot" style="background:#8e44ad;"></span>统一话术</div>叔叔/阿姨你好，我是清血八味片的健康顾问小王。打扰您几分钟时间，主要是看到您参与我们防梗防猝公益活动，<em>已经坚持测量血压21天</em>了，非常不容易，特意来电了解一下您的近况，并为您解读这21天的血压数据。
+
+我这边看到您上传的数据，这21天里您的血压情况波动比较大/或者相对比较稳定。整体来看，您的血管压力还是处于偏高状态，波动也比较明显，这说明血管里的"垃圾"（指多余的脂类、糖类、代谢废物）可能还是比较多的，<em>血管弹性比较差</em>。
+
+其实我今天特意在第21天给您打电话，还有一个非常重要的健康提醒。您可能不知道，高血压最可怕的不是头晕失眠这些症状，而是它像<em>"温水煮青蛙"</em>一样慢慢损伤您的血管壁。长期血压偏高，血流冲击会导致血管内皮受损，血液里的胆固醇、甘油三酯这些"垃圾"就容易沉积在破损处，形成斑块。一旦斑块破裂，就会形成血栓——<em>堵在大脑，就是脑梗（中风）；堵在心脏，就是心梗</em>。
+
+所以咱们常说"血瘀百病生，血清病自消"，高血压患者发生心梗、脑梗的风险是正常人的好几倍。现在您已经监测了21天，看到了真实的数据，一定要把<em>"清血、护血管"</em>这件事重视起来。清血八味片的核心作用，就是从源头上清理血液垃圾、软化血管、恢复血管通畅，而不是单纯把血压指标压下去不管。
+
+考虑到您已经坚持了21天，非常守信用，厂家特别给老患者一个<em>限时福利</em>：
+
+您当初交的20元契约金，如果现在购买清血八味片，可以<em>双倍抵扣（抵扣40元）</em>。这是给完成大部分打卡任务的老患者的专属权益，错过了后面就没有了。建议您趁着这次活动，先拿上一个清血八味片的治疗周期，边吃边继续血压的测量，这样您就能直观看到，在规范清血调理后，血压的平稳性和数值会不会有更好的变化。</div>
+        </div>
+        <div class="key-points">
+          <div class="kp">21天数据背书</div>
+          <div class="kp">温水煮青蛙危机感</div>
+          <div class="kp">斑块→血栓→心梗路径</div>
+          <div class="kp">契约金双倍抵扣</div>
+          <div class="kp">限时专属权益</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /timeline -->
+
+<div class="footer">
+  <p>© 2025 防梗防猝公益活动 · 高血压患者沟通话术指南</p>
+  <p style="margin-top:4px;">本资料仅供内部培训使用，请注意患者隐私保护</p>
+</div>
+
+</div><!-- /main -->
+
+<script>
+function toggle(id) {
+  const el = document.getElementById(id);
+  el.classList.toggle('open');
+}
+function switchScene(cardId, sceneId, tabEl) {
+  const card = document.getElementById(cardId);
+  card.querySelectorAll('.script-wrap').forEach(w => w.classList.remove('active'));
+  card.querySelectorAll('.scene-tab').forEach(t => t.classList.remove('active'));
+  document.getElementById(sceneId).classList.add('active');
+  tabEl.classList.add('active');
+}
+document.getElementById('c1').classList.add('open');
+</script>
+</body>
+</html>
