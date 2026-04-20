@@ -1,0 +1,463 @@
+
+<h2 class="sr-only">智能血压计 × 清血小助手六步操作指引，手机竖版交互式指南</h2>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+.wrap{max-width:390px;margin:0 auto;font-family:var(--font-sans);padding-bottom:2rem}
+.hero{background:#0A3D62;border-radius:16px;padding:20px 18px 18px;margin-bottom:20px;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;right:-20px;top:-20px;width:120px;height:120px;border-radius:50%;background:#1a5a8a;opacity:0.4}
+.hero-tag{display:inline-block;background:#1D9E75;color:#fff;font-size:11px;font-weight:500;padding:3px 10px;border-radius:20px;margin-bottom:10px}
+.hero-title{font-size:18px;font-weight:500;color:#fff;line-height:1.4;margin-bottom:6px}
+.hero-sub{font-size:12px;color:rgba(255,255,255,0.65)}
+.progress-track{height:4px;background:rgba(255,255,255,0.2);border-radius:2px;margin-top:16px}
+.progress-fill{height:4px;background:#1D9E75;border-radius:2px;transition:width .35s ease}
+.step-pills{display:flex;gap:6px;overflow-x:auto;padding:0 0 4px;margin-bottom:16px;scrollbar-width:none}
+.step-pills::-webkit-scrollbar{display:none}
+.pill{flex-shrink:0;padding:6px 12px;border-radius:20px;font-size:12px;font-weight:500;border:1px solid var(--color-border-secondary);color:var(--color-text-secondary);background:var(--color-background-primary);cursor:pointer;transition:all .2s}
+.pill.active{background:#0A3D62;border-color:#0A3D62;color:#fff}
+.pill.done{background:#E1F5EE;border-color:#1D9E75;color:#085041}
+.card{background:var(--color-background-primary);border:0.5px solid var(--color-border-tertiary);border-radius:16px;overflow:hidden;display:none}
+.card.active{display:block}
+.card-top{padding:18px 18px 14px}
+.step-num{display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;border-radius:50%;background:#0A3D62;color:#fff;font-size:13px;font-weight:500;margin-bottom:10px}
+.card-title{font-size:16px;font-weight:500;color:var(--color-text-primary);line-height:1.45;margin-bottom:8px}
+.card-desc{font-size:13px;color:var(--color-text-secondary);line-height:1.7}
+.card-desc b{color:var(--color-text-primary);font-weight:500}
+.tip{background:#E1F5EE;border-radius:8px;padding:10px 12px;margin-top:12px;font-size:12px;color:#085041;line-height:1.6;display:flex;gap:8px}
+.tip-icon{flex-shrink:0;width:16px;height:16px;margin-top:1px}
+.img-block{background:#f0f4f8;border-top:0.5px solid var(--color-border-tertiary);position:relative}
+.img-block img{width:100%;display:block}
+.img-caption{padding:10px 14px;font-size:11px;color:var(--color-text-secondary);background:var(--color-background-secondary);border-top:0.5px solid var(--color-border-tertiary);display:flex;align-items:center;gap:6px}
+.arrow-badge{display:inline-flex;align-items:center;gap:4px;background:#E24B4A;color:#fff;font-size:10px;font-weight:500;padding:2px 7px;border-radius:20px}
+.flow-row{display:flex;align-items:center;gap:6px;flex-wrap:wrap;margin-top:10px}
+.flow-chip{background:var(--color-background-secondary);border:0.5px solid var(--color-border-secondary);border-radius:20px;padding:4px 10px;font-size:12px;color:var(--color-text-primary)}
+.flow-sep{font-size:12px;color:var(--color-text-tertiary)}
+.nav-area{display:flex;justify-content:space-between;align-items:center;margin-top:16px;gap:10px}
+.btn-nav{flex:1;padding:11px 0;border-radius:10px;font-size:14px;font-weight:500;cursor:pointer;border:1px solid var(--color-border-secondary);background:var(--color-background-primary);color:var(--color-text-secondary);transition:all .15s;text-align:center}
+.btn-nav:hover{background:var(--color-background-secondary)}
+.btn-nav:disabled{opacity:0.3;cursor:default}
+.btn-next{background:#0A3D62;border-color:#0A3D62;color:#fff}
+.btn-next:hover{background:#0d4f7c}
+.step-label{font-size:12px;color:var(--color-text-secondary);white-space:nowrap}
+.sub-steps{margin-top:12px;display:flex;flex-direction:column;gap:8px}
+.sub-step{display:flex;align-items:flex-start;gap:10px;padding:10px 12px;background:var(--color-background-secondary);border-radius:10px}
+.sub-num{flex-shrink:0;width:20px;height:20px;border-radius:50%;background:#0A3D62;color:#fff;font-size:11px;font-weight:500;display:flex;align-items:center;justify-content:center;margin-top:1px}
+.sub-text{font-size:13px;color:var(--color-text-primary);line-height:1.5}
+.svg-screen{width:100%;display:block}
+</style>
+
+<div class="wrap">
+  <div class="hero">
+    <div class="hero-tag">操作指引</div>
+    <div class="hero-title">智能血压计 × 清血小助手<br>6步完成注册与打卡</div>
+    <div class="hero-sub">蒙奇清血八味片 · 血压监测公益行动</div>
+    <div class="progress-track"><div class="progress-fill" id="prog" style="width:16.7%"></div></div>
+  </div>
+
+  <div class="step-pills" id="pills">
+    <div class="pill active" onclick="goTo(0)">1 扫企微</div>
+    <div class="pill" onclick="goTo(1)">2 进小程序</div>
+    <div class="pill" onclick="goTo(2)">3 登录</div>
+    <div class="pill" onclick="goTo(3)">4 完善信息</div>
+    <div class="pill" onclick="goTo(4)">5 授权提醒</div>
+    <div class="pill" onclick="goTo(5)">6 每日打卡</div>
+  </div>
+
+  <div class="card active" id="s0">
+    <div class="card-top">
+      <div class="step-num">1</div>
+      <div class="card-title">扫描二维码，添加企业微信</div>
+      <div class="card-desc">用手机微信扫描血压计上的<b>企业微信二维码</b>，添加专属客服，获得一对一健康咨询服务。</div>
+      <div class="flow-row">
+        <div class="flow-chip">打开微信</div>
+        <div class="flow-sep">→</div>
+        <div class="flow-chip">扫描二维码</div>
+        <div class="flow-sep">→</div>
+        <div class="flow-chip">添加企微客服</div>
+      </div>
+      <div class="tip">
+        <svg class="tip-icon" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="7" stroke="#1D9E75" stroke-width="1.2"/><path d="M8 7v5" stroke="#1D9E75" stroke-width="1.3" stroke-linecap="round"/><circle cx="8" cy="5" r="0.8" fill="#1D9E75"/></svg>
+        添加成功后，客服会主动发送小程序链接和活动说明，也可直接扫血压计上的第二个二维码。
+      </div>
+    </div>
+    <div class="img-block">
+      <svg class="svg-screen" viewBox="0 0 360 300" xmlns="http://www.w3.org/2000/svg">
+        <rect width="360" height="300" fill="#e8f0f8"/>
+        <rect x="20" y="16" width="320" height="268" rx="12" fill="#fff"/>
+        <text x="180" y="44" text-anchor="middle" font-size="11" fill="#555" font-family="sans-serif">"血压监测 防梗防猝"</text>
+        <text x="180" y="62" text-anchor="middle" font-size="13" font-weight="bold" fill="#0A3D62" font-family="sans-serif">公益行动打卡【参与流程】</text>
+        <rect x="36" y="74" width="138" height="90" rx="8" fill="#EDF5FF"/>
+        <text x="56" y="93" font-size="11" fill="#0A3D62" font-family="sans-serif">① 扫码报名</text>
+        <rect x="56" y="99" width="50" height="50" rx="4" fill="#fff" stroke="#ccc" stroke-width="0.5"/>
+        <rect x="60" y="103" width="16" height="16" rx="1" fill="none" stroke="#222" stroke-width="1.5"/>
+        <rect x="63" y="106" width="10" height="10" fill="#222"/>
+        <rect x="80" y="103" width="16" height="16" rx="1" fill="none" stroke="#222" stroke-width="1.5"/>
+        <rect x="83" y="106" width="10" height="10" fill="#222"/>
+        <rect x="60" y="123" width="16" height="16" rx="1" fill="none" stroke="#222" stroke-width="1.5"/>
+        <rect x="63" y="126" width="10" height="10" fill="#222"/>
+        <rect x="80" y="123" width="6" height="6" fill="#1D9E75"/>
+        <rect x="88" y="123" width="6" height="6" fill="#222"/>
+        <rect x="80" y="133" width="6" height="6" fill="#222"/>
+        <rect x="88" y="133" width="6" height="6" fill="#1D9E75"/>
+        <text x="112" y="122" font-size="9" fill="#888" font-family="sans-serif">扫码添加</text>
+        <text x="112" y="134" font-size="9" fill="#888" font-family="sans-serif">企业微信</text>
+        <polygon points="148,122 160,116 160,128" fill="#E24B4A"/>
+        <rect x="186" y="74" width="138" height="90" rx="8" fill="#EDF9F4"/>
+        <text x="206" y="93" font-size="11" fill="#0F6E56" font-family="sans-serif">② 条件核实</text>
+        <rect x="206" y="99" width="98" height="50" rx="6" fill="#fff" stroke="#9FE1CB" stroke-width="1"/>
+        <text x="255" y="120" text-anchor="middle" font-size="10" fill="#0F6E56" font-family="sans-serif">客服核实资格</text>
+        <text x="255" y="136" text-anchor="middle" font-size="9" fill="#888" font-family="sans-serif">符合条件即可申请</text>
+        <rect x="36" y="174" width="138" height="90" rx="8" fill="#FFF3E0"/>
+        <text x="56" y="193" font-size="11" fill="#854F0B" font-family="sans-serif">③ 领取血压计</text>
+        <rect x="56" y="199" width="98" height="50" rx="6" fill="#fff" stroke="#FAC775" stroke-width="1"/>
+        <text x="105" y="220" text-anchor="middle" font-size="10" fill="#854F0B" font-family="sans-serif">前往指定门店</text>
+        <text x="105" y="234" text-anchor="middle" font-size="9" fill="#888" font-family="sans-serif">领取智能血压计</text>
+        <rect x="186" y="174" width="138" height="90" rx="8" fill="#FCE4EC"/>
+        <text x="206" y="193" font-size="11" fill="#993356" font-family="sans-serif">④ 每日打卡</text>
+        <rect x="206" y="199" width="98" height="50" rx="6" fill="#fff" stroke="#ED93B1" stroke-width="1"/>
+        <text x="255" y="220" text-anchor="middle" font-size="10" fill="#993356" font-family="sans-serif">每天测量记录</text>
+        <text x="255" y="234" text-anchor="middle" font-size="9" fill="#888" font-family="sans-serif">远离心梗和脑梗</text>
+      </svg>
+      <div class="img-caption">
+        <span class="arrow-badge">
+          <svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M2 5h6M5 2l3 3-3 3" stroke="#fff" stroke-width="1.2" stroke-linecap="round"/></svg>
+          红箭头
+        </span>
+        指向企微二维码扫码区域（图1）
+      </div>
+    </div>
+  </div>
+
+  <div class="card" id="s1">
+    <div class="card-top">
+      <div class="step-num">2</div>
+      <div class="card-title">扫血压计二维码 / 点客服链接，进入小程序</div>
+      <div class="card-desc">两种方式均可打开<b>清血小助手</b>微信小程序：</div>
+      <div class="sub-steps">
+        <div class="sub-step">
+          <div class="sub-num">A</div>
+          <div class="sub-text">扫描血压计机身上的<b>小程序二维码</b></div>
+        </div>
+        <div class="sub-step">
+          <div class="sub-num">B</div>
+          <div class="sub-text">点击企微客服发送的<b>血压检测链接</b></div>
+        </div>
+      </div>
+      <div class="tip">
+        <svg class="tip-icon" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="7" stroke="#1D9E75" stroke-width="1.2"/><path d="M8 7v5" stroke="#1D9E75" stroke-width="1.3" stroke-linecap="round"/><circle cx="8" cy="5" r="0.8" fill="#1D9E75"/></svg>
+        客服添加后会主动推送链接，点一下就进，比扫码更方便。
+      </div>
+    </div>
+    <div class="img-block">
+      <svg class="svg-screen" viewBox="0 0 360 320" xmlns="http://www.w3.org/2000/svg">
+        <rect width="360" height="320" fill="#e8f0f8"/>
+        <rect x="30" y="14" width="140" height="292" rx="14" fill="#fff" stroke="#ddd" stroke-width="1"/>
+        <rect x="38" y="28" width="124" height="264" rx="10" fill="#f5f5f5"/>
+        <rect x="38" y="28" width="124" height="22" rx="10" fill="#f0f0f0"/>
+        <text x="100" y="43" text-anchor="middle" font-size="10" fill="#333" font-family="sans-serif">黄肖桐｜蒙奇清血八味片</text>
+        <rect x="44" y="58" width="112" height="52" rx="6" fill="#e8f4f0"/>
+        <circle cx="58" cy="70" r="8" fill="#1D9E75"/>
+        <text x="58" y="73" text-anchor="middle" font-size="7" fill="#fff" font-family="sans-serif">防</text>
+        <text x="82" y="68" font-size="9" font-weight="bold" fill="#0F6E56" font-family="sans-serif">防梗防猝行动</text>
+        <text x="82" y="80" font-size="8" fill="#555" font-family="sans-serif">得了脑梗，为什么</text>
+        <text x="82" y="90" font-size="8" fill="#555" font-family="sans-serif">像变了一个人</text>
+        <rect x="82" y="94" width="30" height="10" rx="3" fill="#0A3D62"/>
+        <text x="97" y="102" text-anchor="middle" font-size="7" fill="#fff" font-family="sans-serif">小程序</text>
+        <rect x="44" y="118" width="112" height="60" rx="6" fill="#EDF5FF"/>
+        <circle cx="58" cy="132" r="9" fill="#0A3D62"/>
+        <text x="58" y="136" text-anchor="middle" font-size="7" fill="#fff" font-family="sans-serif">清</text>
+        <text x="82" y="130" font-size="9" font-weight="bold" fill="#0A3D62" font-family="sans-serif">清血小助手</text>
+        <text x="82" y="142" font-size="8" fill="#555" font-family="sans-serif">血压监测</text>
+        <rect x="44" y="152" width="112" height="20" rx="4" fill="#1D9E75"/>
+        <text x="100" y="165" text-anchor="middle" font-size="9" fill="#fff" font-family="sans-serif">点击进入小程序</text>
+        <polygon points="150,148 164,142 164,154" fill="#E24B4A"/>
+        <text x="170" y="150" font-size="10" fill="#E24B4A" font-family="sans-serif" font-weight="bold">B</text>
+        <rect x="196" y="14" width="140" height="292" rx="14" fill="#fff" stroke="#ddd" stroke-width="1"/>
+        <rect x="204" y="28" width="124" height="264" rx="10" fill="#f9f9f9"/>
+        <text x="266" y="55" text-anchor="middle" font-size="10" fill="#555" font-family="sans-serif">血压计机身背面</text>
+        <rect x="214" y="62" width="104" height="110" rx="8" fill="#fff" stroke="#ddd" stroke-width="1"/>
+        <rect x="226" y="72" width="50" height="50" rx="4" fill="#fff" stroke="#ccc" stroke-width="0.5"/>
+        <rect x="230" y="76" width="16" height="16" rx="1" fill="none" stroke="#222" stroke-width="1.5"/>
+        <rect x="233" y="79" width="10" height="10" fill="#222"/>
+        <rect x="250" y="76" width="16" height="16" rx="1" fill="none" stroke="#222" stroke-width="1.5"/>
+        <rect x="253" y="79" width="10" height="10" fill="#222"/>
+        <rect x="230" y="96" width="16" height="16" rx="1" fill="none" stroke="#222" stroke-width="1.5"/>
+        <rect x="233" y="99" width="10" height="10" fill="#222"/>
+        <rect x="250" y="96" width="6" height="6" fill="#1D9E75"/>
+        <rect x="258" y="96" width="6" height="6" fill="#222"/>
+        <rect x="250" y="106" width="6" height="6" fill="#222"/>
+        <rect x="258" y="106" width="6" height="6" fill="#1D9E75"/>
+        <text x="284" y="92" font-size="9" fill="#555" font-family="sans-serif">扫一扫</text>
+        <text x="284" y="104" font-size="9" fill="#555" font-family="sans-serif">进入血压</text>
+        <text x="284" y="116" font-size="9" fill="#555" font-family="sans-serif">检测页面</text>
+        <rect x="214" y="148" width="104" height="18" rx="4" fill="#E24B4A"/>
+        <text x="266" y="161" text-anchor="middle" font-size="9" fill="#fff" font-family="sans-serif">咨询电话：0431-81920000</text>
+        <rect x="214" y="170" width="104" height="14" rx="4" fill="#EDF5FF"/>
+        <text x="266" y="180" text-anchor="middle" font-size="9" fill="#1D9E75" font-family="sans-serif">每天测一测 远离心梗脑梗</text>
+        <polygon points="204,108 192,102 192,114" fill="#E24B4A"/>
+        <text x="178" y="111" font-size="10" fill="#E24B4A" font-family="sans-serif" font-weight="bold">A</text>
+      </svg>
+      <div class="img-caption">
+        <span class="arrow-badge">
+          <svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M2 5h6M5 2l3 3-3 3" stroke="#fff" stroke-width="1.2" stroke-linecap="round"/></svg>
+          红箭头
+        </span>
+        A=血压计二维码 &nbsp;B=客服链接（图1）
+      </div>
+    </div>
+  </div>
+
+  <div class="card" id="s2">
+    <div class="card-top">
+      <div class="step-num">3</div>
+      <div class="card-title">输入手机号或快捷登录，进入小程序</div>
+      <div class="card-desc">进入小程序后推荐<b>快捷登录</b>（微信一键授权），点击前须先勾选底部协议框。</div>
+      <div class="tip">
+        <svg class="tip-icon" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="7" stroke="#1D9E75" stroke-width="1.2"/><path d="M8 7v5" stroke="#1D9E75" stroke-width="1.3" stroke-linecap="round"/><circle cx="8" cy="5" r="0.8" fill="#1D9E75"/></svg>
+        快捷登录直接用微信手机号，无需手动输入，老年顾客操作更方便。
+      </div>
+    </div>
+    <div class="img-block">
+      <svg class="svg-screen" viewBox="0 0 360 340" xmlns="http://www.w3.org/2000/svg">
+        <rect width="360" height="340" fill="#e8f0f8"/>
+        <rect x="90" y="14" width="180" height="312" rx="20" fill="#fff" stroke="#ddd" stroke-width="1.5"/>
+        <rect x="98" y="28" width="164" height="284" rx="14" fill="#f7f7f7"/>
+        <rect x="98" y="28" width="164" height="20" rx="14" fill="#eee"/>
+        <circle cx="180" cy="90" r="28" fill="#0A3D62"/>
+        <path d="M168 96 Q180 82 192 96" stroke="#fff" stroke-width="2" fill="none"/>
+        <circle cx="180" cy="84" r="8" fill="#fff"/>
+        <text x="180" y="132" text-anchor="middle" font-size="12" font-weight="bold" fill="#0A3D62" font-family="sans-serif">清血小助手</text>
+        <text x="180" y="148" text-anchor="middle" font-size="10" fill="#888" font-family="sans-serif">快捷登录</text>
+        <text x="180" y="162" text-anchor="middle" font-size="9" fill="#aaa" font-family="sans-serif">请快捷登录后继续使用</text>
+        <rect x="112" y="174" width="136" height="34" rx="8" fill="#1D9E75"/>
+        <text x="180" y="196" text-anchor="middle" font-size="13" fill="#fff" font-family="sans-serif">快捷登录</text>
+        <rect x="92" y="178" width="14" height="14" fill="none"/>
+        <polygon points="84,191 74,185 74,197" fill="#E24B4A"/>
+        <rect x="112" y="216" width="136" height="34" rx="8" fill="#fff" stroke="#ddd" stroke-width="1"/>
+        <text x="180" y="238" text-anchor="middle" font-size="12" fill="#888" font-family="sans-serif">以游客身份浏览</text>
+        <rect x="114" y="258" width="12" height="12" rx="2" fill="#E1F5EE" stroke="#1D9E75" stroke-width="1"/>
+        <path d="M116 264 l3 3 5-5" stroke="#1D9E75" stroke-width="1.2" fill="none"/>
+        <text x="130" y="268" font-size="9" fill="#888" font-family="sans-serif">我已阅读并同意</text>
+        <text x="180" y="268" font-size="9" fill="#1D9E75" font-family="sans-serif">《用户协议》</text>
+        <text x="222" y="268" font-size="9" fill="#888" font-family="sans-serif">和</text>
+        <text x="234" y="268" font-size="9" fill="#1D9E75" font-family="sans-serif">《隐私政策》</text>
+        <rect x="108" y="170" width="148" height="44" rx="10" fill="none" stroke="#E24B4A" stroke-width="2" stroke-dasharray="4,2"/>
+        <rect x="110" y="252" width="138" height="22" rx="6" fill="none" stroke="#E24B4A" stroke-width="2" stroke-dasharray="4,2"/>
+        <text x="258" y="186" font-size="18" fill="#E24B4A" font-family="sans-serif">←</text>
+        <text x="258" y="266" font-size="18" fill="#E24B4A" font-family="sans-serif">←</text>
+      </svg>
+      <div class="img-caption">
+        <span class="arrow-badge">
+          <svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M2 5h6M5 2l3 3-3 3" stroke="#fff" stroke-width="1.2" stroke-linecap="round"/></svg>
+          红框
+        </span>
+        框出快捷登录按钮和协议勾选框（图2）
+      </div>
+    </div>
+  </div>
+
+  <div class="card" id="s3">
+    <div class="card-top">
+      <div class="step-num">4</div>
+      <div class="card-title">设置头像、昵称，授权获取手机号</div>
+      <div class="card-desc">首次登录需完善个人信息，按顺序完成三项操作：</div>
+      <div class="sub-steps">
+        <div class="sub-step">
+          <div class="sub-num">1</div>
+          <div class="sub-text">点击灰色头像圆圈 → <b>更换头像</b></div>
+        </div>
+        <div class="sub-step">
+          <div class="sub-num">2</div>
+          <div class="sub-text">在输入框填写<b>昵称</b>（任意名字均可）</div>
+        </div>
+        <div class="sub-step">
+          <div class="sub-num">3</div>
+          <div class="sub-text">点击<b>获取手机号</b>，微信一键授权</div>
+        </div>
+      </div>
+    </div>
+    <div class="img-block">
+      <svg class="svg-screen" viewBox="0 0 360 340" xmlns="http://www.w3.org/2000/svg">
+        <rect width="360" height="340" fill="#e8f0f8"/>
+        <rect x="90" y="14" width="180" height="312" rx="20" fill="#fff" stroke="#ddd" stroke-width="1.5"/>
+        <rect x="98" y="28" width="164" height="284" rx="14" fill="#f7f7f7"/>
+        <text x="180" y="62" text-anchor="middle" font-size="12" font-weight="bold" fill="#333" font-family="sans-serif">完善个人信息</text>
+        <text x="180" y="78" text-anchor="middle" font-size="10" fill="#888" font-family="sans-serif">请设置您的头像和昵称</text>
+        <circle cx="180" cy="124" r="30" fill="#ddd"/>
+        <path d="M168 130 Q180 116 192 130" stroke="#aaa" stroke-width="2" fill="none"/>
+        <circle cx="180" cy="118" r="10" fill="#bbb"/>
+        <text x="180" y="164" text-anchor="middle" font-size="10" fill="#1D9E75" font-family="sans-serif">点击更换头像</text>
+        <rect x="116" y="178" width="128" height="32" rx="6" fill="#fff" stroke="#ddd" stroke-width="1"/>
+        <text x="132" y="198" font-size="11" fill="#bbb" font-family="sans-serif">请输入昵称</text>
+        <rect x="116" y="218" width="128" height="32" rx="6" fill="#ccc"/>
+        <text x="180" y="239" text-anchor="middle" font-size="11" fill="#fff" font-family="sans-serif">获取手机号</text>
+        <circle cx="180" cy="124" r="32" fill="none" stroke="#E24B4A" stroke-width="2" stroke-dasharray="5,2"/>
+        <rect x="112" y="174" width="136" height="40" rx="8" fill="none" stroke="#E24B4A" stroke-width="2" stroke-dasharray="4,2"/>
+        <rect x="112" y="214" width="136" height="40" rx="8" fill="none" stroke="#E24B4A" stroke-width="2" stroke-dasharray="4,2"/>
+        <text x="258" y="132" font-size="18" fill="#E24B4A" font-family="sans-serif">←</text>
+        <text x="258" y="198" font-size="18" fill="#E24B4A" font-family="sans-serif">←</text>
+        <text x="258" y="238" font-size="18" fill="#E24B4A" font-family="sans-serif">←</text>
+        <text x="108" y="132" font-size="18" fill="#E24B4A" font-family="sans-serif" text-anchor="end">①</text>
+        <text x="108" y="200" font-size="18" fill="#E24B4A" font-family="sans-serif" text-anchor="end">②</text>
+        <text x="108" y="238" font-size="18" fill="#E24B4A" font-family="sans-serif" text-anchor="end">③</text>
+      </svg>
+      <div class="img-caption">
+        <span class="arrow-badge">
+          <svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M2 5h6M5 2l3 3-3 3" stroke="#fff" stroke-width="1.2" stroke-linecap="round"/></svg>
+          红框+序号
+        </span>
+        框出头像、昵称、获取手机号三项（图3）
+      </div>
+    </div>
+  </div>
+
+  <div class="card" id="s4">
+    <div class="card-top">
+      <div class="step-num">5</div>
+      <div class="card-title">点击「确认」授权提醒，次日 8:30 准时推送</div>
+      <div class="card-desc">进入血压监测页面后会弹出<b>「每天测一测」</b>弹窗。点击<b>确认</b>完成授权，从第二天早上 8:30 起每日收到提醒。</div>
+      <div class="tip">
+        <svg class="tip-icon" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="7" stroke="#1D9E75" stroke-width="1.2"/><path d="M8 7v5" stroke="#1D9E75" stroke-width="1.3" stroke-linecap="round"/><circle cx="8" cy="5" r="0.8" fill="#1D9E75"/></svg>
+        务必点「确认」而非取消！每天 8:30 小程序推送是养成打卡习惯的关键。
+      </div>
+    </div>
+    <div class="img-block">
+      <svg class="svg-screen" viewBox="0 0 360 400" xmlns="http://www.w3.org/2000/svg">
+        <rect width="360" height="400" fill="#e8f0f8"/>
+        <rect x="90" y="14" width="180" height="372" rx="20" fill="#1a3a6e" stroke="#ddd" stroke-width="1.5"/>
+        <rect x="98" y="28" width="164" height="344" rx="14" fill="#1a3a6e"/>
+        <text x="180" y="56" text-anchor="middle" font-size="12" font-weight="bold" fill="#fff" font-family="sans-serif">血压监测</text>
+        <rect x="106" y="66" width="148" height="70" rx="10" fill="#1e4a80"/>
+        <text x="120" y="84" font-size="9" fill="rgba(255,255,255,0.7)" font-family="sans-serif">今日暂未记录，请坚持监测指标</text>
+        <text x="116" y="104" font-size="9" fill="rgba(255,255,255,0.7)" font-family="sans-serif">高压值(mmHg)</text>
+        <text x="116" y="118" font-size="16" font-weight="bold" fill="#fff" font-family="sans-serif">-- / --</text>
+        <text x="196" y="104" font-size="9" fill="rgba(255,255,255,0.7)" font-family="sans-serif">心率(bpm)</text>
+        <text x="196" y="118" font-size="14" fill="#fff" font-family="sans-serif">--</text>
+        <text x="116" y="129" font-size="8" fill="rgba(255,255,255,0.5)" font-family="sans-serif">最后一次测量时间：N/A</text>
+        <rect x="106" y="150" width="148" height="120" rx="12" fill="rgba(255,255,255,0.97)"/>
+        <rect x="108" y="152" width="144" height="116" rx="10" fill="none" stroke="#E24B4A" stroke-width="2.5"/>
+        <text x="180" y="180" text-anchor="middle" font-size="14" font-weight="bold" fill="#1D9E75" font-family="sans-serif">每天测一测</text>
+        <text x="180" y="198" text-anchor="middle" font-size="11" fill="#555" font-family="sans-serif">远离心梗和脑梗</text>
+        <line x1="106" y1="218" x2="254" y2="218" stroke="#eee" stroke-width="0.5"/>
+        <rect x="110" y="222" width="64" height="30" rx="6" fill="#f5f5f5"/>
+        <text x="142" y="242" text-anchor="middle" font-size="11" fill="#888" font-family="sans-serif">取消</text>
+        <rect x="180" y="222" width="70" height="30" rx="6" fill="#1D9E75"/>
+        <text x="215" y="242" text-anchor="middle" font-size="11" fill="#fff" font-family="sans-serif">确认</text>
+        <text x="258" y="240" font-size="18" fill="#E24B4A" font-family="sans-serif">←</text>
+        <rect x="106" y="284" width="148" height="68" rx="10" fill="#f0f4ff"/>
+        <circle cx="122" cy="302" r="9" fill="#0A3D62"/>
+        <text x="122" y="306" text-anchor="middle" font-size="7" fill="#fff" font-family="sans-serif">清</text>
+        <text x="136" y="300" font-size="9" font-weight="bold" fill="#0A3D62" font-family="sans-serif">清血小助手</text>
+        <text x="136" y="312" font-size="9" fill="#E24B4A" font-family="sans-serif">血压测量提醒</text>
+        <text x="116" y="326" font-size="8" fill="#888" font-family="sans-serif">提醒时间：次日 08:30</text>
+        <text x="116" y="338" font-size="8" fill="#888" font-family="sans-serif">记录血压，共筑防梗防猝防线！</text>
+        <text x="116" y="350" font-size="8" fill="#1D9E75" font-family="sans-serif">进入小程序查看 &gt;</text>
+      </svg>
+      <div class="img-caption">
+        <span class="arrow-badge">
+          <svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M2 5h6M5 2l3 3-3 3" stroke="#fff" stroke-width="1.2" stroke-linecap="round"/></svg>
+          红框+箭头
+        </span>
+        框出弹窗「确认」按钮（图4）
+      </div>
+    </div>
+  </div>
+
+  <div class="card" id="s5">
+    <div class="card-top">
+      <div class="step-num">6</div>
+      <div class="card-title">添加血压记录，查看趋势与历史分析</div>
+      <div class="card-desc">测量完成后进入小程序，点击<b>「+ 添加记录」</b>录入血压数值，支持两种方式：</div>
+      <div class="sub-steps">
+        <div class="sub-step">
+          <div class="sub-num">A</div>
+          <div class="sub-text">像拨闹钟一样<b>上下滑动</b>设置高压/低压/心率数值</div>
+        </div>
+        <div class="sub-step">
+          <div class="sub-num">B</div>
+          <div class="sub-text">调用<b>相机或相册</b>拍血压计屏幕，AI 智能识别数值</div>
+        </div>
+      </div>
+      <div class="tip">
+        <svg class="tip-icon" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="7" stroke="#1D9E75" stroke-width="1.2"/><path d="M8 7v5" stroke="#1D9E75" stroke-width="1.3" stroke-linecap="round"/><circle cx="8" cy="5" r="0.8" fill="#1D9E75"/></svg>
+        历史记录会显示「正常/中度/高度」等级标签，方便顾客了解血压状态，主动咨询产品。
+      </div>
+    </div>
+    <div class="img-block">
+      <svg class="svg-screen" viewBox="0 0 360 420" xmlns="http://www.w3.org/2000/svg">
+        <rect width="360" height="420" fill="#e8f0f8"/>
+        <rect x="90" y="14" width="180" height="392" rx="20" fill="#fff" stroke="#ddd" stroke-width="1.5"/>
+        <rect x="98" y="28" width="164" height="364" rx="14" fill="#f0f5f9"/>
+        <rect x="104" y="36" width="152" height="72" rx="10" fill="#1a3a6e"/>
+        <text x="180" y="54" text-anchor="middle" font-size="10" font-weight="bold" fill="#fff" font-family="sans-serif">血压监测</text>
+        <text x="114" y="70" font-size="8" fill="rgba(255,255,255,0.7)" font-family="sans-serif">高压(mmHg)</text>
+        <text x="114" y="84" font-size="15" font-weight="bold" fill="#fff" font-family="sans-serif">138</text>
+        <text x="160" y="70" font-size="8" fill="rgba(255,255,255,0.7)" font-family="sans-serif">低压(mmHg)</text>
+        <text x="160" y="84" font-size="15" font-weight="bold" fill="#fff" font-family="sans-serif">93</text>
+        <text x="215" y="70" font-size="8" fill="rgba(255,255,255,0.7)" font-family="sans-serif">心率(bpm)</text>
+        <text x="215" y="84" font-size="15" font-weight="bold" fill="#fff" font-family="sans-serif">72</text>
+        <rect x="104" y="116" width="152" height="30" rx="8" fill="#fff" stroke="#1D9E75" stroke-width="1.5" stroke-dasharray="4,2"/>
+        <text x="180" y="136" text-anchor="middle" font-size="11" fill="#1D9E75" font-family="sans-serif">+ 添加记录</text>
+        <rect x="100" y="112" width="160" height="38" rx="10" fill="none" stroke="#E24B4A" stroke-width="2"/>
+        <text x="268" y="134" font-size="18" fill="#E24B4A" font-family="sans-serif">←</text>
+        <rect x="104" y="158" width="152" height="110" rx="10" fill="#fff"/>
+        <text x="114" y="176" font-size="10" font-weight="bold" fill="#333" font-family="sans-serif">血压趋势</text>
+        <rect x="100" y="154" width="160" height="118" rx="10" fill="none" stroke="#E24B4A" stroke-width="2"/>
+        <text x="268" y="176" font-size="18" fill="#E24B4A" font-family="sans-serif">←</text>
+        <polyline points="114,250 130,238 150,228 170,232 190,222 210,216 240,220" fill="none" stroke="#E24B4A" stroke-width="2"/>
+        <polyline points="114,260 130,256 150,252 170,254 190,250 210,248 240,250" fill="none" stroke="#1D9E75" stroke-width="2"/>
+        <circle cx="240" cy="220" r="3" fill="#E24B4A"/>
+        <circle cx="240" cy="250" r="3" fill="#1D9E75"/>
+        <text x="244" y="224" font-size="7" fill="#E24B4A" font-family="sans-serif">高压</text>
+        <text x="244" y="254" font-size="7" fill="#1D9E75" font-family="sans-serif">低压</text>
+        <text x="114" y="278" font-size="8" fill="#aaa" font-family="sans-serif">10/18  11/5  12/17  3/20  4/11  4/12</text>
+        <rect x="104" y="282" width="152" height="80" rx="10" fill="#fff"/>
+        <text x="114" y="300" font-size="10" font-weight="bold" fill="#333" font-family="sans-serif">历史记录</text>
+        <text x="230" y="300" font-size="9" fill="#1D9E75" font-family="sans-serif">查看更多 &gt;&gt;</text>
+        <rect x="100" y="278" width="160" height="88" rx="10" fill="none" stroke="#E24B4A" stroke-width="2"/>
+        <text x="268" y="300" font-size="18" fill="#E24B4A" font-family="sans-serif">←</text>
+        <line x1="108" y1="308" x2="248" y2="308" stroke="#eee" stroke-width="0.5"/>
+        <text x="114" y="322" font-size="10" fill="#333" font-family="sans-serif">138/93 mmHg</text>
+        <rect x="210" y="314" width="34" height="14" rx="7" fill="#FAEEDA"/>
+        <text x="227" y="324" text-anchor="middle" font-size="8" fill="#854F0B" font-family="sans-serif">中度</text>
+        <text x="114" y="336" font-size="8" fill="#aaa" font-family="sans-serif">蒙奇来源 · 生活录入</text>
+        <text x="114" y="350" font-size="8" fill="#aaa" font-family="sans-serif">2025-04-12 08:42</text>
+      </svg>
+      <div class="img-caption">
+        <span class="arrow-badge">
+          <svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M2 5h6M5 2l3 3-3 3" stroke="#fff" stroke-width="1.2" stroke-linecap="round"/></svg>
+          红框
+        </span>
+        框出添加记录、血压趋势、历史记录三处（图5）
+      </div>
+    </div>
+  </div>
+
+  <div class="nav-area">
+    <button class="btn-nav" id="prevBtn" onclick="navigate(-1)" disabled>← 上一步</button>
+    <span class="step-label" id="stepLabel">1 / 6</span>
+    <button class="btn-nav btn-next" id="nextBtn" onclick="navigate(1)">下一步 →</button>
+  </div>
+</div>
+
+<script>
+var cur=0,total=6;
+function goTo(n){
+  document.getElementById('s'+cur).classList.remove('active');
+  var pills=document.querySelectorAll('.pill');
+  pills[cur].classList.remove('active');
+  if(n>cur)pills[cur].classList.add('done');
+  else pills[cur].classList.remove('done');
+  cur=n;
+  document.getElementById('s'+cur).classList.add('active');
+  pills[cur].classList.remove('done');
+  pills[cur].classList.add('active');
+  pills[cur].scrollIntoView({behavior:'smooth',block:'nearest',inline:'center'});
+  document.getElementById('prog').style.width=Math.round((cur+1)/total*100)+'%';
+  document.getElementById('stepLabel').textContent=(cur+1)+' / '+total;
+  document.getElementById('prevBtn').disabled=cur===0;
+  var nb=document.getElementById('nextBtn');
+  nb.disabled=cur===total-1;
+  nb.textContent=cur===total-1?'全部完成 ✓':'下一步 →';
+}
+function navigate(d){if(cur+d>=0&&cur+d<total)goTo(cur+d);}
+</script>
