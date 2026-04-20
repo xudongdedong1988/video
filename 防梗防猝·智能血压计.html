@@ -1,0 +1,741 @@
+<!DOCTYPE html>
+<!-- saved from url=(0053)file:///Users/xudongchen/Downloads/bp-landing-v3.html -->
+<html lang="zh-CN"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>防梗防猝·智能血压计</title>
+<link rel="preconnect" href="https://fonts.googleapis.com/">
+<link href="./防梗防猝·智能血压计_files/css2" rel="stylesheet">
+<style>
+:root {
+  --ink: #0d1a12;
+  --green: #0e7a52;
+  --green-bright: #1db874;
+  --green-pale: #e8f7f0;
+  --gold: #c8a84b;
+  --gold-light: #f5e9c4;
+  --red: #d63b3b;
+  --white: #ffffff;
+  --gray: #f4f4f2;
+  --text: #1a1a1a;
+  --muted: #777;
+}
+
+* { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Noto Sans SC', sans-serif;
+  background: #0d1a12;
+  color: var(--white);
+  overflow-x: hidden;
+}
+
+/* ── HERO FULL SCREEN ── */
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  overflow: hidden;
+  background: #0d1a12;
+}
+
+.hero-bg-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  opacity: 0.55;
+  animation: zoomIn 8s ease-out forwards;
+}
+
+@keyframes zoomIn {
+  from { transform: scale(1.08); }
+  to   { transform: scale(1.0); }
+}
+
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    transparent 0%,
+    rgba(13,26,18,0.3) 40%,
+    rgba(13,26,18,0.85) 75%,
+    #0d1a12 100%
+  );
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  padding: 0 1.5rem 3rem;
+  animation: fadeUp 1s ease 0.3s both;
+}
+
+@keyframes fadeUp {
+  from { opacity:0; transform: translateY(24px); }
+  to   { opacity:1; transform: translateY(0); }
+}
+
+.hero-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(200,168,75,0.15);
+  border: 1px solid rgba(200,168,75,0.5);
+  color: var(--gold);
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 11px;
+  letter-spacing: 1.5px;
+  margin-bottom: 1.2rem;
+}
+
+.hero h1 {
+  font-family: 'Noto Serif SC', serif;
+  font-size: clamp(32px, 9vw, 52px);
+  font-weight: 900;
+  line-height: 1.2;
+  color: var(--white);
+  margin-bottom: 0.75rem;
+}
+
+.hero h1 .accent { color: var(--green-bright); }
+
+.hero-desc {
+  font-size: 15px;
+  color: rgba(255,255,255,0.72);
+  line-height: 1.8;
+  margin-bottom: 2rem;
+  max-width: 320px;
+}
+
+.hero-stats {
+  display: flex;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.hero-stat { text-align: left; }
+.hero-stat .num {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--green-bright);
+  display: block;
+}
+.hero-stat .lbl {
+  font-size: 11px;
+  color: rgba(255,255,255,0.5);
+  display: block;
+  margin-top: 2px;
+}
+
+.scroll-hint {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  color: rgba(255,255,255,0.4);
+  font-size: 11px;
+  letter-spacing: 1px;
+}
+.scroll-hint .arrow {
+  width: 1px;
+  height: 36px;
+  background: linear-gradient(to bottom, transparent, rgba(255,255,255,0.3));
+  animation: arrowPulse 2s infinite;
+}
+@keyframes arrowPulse {
+  0%,100% { opacity:0.3; transform: scaleY(0.7); }
+  50%      { opacity:1;   transform: scaleY(1); }
+}
+
+/* ── SECTION BASE ── */
+.section {
+  background: var(--white);
+  color: var(--text);
+}
+
+.section-dark {
+  background: #0d1a12;
+  color: var(--white);
+}
+
+.sec-inner {
+  padding: 3rem 1.5rem;
+}
+
+.sec-kicker {
+  font-size: 11px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--green);
+  font-weight: 500;
+  margin-bottom: 6px;
+}
+
+.sec-kicker-light {
+  color: var(--green-bright);
+}
+
+.sec-title {
+  font-family: 'Noto Serif SC', serif;
+  font-size: clamp(24px, 6vw, 32px);
+  font-weight: 700;
+  line-height: 1.3;
+  margin-bottom: 1.75rem;
+}
+
+/* ── VIDEO SECTION ── */
+.video-wrap {
+  position: relative;
+  width: 100%;
+  border-radius: 16px;
+  overflow: hidden;
+  background: #000;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.35);
+}
+
+.video-wrap video {
+  width: 100%;
+  display: block;
+}
+
+/* ── WARNING SECTION ── */
+.warn-section {
+  background: #0d1a12;
+  padding: 3rem 1.5rem;
+}
+
+.warn-headline {
+  font-family: 'Noto Serif SC', serif;
+  font-size: clamp(22px, 6vw, 30px);
+  font-weight: 700;
+  color: var(--white);
+  line-height: 1.4;
+  margin-bottom: 2rem;
+}
+
+.warn-headline .red { color: #ff6b6b; }
+
+.risk-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.risk-card {
+  border-radius: 14px;
+  padding: 1.25rem 1.5rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.risk-card.r1 { background: linear-gradient(135deg, #1a0808 0%, #2d1010 100%); border: 1px solid rgba(214,59,59,0.3); }
+.risk-card.r2 { background: linear-gradient(135deg, #1a1208 0%, #2d2010 100%); border: 1px solid rgba(200,168,75,0.3); }
+.risk-card.r3 { background: linear-gradient(135deg, #081a12 0%, #0e2d1c 100%); border: 1px solid rgba(29,184,116,0.3); }
+
+.risk-num {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 42px;
+  font-weight: 900;
+  line-height: 1;
+  margin-bottom: 6px;
+}
+.r1 .risk-num { color: #ff6b6b; }
+.r2 .risk-num { color: var(--gold); }
+.r3 .risk-num { color: var(--green-bright); }
+
+.risk-label {
+  font-size: 14px;
+  font-weight: 500;
+  color: rgba(255,255,255,0.9);
+  margin-bottom: 4px;
+}
+.risk-sub {
+  font-size: 12px;
+  color: rgba(255,255,255,0.45);
+  line-height: 1.5;
+}
+
+/* ── PRODUCT FULL-BLEED IMAGES ── */
+.product-gallery {
+  background: #0d1a12;
+  padding: 0 0 3rem;
+}
+
+.gallery-label {
+  padding: 3rem 1.5rem 1.5rem;
+}
+
+.full-img-block {
+  width: 100%;
+  position: relative;
+  margin-bottom: 4px;
+}
+
+.full-img-block img {
+  width: 100%;
+  display: block;
+  min-height: 320px;
+  object-fit: cover;
+  object-position: center;
+}
+
+.img-caption {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  background: linear-gradient(to top, rgba(13,26,18,0.9) 0%, transparent 100%);
+  padding: 2rem 1.5rem 1.25rem;
+  color: rgba(255,255,255,0.85);
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+}
+
+/* ── FEATURES ── */
+.features-section {
+  background: var(--white);
+  padding: 3rem 1.5rem;
+}
+
+.feature-block {
+  margin-bottom: 2rem;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid #eee;
+}
+.feature-block:last-child {
+  border-bottom: none;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+.fb-num {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 48px;
+  font-weight: 900;
+  color: var(--green-pale);
+  line-height: 1;
+  margin-bottom: -12px;
+}
+
+.fb-title {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--ink);
+  margin-bottom: 8px;
+  position: relative;
+  z-index: 1;
+}
+
+.fb-title .badge {
+  display: inline-block;
+  background: var(--green);
+  color: white;
+  font-family: 'Noto Sans SC', sans-serif;
+  font-size: 10px;
+  padding: 2px 8px;
+  border-radius: 10px;
+  vertical-align: middle;
+  margin-left: 8px;
+  font-weight: 500;
+}
+
+.fb-desc {
+  font-size: 14px;
+  color: #555;
+  line-height: 1.8;
+}
+
+/* ── SPEC TABLE ── */
+.spec-section {
+  background: var(--gray);
+  padding: 3rem 1.5rem;
+}
+
+.spec-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.spec-table tr {
+  border-bottom: 1px solid #e5e5e3;
+}
+
+.spec-table tr:last-child {
+  border-bottom: none;
+}
+
+.spec-table td {
+  padding: 14px 0;
+  font-size: 14px;
+  vertical-align: top;
+}
+
+.spec-table td:first-child {
+  color: var(--muted);
+  width: 35%;
+  font-size: 13px;
+}
+
+.spec-table td:last-child {
+  color: var(--ink);
+  font-weight: 500;
+}
+
+/* ── MINIAPP ── */
+.app-section {
+  background: #0d1a12;
+  padding: 3rem 1.5rem;
+}
+
+.app-steps {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  position: relative;
+}
+
+.app-steps::before {
+  content: '';
+  position: absolute;
+  left: 19px;
+  top: 30px;
+  bottom: 30px;
+  width: 1px;
+  background: linear-gradient(to bottom, var(--green), transparent);
+}
+
+.app-step {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+  padding: 1.25rem 0;
+  position: relative;
+}
+
+.step-dot {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--green);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  flex-shrink: 0;
+  position: relative;
+  z-index: 1;
+}
+
+.step-body {
+  padding-top: 6px;
+}
+
+.step-title {
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--white);
+  margin-bottom: 4px;
+}
+
+.step-desc {
+  font-size: 13px;
+  color: rgba(255,255,255,0.5);
+  line-height: 1.6;
+}
+
+/* ── MISSION ── */
+.mission-section {
+  background: var(--green);
+  padding: 3rem 1.5rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.mission-section::before {
+  content: '健康中国';
+  position: absolute;
+  right: -20px;
+  top: 50%;
+  transform: translateY(-50%) rotate(90deg);
+  font-family: 'Noto Serif SC', serif;
+  font-size: 80px;
+  font-weight: 900;
+  color: rgba(255,255,255,0.05);
+  white-space: nowrap;
+  pointer-events: none;
+}
+
+.mission-section .sec-title { color: var(--white); }
+
+.mission-text {
+  font-size: 14px;
+  color: rgba(255,255,255,0.82);
+  line-height: 2;
+}
+
+.mission-text strong {
+  color: var(--white);
+  font-weight: 500;
+}
+
+/* ── FOOTER ── */
+.footer {
+  background: #060f09;
+  padding: 2.5rem 1.5rem;
+  text-align: center;
+  border-top: 1px solid rgba(255,255,255,0.06);
+}
+
+.footer-name {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 15px;
+  color: var(--green-bright);
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+}
+
+.footer-orgs {
+  font-size: 12px;
+  color: rgba(255,255,255,0.35);
+  line-height: 2.2;
+}
+
+/* ── scroll reveal ── */
+.reveal {
+  opacity: 0;
+  transform: translateY(32px);
+  transition: opacity 0.65s ease, transform 0.65s ease;
+}
+.reveal.visible {
+  opacity: 1;
+  transform: none;
+}
+</style>
+</head>
+<body>
+
+<!-- ────── HERO ────── -->
+<section class="hero">
+  <img class="hero-bg-img" src="./防梗防猝·智能血压计_files/xyj001.png" alt="血压计产品图">
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="hero-tag">🏥 公益计划 · 健康中国行</div>
+    <h1>防梗防猝<br><span class="accent">智能血压计</span></h1>
+    <p class="hero-desc">倡导每天测一测，远离心梗和脑梗。家庭血压监测，是守护健康的第一道防线。</p>
+    <div class="hero-stats">
+      <div class="hero-stat">
+        <span class="num">4.77×</span>
+        <span class="lbl">脑卒中风险倍数</span>
+      </div>
+      <div class="hero-stat">
+        <span class="num">34.8%</span>
+        <span class="lbl">60岁以上规范监测率</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ────── 公益视频 ────── -->
+<section class="section-dark">
+  <div class="sec-inner reveal visible">
+    <p class="sec-kicker sec-kicker-light">公益短片</p>
+    <h2 class="sec-title" style="color:#fff">看看这30秒<br>为什么要每天量</h2>
+    <div class="video-wrap">
+      <video controls="" playsinline="" preload="metadata" poster="https://pusheng.oss-cn-beijing.aliyuncs.com/xyj001.png">
+        <source src="https://pusheng.oss-cn-beijing.aliyuncs.com/30%E7%A7%92%E7%9A%84%E5%85%AC%E7%9B%8A%E7%89%87.mp4" type="video/mp4">
+      </video>
+    </div>
+  </div>
+</section>
+
+<!-- ────── 风险数据 ────── -->
+<section class="warn-section reveal visible">
+  <h2 class="warn-headline">
+    血压≥160/100<br>
+    你的风险<span class="red">倍数增加</span>
+  </h2>
+  <div class="risk-cards">
+    <div class="risk-card r1">
+      <div class="risk-num">4.77×</div>
+      <div class="risk-label">脑卒中风险</div>
+      <div class="risk-sub">血压≥160/100mmHg 与正常血压对比</div>
+    </div>
+    <div class="risk-card r2">
+      <div class="risk-num">2.27×</div>
+      <div class="risk-label">冠心病风险</div>
+      <div class="risk-sub">高血压是冠心病的独立危险因素</div>
+    </div>
+    <div class="risk-card r3">
+      <div class="risk-num">65.2%</div>
+      <div class="risk-label">未规范监测</div>
+      <div class="risk-sub">60岁以上高血压患者中，超过六成未能规范测量血压</div>
+    </div>
+  </div>
+</section>
+
+<!-- ────── 产品大图 ────── -->
+<section class="product-gallery">
+  <div class="gallery-label reveal visible">
+    <p class="sec-kicker sec-kicker-light">产品展示</p>
+    <h2 class="sec-title" style="color:#fff">一台能用一辈子<br>的血压计</h2>
+  </div>
+
+  <div class="full-img-block reveal visible">
+    <img src="./防梗防猝·智能血压计_files/xyj001.png" alt="产品全貌" style="min-height:380px;">
+    <div class="img-caption">医用级臂式血压计 · 型号 BP11C</div>
+  </div>
+
+  <div class="full-img-block reveal visible">
+    <img src="./防梗防猝·智能血压计_files/xyj002.png" alt="产品展示2" style="min-height:380px;">
+    <div class="img-caption">智能加压 · 一键测量</div>
+  </div>
+
+  <div class="full-img-block reveal visible">
+    <img src="./防梗防猝·智能血压计_files/xyj003.png" alt="使用场景" style="min-height:380px;">
+    <div class="img-caption">家庭使用场景</div>
+  </div>
+
+  <div class="full-img-block reveal visible" style="margin-bottom:0">
+    <img src="./防梗防猝·智能血压计_files/xyj004.png" alt="产品细节" style="min-height:380px;">
+    <div class="img-caption">背光大屏 · 语音播报</div>
+  </div>
+</section>
+
+<!-- ────── 产品亮点 ────── -->
+<section class="features-section reveal visible">
+  <p class="sec-kicker">产品亮点</p>
+  <h2 class="sec-title">每一个细节<br>都为你设计</h2>
+
+  <div class="feature-block">
+    <div class="fb-num">01</div>
+    <div class="fb-title">智能语音播报 <span class="badge">核心功能</span></div>
+    <div class="fb-desc">测量完成自动语音播报数值，老年用户无需低头看屏幕，操作零障碍，全家都能用。</div>
+  </div>
+
+  <div class="feature-block">
+    <div class="fb-num">02</div>
+    <div class="fb-title">一键加压，30秒出结果</div>
+    <div class="fb-desc">智能自动加压，按下一个键，30秒内收缩压、舒张压、脉率同步显示，操作极简。</div>
+  </div>
+
+  <div class="feature-block">
+    <div class="fb-num">03</div>
+    <div class="fb-title">背光大屏，数字清晰</div>
+    <div class="fb-desc">超大液晶显示屏配置背光，清晨光线不足也能清晰读数，再也不用凑近看数字。</div>
+  </div>
+
+  <div class="feature-block">
+    <div class="fb-num">04</div>
+    <div class="fb-title">充电电池，长久续航</div>
+    <div class="fb-desc">内置充电电池供电，充一次用很久，免去频繁换电池的烦恼，出门也能随手带。</div>
+  </div>
+
+  <div class="feature-block">
+    <div class="fb-num">05</div>
+    <div class="fb-title">国家医疗器械认证 <span class="badge">已认证</span></div>
+    <div class="fb-desc">注册证号 粤械注准20242071767，符合国家医用标准，经过临床验证，精准可信赖。</div>
+  </div>
+</section>
+
+<!-- ────── 规格参数 ────── -->
+<section class="spec-section reveal visible">
+  <p class="sec-kicker">规格参数</p>
+  <h2 class="sec-title">产品详情</h2>
+  <table class="spec-table">
+    <tbody><tr><td>品牌型号</td><td>金都豪 BP11C</td></tr>
+    <tr><td>产品类型</td><td>臂式电子血压计</td></tr>
+    <tr><td>适用部位</td><td>上臂</td></tr>
+    <tr><td>供电方式</td><td>充电电池供电</td></tr>
+    <tr><td>主要功能</td><td>智能加压 / 语音播报 / 一键测量</td></tr>
+    <tr><td>显示特性</td><td>背光大屏显示</td></tr>
+    <tr><td>臂带款式</td><td>标准臂带</td></tr>
+    <tr><td>标准配件</td><td>标准臂带 + 充电线</td></tr>
+    <tr><td>适用人群</td><td>全年龄段</td></tr>
+    <tr><td>注册证号</td><td>粤械注准20242071767</td></tr>
+    <tr><td>生产企业</td><td>深圳市憨憨智造科技有限公司</td></tr>
+    <tr><td>产地</td><td>深圳</td></tr>
+  </tbody></table>
+</section>
+
+<!-- ────── 配套小程序 ────── -->
+<section class="app-section">
+  <div class="sec-inner reveal visible" style="padding:0">
+    <p class="sec-kicker sec-kicker-light">配套小程序</p>
+    <h2 class="sec-title" style="color:#fff; margin-bottom:2.5rem">血压数据<br>随时掌控</h2>
+    <div class="app-steps">
+      <div class="app-step">
+        <div class="step-dot">📝</div>
+        <div class="step-body">
+          <div class="step-title">录入血压数值</div>
+          <div class="step-desc">手动录入每次测量结果，支持多位家庭成员档案管理</div>
+        </div>
+      </div>
+      <div class="app-step">
+        <div class="step-dot">📈</div>
+        <div class="step-body">
+          <div class="step-title">趋势分析图表</div>
+          <div class="step-desc">30天 / 90天数据可视化，清楚掌握血压波动规律</div>
+        </div>
+      </div>
+      <div class="app-step">
+        <div class="step-dot">🔔</div>
+        <div class="step-body">
+          <div class="step-title">异常自动告警</div>
+          <div class="step-desc">血压超出安全范围立即提醒，支持分享给家人或医生</div>
+        </div>
+      </div>
+      <div class="app-step">
+        <div class="step-dot">📖</div>
+        <div class="step-body">
+          <div class="step-title">健康科普</div>
+          <div class="step-desc">内置心脑血管健康知识，让每一次测量都有意义</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ────── 公益宗旨 ────── -->
+<section class="mission-section reveal visible">
+  <p class="sec-kicker" style="color:rgba(255,255,255,0.6)">公益宗旨</p>
+  <h2 class="sec-title">防梗防猝<br>健康中国行</h2>
+  <p class="mission-text">
+    本次公益行动以<strong>"倡导每天测一测，远离心梗和脑梗"</strong>为核心宗旨，致力于构建从设备捐赠到习惯养成、再到数据赋能的完整公益闭环。<br><br>
+    通过免费捐赠、专家科普、连锁药店联动等形式，联合建设<strong>"健康驿站"</strong>公益服务站，引导老百姓正确认知"健康血压"，为重点人群提供触手可及的健康支持，助力"健康中国"战略落地。
+  </p>
+</section>
+
+<!-- ────── FOOTER ────── -->
+<div class="footer">
+  <div class="footer-name">防梗防猝 · 家庭血压监测普及计划</div>
+  <div class="footer-orgs">
+    主办单位：中国民族医药协会<br>
+    协办单位：内蒙古蒙奇药业有限公司
+  </div>
+</div>
+
+<script>
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('visible');
+      observer.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.1 });
+
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+
+
+
+</body></html>
