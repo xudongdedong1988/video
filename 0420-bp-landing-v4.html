@@ -1,0 +1,861 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>防梗防猝·智能血压计</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@600;700;900&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+
+/* ─────────────────────────────────────────
+   老年友好配色：
+   · 暖白底色，不刺眼
+   · 深墨绿主色，稳重权威
+   · 金橙点缀，温暖亲切
+   · 字号全线放大，行距宽松
+   · 对比度≥4.5:1，符合无障碍标准
+───────────────────────────────────────── */
+:root {
+  --bg:          #faf8f3;       /* 暖白，比纯白柔和 */
+  --bg-warm:     #f3efe6;       /* 米色区块 */
+  --bg-deep:     #1a3a28;       /* 深墨绿 */
+  --bg-dark:     #0f2419;       /* 更深墨绿 */
+  --green:       #1e7a4f;       /* 主色 */
+  --green-light: #2fa06a;       /* 亮绿 */
+  --green-pale:  #e3f2ea;       /* 浅绿背景 */
+  --gold:        #c47f17;       /* 金橙 */
+  --gold-bg:     #fdf3dc;       /* 金橙浅底 */
+  --red-warn:    #b83030;       /* 警示红 */
+  --red-bg:      #fdecea;       /* 红浅底 */
+  --text:        #1a1a18;       /* 主文字，近黑 */
+  --text-sub:    #4a4a44;       /* 次要文字 */
+  --text-muted:  #777770;       /* 辅助文字 */
+  --border:      #ddd9d0;       /* 分割线 */
+  --white:       #ffffff;
+  --radius:      14px;
+  --radius-lg:   20px;
+
+  /* 老年字号体系 */
+  --fs-hero:     clamp(30px, 8vw, 52px);
+  --fs-h2:       clamp(22px, 5vw, 34px);
+  --fs-h3:       clamp(18px, 4vw, 24px);
+  --fs-body:     clamp(15px, 3.5vw, 17px);
+  --fs-small:    clamp(13px, 3vw, 15px);
+  --fs-label:    clamp(11px, 2.5vw, 13px);
+}
+
+* { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior:smooth; }
+
+body {
+  font-family: 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.8;
+  font-size: var(--fs-body);
+  -webkit-text-size-adjust: 100%;
+}
+
+img { max-width:100%; height:auto; display:block; }
+a { color: var(--green); text-decoration: none; }
+
+/* ── PC 宽屏容器 ── */
+.container {
+  width: 100%;
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 0 clamp(1.25rem, 5vw, 3rem);
+}
+
+/* ── 通用 Section ── */
+.sec {
+  padding: clamp(2.5rem, 6vw, 5rem) 0;
+}
+
+.sec-label {
+  display: inline-block;
+  font-size: var(--fs-label);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--green);
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.sec-title {
+  font-family: 'Noto Serif SC', serif;
+  font-size: var(--fs-h2);
+  font-weight: 700;
+  line-height: 1.35;
+  color: var(--text);
+  margin-bottom: clamp(1.5rem, 4vw, 2.5rem);
+}
+
+.sec-title-light { color: var(--white); }
+
+/* ─────────────────────────────────────────
+   HERO
+───────────────────────────────────────── */
+.hero {
+  position: relative;
+  background: var(--bg-dark);
+  overflow: hidden;
+  min-height: min(100svh, 680px);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.hero-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 20%;
+  opacity: 0.5;
+  animation: zoomIn 7s ease-out both;
+}
+
+@keyframes zoomIn {
+  from { transform:scale(1.06); }
+  to   { transform:scale(1); }
+}
+
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(15,36,25,0.2) 0%,
+    rgba(15,36,25,0.55) 45%,
+    rgba(15,36,25,0.92) 78%,
+    var(--bg-dark) 100%
+  );
+}
+
+.hero-body {
+  position: relative;
+  z-index: 2;
+  padding: clamp(2rem, 5vw, 4rem) clamp(1.25rem, 5vw, 3rem) clamp(2.5rem, 6vw, 4.5rem);
+  max-width: 860px;
+  width: 100%;
+  margin: 0 auto;
+  animation: fadeUp 0.9s ease 0.2s both;
+}
+
+@keyframes fadeUp {
+  from { opacity:0; transform:translateY(28px); }
+  to   { opacity:1; transform:none; }
+}
+
+.hero-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(196,127,23,0.18);
+  border: 1px solid rgba(196,127,23,0.5);
+  color: #f0c060;
+  padding: 7px 16px;
+  border-radius: 24px;
+  font-size: var(--fs-small);
+  letter-spacing: 1px;
+  margin-bottom: 1.25rem;
+}
+
+.hero-h1 {
+  font-family: 'Noto Serif SC', serif;
+  font-size: var(--fs-hero);
+  font-weight: 900;
+  color: var(--white);
+  line-height: 1.25;
+  margin-bottom: 1rem;
+}
+
+.hero-h1 .em { color: #6de9a8; }
+
+.hero-desc {
+  font-size: clamp(15px, 3.8vw, 18px);
+  color: rgba(255,255,255,0.78);
+  line-height: 1.9;
+  max-width: 480px;
+  margin-bottom: 2rem;
+}
+
+.hero-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.hero-pill {
+  background: rgba(255,255,255,0.1);
+  border: 1px solid rgba(255,255,255,0.22);
+  color: rgba(255,255,255,0.88);
+  padding: 8px 18px;
+  border-radius: 24px;
+  font-size: var(--fs-small);
+  line-height: 1.4;
+}
+
+/* ─────────────────────────────────────────
+   VIDEO
+───────────────────────────────────────── */
+.video-sec {
+  background: var(--bg-deep);
+  padding: clamp(2.5rem, 6vw, 4.5rem) 0;
+}
+
+.video-sec .sec-label { color: #6de9a8; }
+
+.video-wrap {
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  background: #000;
+  box-shadow: 0 16px 48px rgba(0,0,0,0.45);
+  border: 1px solid rgba(255,255,255,0.08);
+}
+
+.video-wrap video {
+  width: 100%;
+  display: block;
+  max-height: 560px;
+  object-fit: contain;
+}
+
+/* ─────────────────────────────────────────
+   风险数据
+───────────────────────────────────────── */
+.risk-sec {
+  background: var(--bg);
+  border-bottom: 1px solid var(--border);
+}
+
+.risk-intro {
+  font-size: clamp(15px,3.8vw,18px);
+  color: var(--text-sub);
+  line-height: 1.9;
+  margin-bottom: clamp(1.5rem,4vw,2.5rem);
+  padding: 1.25rem 1.5rem;
+  background: var(--gold-bg);
+  border-left: 4px solid var(--gold);
+  border-radius: 0 var(--radius) var(--radius) 0;
+}
+
+.risk-intro strong { color: var(--red-warn); font-weight: 700; }
+
+.risk-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 14px;
+}
+
+.risk-card {
+  border-radius: var(--radius);
+  padding: clamp(1.25rem,3vw,1.75rem);
+  border: 1.5px solid transparent;
+}
+
+.risk-card.c-red  { background: var(--red-bg);   border-color: #f0b0b0; }
+.risk-card.c-gold { background: var(--gold-bg);  border-color: #e8c878; }
+.risk-card.c-green{ background: var(--green-pale);border-color: #a8d8be; }
+
+.risk-num {
+  font-family: 'Noto Serif SC', serif;
+  font-size: clamp(38px, 9vw, 52px);
+  font-weight: 900;
+  line-height: 1.1;
+  margin-bottom: 6px;
+}
+
+.c-red  .risk-num  { color: var(--red-warn); }
+.c-gold .risk-num  { color: var(--gold); }
+.c-green .risk-num { color: var(--green); }
+
+.risk-label {
+  font-size: clamp(15px,3.5vw,17px);
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 5px;
+}
+
+.risk-sub {
+  font-size: var(--fs-small);
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+/* ─────────────────────────────────────────
+   产品大图
+───────────────────────────────────────── */
+.gallery-sec {
+  background: var(--bg-deep);
+  padding-bottom: clamp(2.5rem,6vw,4.5rem);
+}
+
+.gallery-sec .sec {
+  padding-bottom: 1.5rem;
+}
+
+/* PC：2列网格；移动：全宽单列 */
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 4px;
+}
+
+.product-img-wrap {
+  position: relative;
+  overflow: hidden;
+  background: #0a1e12;
+}
+
+/* 移动端竖图高度 */
+.product-img-wrap img {
+  width: 100%;
+  height: clamp(340px, 55vw, 520px);
+  object-fit: cover;
+  object-position: center;
+  transition: transform 0.6s ease;
+  display: block;
+}
+
+.product-img-wrap:hover img { transform: scale(1.03); }
+
+.img-cap {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  background: linear-gradient(to top, rgba(10,30,18,0.88) 0%, transparent 100%);
+  padding: clamp(1.5rem,4vw,2.5rem) clamp(1rem,3vw,1.5rem) clamp(1rem,2.5vw,1.5rem);
+  color: rgba(255,255,255,0.9);
+  font-size: clamp(14px,3.5vw,16px);
+  font-weight: 500;
+  letter-spacing: 0.5px;
+}
+
+.img-cap .cap-title {
+  font-family: 'Noto Serif SC', serif;
+  font-size: clamp(16px,4vw,20px);
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 3px;
+}
+
+/* ─────────────────────────────────────────
+   产品亮点
+───────────────────────────────────────── */
+.features-sec {
+  background: var(--bg);
+}
+
+.features-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.feature-item {
+  display: flex;
+  gap: clamp(1rem,3vw,1.75rem);
+  align-items: flex-start;
+  padding: clamp(1.5rem,4vw,2rem) 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.feature-item:last-child { border-bottom: none; }
+
+.feat-num {
+  font-family: 'Noto Serif SC', serif;
+  font-size: clamp(32px,7vw,46px);
+  font-weight: 900;
+  color: var(--green-pale);
+  line-height: 1;
+  flex-shrink: 0;
+  width: clamp(44px,9vw,62px);
+  user-select: none;
+}
+
+.feat-body { flex: 1; padding-top: 4px; }
+
+.feat-title {
+  font-family: 'Noto Serif SC', serif;
+  font-size: var(--fs-h3);
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.feat-badge {
+  font-family: 'Noto Sans SC', sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  background: var(--green);
+  color: #fff;
+  padding: 3px 10px;
+  border-radius: 20px;
+  letter-spacing: 0.5px;
+}
+
+.feat-desc {
+  font-size: var(--fs-body);
+  color: var(--text-sub);
+  line-height: 1.9;
+}
+
+/* ─────────────────────────────────────────
+   规格参数
+───────────────────────────────────────── */
+.spec-sec {
+  background: var(--bg-warm);
+}
+
+.spec-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: var(--white);
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+}
+
+.spec-table tr { border-bottom: 1px solid var(--border); }
+.spec-table tr:last-child { border-bottom: none; }
+.spec-table tr:hover { background: var(--green-pale); }
+
+.spec-table td {
+  padding: clamp(13px,3vw,17px) clamp(14px,3vw,22px);
+  font-size: var(--fs-body);
+  vertical-align: top;
+  line-height: 1.6;
+}
+
+.spec-table td:first-child {
+  color: var(--text-muted);
+  font-size: var(--fs-small);
+  width: 32%;
+  white-space: nowrap;
+}
+
+.spec-table td:last-child {
+  color: var(--text);
+  font-weight: 500;
+}
+
+/* ─────────────────────────────────────────
+   配套小程序
+───────────────────────────────────────── */
+.app-sec {
+  background: var(--bg-deep);
+}
+
+.app-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 14px;
+}
+
+.app-card {
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: var(--radius);
+  padding: clamp(1.25rem,3vw,1.75rem);
+  transition: background 0.2s;
+}
+
+.app-card:hover { background: rgba(255,255,255,0.1); }
+
+.app-icon {
+  font-size: clamp(28px,6vw,36px);
+  margin-bottom: 12px;
+  line-height: 1;
+}
+
+.app-title {
+  font-size: clamp(16px,4vw,18px);
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 8px;
+}
+
+.app-desc {
+  font-size: var(--fs-small);
+  color: rgba(255,255,255,0.6);
+  line-height: 1.7;
+}
+
+/* ─────────────────────────────────────────
+   公益宗旨
+───────────────────────────────────────── */
+.mission-sec {
+  background: var(--green);
+  position: relative;
+  overflow: hidden;
+}
+
+.mission-sec::after {
+  content: '健康中国';
+  position: absolute;
+  right: -2rem;
+  bottom: -1.5rem;
+  font-family: 'Noto Serif SC', serif;
+  font-size: clamp(60px,15vw,100px);
+  font-weight: 900;
+  color: rgba(255,255,255,0.05);
+  white-space: nowrap;
+  pointer-events: none;
+  line-height: 1;
+}
+
+.mission-sec .sec-label { color: rgba(255,255,255,0.55); }
+.mission-sec .sec-title { color: #fff; }
+
+.mission-body {
+  font-size: var(--fs-body);
+  color: rgba(255,255,255,0.85);
+  line-height: 2;
+  position: relative;
+  z-index: 1;
+}
+
+.mission-body strong {
+  color: #fff;
+  font-weight: 700;
+}
+
+.mission-highlight {
+  margin-top: 2rem;
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.m-pill {
+  background: rgba(255,255,255,0.15);
+  border: 1px solid rgba(255,255,255,0.25);
+  color: #fff;
+  padding: 9px 20px;
+  border-radius: 24px;
+  font-size: var(--fs-small);
+  font-weight: 500;
+}
+
+/* ─────────────────────────────────────────
+   FOOTER
+───────────────────────────────────────── */
+.footer {
+  background: var(--bg-dark);
+  padding: clamp(2rem,5vw,3.5rem) 0;
+  text-align: center;
+  border-top: 1px solid rgba(255,255,255,0.06);
+}
+
+.footer-name {
+  font-family: 'Noto Serif SC', serif;
+  font-size: clamp(15px,4vw,18px);
+  color: #6de9a8;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+.footer-orgs {
+  font-size: var(--fs-small);
+  color: rgba(255,255,255,0.38);
+  line-height: 2.2;
+}
+
+/* ─────────────────────────────────────────
+   滚动进场动画
+───────────────────────────────────────── */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.reveal.in { opacity:1; transform:none; }
+
+/* ─────────────────────────────────────────
+   PC 专属布局优化
+───────────────────────────────────────── */
+@media (min-width: 720px) {
+  .hero-h1 { letter-spacing: -0.5px; }
+
+  .risk-grid { grid-template-columns: repeat(3, 1fr); }
+
+  .product-grid { grid-template-columns: 1fr 1fr; }
+
+  /* 大图第1、3张左右对齐，跨列效果 */
+  .product-img-wrap:nth-child(1) {
+    grid-column: span 2;
+  }
+  .product-img-wrap:nth-child(1) img {
+    height: clamp(420px, 50vw, 580px);
+  }
+
+  .app-grid { grid-template-columns: repeat(4, 1fr); }
+}
+
+@media (min-width: 1024px) {
+  .product-img-wrap img {
+    height: clamp(360px, 35vw, 500px);
+  }
+}
+</style>
+</head>
+<body>
+
+<!-- ══════════ HERO ══════════ -->
+<section class="hero">
+  <img class="hero-img"
+       src="https://pusheng.oss-cn-beijing.aliyuncs.com/xyj001.png"
+       alt="防梗防猝智能血压计"
+       loading="eager">
+  <div class="hero-overlay"></div>
+  <div class="hero-body">
+    <div class="hero-tag">🏥 公益计划 · 健康中国行</div>
+    <h1 class="hero-h1">防梗防猝<br/><span class="em">智能血压计</span></h1>
+    <p class="hero-desc">倡导每天测一测，远离心梗和脑梗。<br/>家庭血压监测，是守护全家健康的第一道防线。</p>
+    <div class="hero-pills">
+      <span class="hero-pill">主办：中国民族医药协会</span>
+      <span class="hero-pill">协办：内蒙古蒙奇药业</span>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ 公益视频 ══════════ -->
+<section class="video-sec">
+  <div class="container sec reveal">
+    <span class="sec-label" style="color:#6de9a8">公益短片</span>
+    <h2 class="sec-title sec-title-light">这30秒，<br/>值得每个人看一看</h2>
+    <div class="video-wrap">
+      <video
+        controls
+        playsinline
+        preload="metadata"
+        poster="https://pusheng.oss-cn-beijing.aliyuncs.com/xyj001.png"
+      >
+        <source src="https://pusheng.oss-cn-beijing.aliyuncs.com/30%E7%A7%92%E7%9A%84%E5%85%AC%E7%9B%8A%E7%89%87.mp4" type="video/mp4">
+        您的浏览器不支持视频播放
+      </video>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ 风险数据 ══════════ -->
+<section class="risk-sec">
+  <div class="container sec reveal">
+    <span class="sec-label">为什么要每天量血压</span>
+    <h2 class="sec-title">血压高了，<br/>风险翻了好几倍</h2>
+    <p class="risk-intro">
+      心脑血管疾病是我国居民健康<strong>头号威胁</strong>，发病率日趋年轻化。研究显示，血压超标者脑卒中与冠心病风险大幅攀升，而大多数人却对自己的血压状况<strong>毫不知情</strong>。
+    </p>
+    <div class="risk-grid">
+      <div class="risk-card c-red">
+        <div class="risk-num">4.77<span style="font-size:0.45em">倍</span></div>
+        <div class="risk-label">脑卒中风险</div>
+        <div class="risk-sub">血压≥160/100mmHg 者，脑卒中风险是正常人的 4.77 倍</div>
+      </div>
+      <div class="risk-card c-gold">
+        <div class="risk-num">2.27<span style="font-size:0.45em">倍</span></div>
+        <div class="risk-label">冠心病风险</div>
+        <div class="risk-sub">同等血压条件下，冠心病发病风险为正常血压的 2.27 倍</div>
+      </div>
+      <div class="risk-card c-green">
+        <div class="risk-num">65<span style="font-size:0.45em">%</span></div>
+        <div class="risk-label">未能规范监测</div>
+        <div class="risk-sub">60岁以上高血压患者中，超六成未能规范测量血压</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ 产品大图 ══════════ -->
+<section class="gallery-sec">
+  <div class="container sec reveal">
+    <span class="sec-label" style="color:#6de9a8">产品展示</span>
+    <h2 class="sec-title sec-title-light">一台能用一辈子的<br/>血压计</h2>
+  </div>
+  <div class="product-grid reveal">
+    <div class="product-img-wrap">
+      <img src="https://pusheng.oss-cn-beijing.aliyuncs.com/xyj001.png"
+           alt="产品全貌" loading="lazy">
+      <div class="img-cap">
+        <div class="cap-title">医用级臂式血压计</div>
+        型号 BP11C · 深圳制造
+      </div>
+    </div>
+    <div class="product-img-wrap">
+      <img src="https://pusheng.oss-cn-beijing.aliyuncs.com/xyj002.png"
+           alt="智能加压一键测量" loading="lazy">
+      <div class="img-cap">
+        <div class="cap-title">一键加压，30秒出结果</div>
+        操作极简，老年人轻松使用
+      </div>
+    </div>
+    <div class="product-img-wrap">
+      <img src="https://pusheng.oss-cn-beijing.aliyuncs.com/xyj003.png"
+           alt="家庭使用场景" loading="lazy">
+      <div class="img-cap">
+        <div class="cap-title">家庭日常使用</div>
+        每天测一测，守护全家健康
+      </div>
+    </div>
+    <div class="product-img-wrap">
+      <img src="https://pusheng.oss-cn-beijing.aliyuncs.com/xyj004.png"
+           alt="背光大屏语音播报" loading="lazy">
+      <div class="img-cap">
+        <div class="cap-title">背光大屏 · 语音播报</div>
+        数字清晰，无需凑近看
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ 产品亮点 ══════════ -->
+<section class="features-sec">
+  <div class="container sec reveal">
+    <span class="sec-label">产品亮点</span>
+    <h2 class="sec-title">每一个细节，<br/>都为你设计</h2>
+    <div class="features-list">
+      <div class="feature-item">
+        <div class="feat-num">01</div>
+        <div class="feat-body">
+          <div class="feat-title">
+            智能语音播报
+            <span class="feat-badge">核心功能</span>
+          </div>
+          <p class="feat-desc">测量完成自动语音播报收缩压、舒张压和脉率，老年用户无需低头看屏幕，操作零障碍，全家老小都能用。</p>
+        </div>
+      </div>
+      <div class="feature-item">
+        <div class="feat-num">02</div>
+        <div class="feat-body">
+          <div class="feat-title">一键测量，30秒出结果</div>
+          <p class="feat-desc">智能自动加压，按下一个键，30秒内同步显示三项数值。操作极简，再也不用反复尝试，一次按键搞定。</p>
+        </div>
+      </div>
+      <div class="feature-item">
+        <div class="feat-num">03</div>
+        <div class="feat-body">
+          <div class="feat-title">背光大屏，数字看得清</div>
+          <p class="feat-desc">超大液晶显示屏配备背光，清晨光线不足或视力稍差也能清晰读数，再也不用凑近眯眼看数字。</p>
+        </div>
+      </div>
+      <div class="feature-item">
+        <div class="feat-num">04</div>
+        <div class="feat-body">
+          <div class="feat-title">充电电池，省心续航</div>
+          <p class="feat-desc">内置充电电池，充一次用很久。免去频繁换电池的麻烦，放在床头柜上天天用，方便省心。</p>
+        </div>
+      </div>
+      <div class="feature-item">
+        <div class="feat-num">05</div>
+        <div class="feat-body">
+          <div class="feat-title">
+            国家医疗器械认证
+            <span class="feat-badge">已认证</span>
+          </div>
+          <p class="feat-desc">获国家医疗器械注册证，注册证号 粤械注准20242071767，符合国家医用标准，经临床验证，数据精准可信赖。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ 规格参数 ══════════ -->
+<section class="spec-sec">
+  <div class="container sec reveal">
+    <span class="sec-label">规格参数</span>
+    <h2 class="sec-title">产品详情</h2>
+    <table class="spec-table">
+      <tr><td>品牌型号</td><td>金都豪 BP11C</td></tr>
+      <tr><td>产品类型</td><td>臂式电子血压计</td></tr>
+      <tr><td>适用部位</td><td>上臂</td></tr>
+      <tr><td>供电方式</td><td>充电电池供电</td></tr>
+      <tr><td>主要功能</td><td>智能加压 / 语音播报 / 一键测量</td></tr>
+      <tr><td>显示特性</td><td>背光大屏显示</td></tr>
+      <tr><td>标准配件</td><td>标准臂带 + 充电线</td></tr>
+      <tr><td>适用人群</td><td>全年龄段</td></tr>
+      <tr><td>注册证号</td><td>粤械注准20242071767</td></tr>
+      <tr><td>生产企业</td><td>深圳市憨憨智造科技有限公司</td></tr>
+    </table>
+  </div>
+</section>
+
+<!-- ══════════ 配套小程序 ══════════ -->
+<section class="app-sec">
+  <div class="container sec reveal">
+    <span class="sec-label" style="color:#6de9a8">配套小程序</span>
+    <h2 class="sec-title sec-title-light">血压数据，<br/>随时掌控</h2>
+    <div class="app-grid">
+      <div class="app-card">
+        <div class="app-icon">📝</div>
+        <div class="app-title">血压录入</div>
+        <div class="app-desc">手动录入每次测量数值，支持多位家庭成员档案</div>
+      </div>
+      <div class="app-card">
+        <div class="app-icon">📈</div>
+        <div class="app-title">趋势分析</div>
+        <div class="app-desc">30天 / 90天图表可视化，清晰掌握血压波动规律</div>
+      </div>
+      <div class="app-card">
+        <div class="app-icon">🔔</div>
+        <div class="app-title">异常告警</div>
+        <div class="app-desc">血压超标自动提醒，支持分享给家人或医生</div>
+      </div>
+      <div class="app-card">
+        <div class="app-icon">📖</div>
+        <div class="app-title">健康科普</div>
+        <div class="app-desc">内置心脑血管健康知识，每次测量都更有意义</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ 公益宗旨 ══════════ -->
+<section class="mission-sec">
+  <div class="container sec reveal">
+    <span class="sec-label">公益宗旨</span>
+    <h2 class="sec-title">防梗防猝，<br/>健康中国行</h2>
+    <p class="mission-body">
+      本次公益行动以<strong>"倡导每天测一测，远离心梗和脑梗"</strong>为核心宗旨，致力于构建从设备捐赠到习惯养成、再到数据赋能的完整公益闭环。<br/><br/>
+      通过免费捐赠、专家科普、连锁药店联动等形式，联合建设<strong>"健康驿站"</strong>公益服务站，引导老百姓正确认知"健康血压"，为重点人群提供触手可及的健康支持，助力"健康中国"战略落地，彰显民族医药企业的时代担当。
+    </p>
+    <div class="mission-highlight">
+      <span class="m-pill">免费捐赠</span>
+      <span class="m-pill">专家科普</span>
+      <span class="m-pill">连锁药店联动</span>
+      <span class="m-pill">健康驿站</span>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ FOOTER ══════════ -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-name">防梗防猝 · 家庭血压监测普及计划</div>
+    <div class="footer-orgs">
+      主办单位：中国民族医药协会<br/>
+      协办单位：内蒙古蒙奇药业有限公司
+    </div>
+  </div>
+</footer>
+
+<script>
+const io = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('in');
+      io.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.08 });
+document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+</script>
+
+</body>
+</html>
