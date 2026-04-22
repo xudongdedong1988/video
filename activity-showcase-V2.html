@@ -1,0 +1,1203 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>"防梗防猝-健康中国行"家庭血压监测普及计划实施保障</title>
+<style>
+/* ========== Reset & Base ========== */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; font-size: 16px; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+  background: #f0f4f3;
+  color: #2d3436;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ========== Sticky Nav ========== */
+.top-nav {
+  position: sticky; top: 0; z-index: 100;
+  background: linear-gradient(135deg, #0a8a6e 0%, #0d6e5a 100%);
+  box-shadow: 0 2px 20px rgba(0,0,0,.18);
+  padding: 0;
+}
+.top-nav .nav-inner {
+  max-width: 1400px; margin: 0 auto;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 24px;
+}
+.top-nav .logo {
+  color: #fff; font-size: 1.1rem; font-weight: 700;
+  white-space: nowrap; display: flex; align-items: center; gap: 8px;
+}
+.top-nav .logo span.ico { font-size: 1.4rem; }
+.top-nav .nav-links {
+  display: flex; gap: 0; overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+.top-nav .nav-links a {
+  color: rgba(255,255,255,.85); text-decoration: none;
+  font-size: .88rem; font-weight: 500;
+  padding: 14px 18px; white-space: nowrap;
+  border-bottom: 3px solid transparent;
+  transition: all .2s;
+}
+.top-nav .nav-links a:hover,
+.top-nav .nav-links a.active {
+  color: #fff; border-bottom-color: #7efccc; background: rgba(255,255,255,.08);
+}
+
+/* ========== Hero ========== */
+.hero {
+  background: linear-gradient(135deg, #0a8a6e 0%, #0b6e58 40%, #1a5c4a 100%);
+  color: #fff; text-align: center;
+  padding: 64px 24px 56px;
+  position: relative; overflow: hidden;
+}
+.hero::before {
+  content: ''; position: absolute; inset: 0;
+  background: radial-gradient(circle at 20% 80%, rgba(126,252,204,.12) 0%, transparent 50%),
+              radial-gradient(circle at 80% 20%, rgba(126,252,204,.08) 0%, transparent 50%);
+}
+.hero h1 { font-size: 2.1rem; font-weight: 800; position: relative; letter-spacing: 2px; }
+.hero h1 .accent { color: #7efccc; }
+.hero .sub { font-size: 1.05rem; margin-top: 12px; opacity: .85; position: relative; }
+.hero .tag-row { display: flex; justify-content: center; gap: 12px; margin-top: 20px; position: relative; flex-wrap: wrap; }
+.hero .tag {
+  background: rgba(255,255,255,.14); border: 1px solid rgba(126,252,204,.3);
+  border-radius: 20px; padding: 6px 18px; font-size: .82rem;
+  backdrop-filter: blur(4px);
+}
+
+/* ========== Section ========== */
+.section {
+  max-width: 1400px; margin: 0 auto;
+  padding: 48px 24px 32px;
+}
+.section-head {
+  display: flex; align-items: center; gap: 12px;
+  margin-bottom: 28px;
+}
+.section-head .icon-circle {
+  width: 44px; height: 44px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.3rem; flex-shrink: 0;
+}
+.section-head h2 { font-size: 1.45rem; font-weight: 700; }
+.section-head .desc { font-size: .88rem; color: #636e72; margin-left: 8px; }
+
+/* ========== Video Card ========== */
+.video-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+  gap: 24px;
+}
+.video-card {
+  background: #fff; border-radius: 16px;
+  overflow: hidden; box-shadow: 0 4px 24px rgba(0,0,0,.06);
+  transition: transform .22s, box-shadow .22s;
+}
+.video-card:hover { transform: translateY(-3px); box-shadow: 0 8px 32px rgba(0,0,0,.1); }
+.video-card .video-wrap {
+  position: relative; width: 100%;
+  background: #1a1a2e; aspect-ratio: 16/9;
+}
+.video-card .video-wrap video {
+  width: 100%; height: 100%; object-fit: contain; display: block;
+}
+.video-card .card-body { padding: 16px 18px 14px; }
+.video-card .card-body .tag-sm {
+  display: inline-block; font-size: .72rem; font-weight: 600;
+  padding: 3px 10px; border-radius: 10px; margin-bottom: 8px;
+}
+.video-card .card-body h3 { font-size: 1rem; font-weight: 600; line-height: 1.4; }
+.video-card .card-body .note { font-size: .8rem; color: #999; margin-top: 4px; }
+
+/* tag colors */
+.tag-brand { background: #e6faf3; color: #0a8a6e; }
+.tag-educate { background: #eaf0ff; color: #3366cc; }
+.tag-tool { background: #fff6e6; color: #cc7a00; }
+.tag-service { background: #f3e8ff; color: #7c3aed; }
+.tag-data { background: #fce4ec; color: #c62828; }
+.tag-guide { background: #e8f4fd; color: #0066cc; }
+
+/* ========== Course Series ========== */
+.course-series {
+  background: #fff; border-radius: 16px;
+  padding: 28px; box-shadow: 0 4px 24px rgba(0,0,0,.06);
+}
+/* 课程截图网格 */
+.course-screenshots {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 16px;
+  margin-bottom: 28px;
+}
+.course-shot-card {
+  border-radius: 12px; overflow: hidden;
+  border: 2px solid #e8ece8; cursor: pointer;
+  transition: border-color .2s, transform .2s, box-shadow .2s;
+  background: #f5f5f5;
+}
+.course-shot-card:hover { border-color: #0a8a6e; transform: translateY(-2px); box-shadow: 0 6px 20px rgba(10,138,110,.15); }
+.course-shot-card .shot-thumb {
+  width: 100%; aspect-ratio: 16/9;
+  object-fit: cover; display: block;
+}
+.course-shot-card .shot-label {
+  padding: 8px 12px; font-size: .8rem; font-weight: 600;
+  color: #2d3436; display: flex; align-items: center; gap: 6px;
+  background: #fff;
+}
+.course-shot-card .shot-num {
+  width: 22px; height: 22px; border-radius: 6px;
+  background: #0a8a6e; color: #fff;
+  font-size: .72rem; font-weight: 700;
+  display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+}
+/* 视频分割线 */
+.course-divider {
+  display: flex; align-items: center; gap: 12px;
+  margin-bottom: 20px;
+}
+.course-divider .div-line { flex: 1; height: 1px; background: #e8ece8; }
+.course-divider .div-label {
+  font-size: .82rem; color: #999; font-weight: 600; white-space: nowrap;
+}
+/* course video area */
+.course-video-area {
+  border-radius: 12px; overflow: hidden;
+  background: #1a1a2e; aspect-ratio: 16/9;
+}
+.course-video-area video { width: 100%; height: 100%; object-fit: contain; }
+
+/* ========== Image Gallery ========== */
+.material-layout {
+  display: grid;
+  grid-template-columns: 320px 320px 1fr;
+  gap: 28px;
+  align-items: start;
+}
+@media (max-width: 1100px) {
+  .material-layout { grid-template-columns: 280px 280px 1fr; }
+}
+@media (max-width: 860px) {
+  .material-layout { grid-template-columns: 1fr; }
+}
+.image-card {
+  background: #fff; border-radius: 16px;
+  overflow: hidden; box-shadow: 0 4px 24px rgba(0,0,0,.06);
+  cursor: pointer; transition: transform .22s;
+}
+.image-card:hover { transform: translateY(-3px); }
+.image-card .img-wrap {
+  width: 100%; background: #f5f5f5;
+  display: flex; align-items: center; justify-content: center;
+  overflow: hidden;
+}
+.image-card .img-wrap.portrait { aspect-ratio: 9/16; }
+.image-card .img-wrap.landscape { aspect-ratio: 3/2; }
+.image-card .img-wrap img {
+  width: 100%; height: 100%; object-fit: contain;
+  transition: transform .3s;
+}
+.image-card:hover .img-wrap img { transform: scale(1.03); }
+.image-card .card-label {
+  padding: 14px 18px; font-weight: 600; font-size: .92rem;
+  display: flex; align-items: center; gap: 8px;
+}
+.image-card .card-label .zoom-hint {
+  font-size: .75rem; color: #999; font-weight: 400;
+}
+
+/* ========== Carousel Slider for Brochures ========== */
+.brochure-carousel {
+  background: #fff; border-radius: 16px;
+  box-shadow: 0 4px 24px rgba(0,0,0,.06);
+  overflow: hidden;
+}
+.carousel-container {
+  position: relative;
+  overflow: hidden;
+}
+.carousel-track {
+  display: flex; transition: transform .35s ease;
+}
+.carousel-slide {
+  min-width: 100%; flex-shrink: 0;
+  padding: 24px;
+  display: flex; align-items: center; justify-content: center;
+  background: #f8f9fa;
+}
+.carousel-slide img {
+  max-width: 100%; max-height: 480px;
+  object-fit: contain; border-radius: 8px;
+  box-shadow: 0 2px 16px rgba(0,0,0,.08);
+  cursor: pointer;
+}
+.carousel-slide img:hover { transform: scale(1.02); transition: transform .3s; }
+.carousel-btns {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 14px 20px; border-top: 1px solid #eee;
+}
+.carousel-dots {
+  display: flex; gap: 8px; align-items: center;
+}
+.carousel-dot {
+  width: 10px; height: 10px; border-radius: 50%;
+  background: #ddd; cursor: pointer; transition: all .2s;
+  border: none; padding: 0;
+}
+.carousel-dot.active { background: #0a8a6e; transform: scale(1.2); }
+.carousel-arrow {
+  width: 36px; height: 36px; border-radius: 50%;
+  border: none; background: #f0f0f0; color: #555;
+  font-size: 1rem; cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  transition: all .2s; flex-shrink: 0;
+}
+.carousel-arrow:hover { background: #0a8a6e; color: #fff; }
+.carousel-label {
+  text-align: center; padding: 10px 18px 16px;
+  font-weight: 600; font-size: .92rem; color: #333;
+}
+
+/* ========== Guide Section (患者操作指引区) ========== */
+.guide-card {
+  background: #fff; border-radius: 16px;
+  overflow: hidden; box-shadow: 0 4px 24px rgba(0,0,0,.06);
+}
+.guide-card .guide-video { aspect-ratio: 16/9; background: #1a1a2e; }
+.guide-card .guide-video video { width: 100%; height: 100%; object-fit: contain; }
+.guide-card .guide-body { padding: 18px 20px; }
+.guide-card .guide-body h3 { font-size: 1rem; font-weight: 600; }
+.guide-card .guide-body .note { font-size: .8rem; color: #999; margin-top: 4px; }
+
+/* ========== Service Section ========== */
+.service-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+}
+.service-card {
+  background: #fff; border-radius: 16px;
+  overflow: hidden; box-shadow: 0 4px 24px rgba(0,0,0,.06);
+}
+.service-card .svc-video { aspect-ratio: 16/9; background: #1a1a2e; }
+.service-card .svc-video video { width: 100%; height: 100%; object-fit: contain; }
+.service-card .svc-img { width: 100%; background: #f5f5f5; display: flex; align-items: center; justify-content: center; overflow: hidden; }
+.service-card .svc-img img { width: 100%; height: auto; object-fit: contain; cursor: pointer; transition: transform .3s; }
+.service-card .svc-img img:hover { transform: scale(1.02); }
+.service-card .svc-iframe { aspect-ratio: 16/10; min-height: 600px; }
+.service-card .svc-iframe iframe { width: 100%; height: 100%; border: none; min-height: 600px; }
+.service-card .svc-body { padding: 16px 18px; }
+.service-card .svc-body h3 { font-size: .95rem; font-weight: 600; }
+.service-card .svc-body .open-link { display: inline-flex; align-items: center; gap: 4px; margin-top: 8px; font-size: .82rem; color: #7c3aed; text-decoration: none; font-weight: 500; transition: color .2s; }
+.service-card .svc-body .open-link:hover { color: #5b21b6; text-decoration: underline; }
+
+/* ========== Data System ========== */
+.data-grid {
+  display: flex; flex-direction: column; gap: 28px;
+}
+.data-card {
+  background: #fff; border-radius: 16px;
+  overflow: hidden; box-shadow: 0 4px 24px rgba(0,0,0,.06);
+}
+.data-card .data-iframe { aspect-ratio: 16/10; min-height: 600px; }
+.data-card .data-iframe iframe { width: 100%; height: 100%; border: none; min-height: 600px; }
+.data-card .data-body { padding: 16px 18px; }
+.data-card .data-body h3 { font-size: .95rem; font-weight: 600; }
+.data-card .data-body .note { font-size: .8rem; color: #999; margin-top: 4px; }
+.data-card .data-body .open-link { display: inline-flex; align-items: center; gap: 4px; margin-top: 8px; font-size: .82rem; color: #c62828; text-decoration: none; font-weight: 500; transition: color .2s; }
+.data-card .data-body .open-link:hover { color: #9b1b1b; text-decoration: underline; }
+
+/* ========== Blood Pressure Alert Chain ========== */
+.bp-alert-chain {
+  background: #fff; border-radius: 16px;
+  box-shadow: 0 4px 24px rgba(0,0,0,.06);
+  padding: 32px 28px;
+}
+.bp-alert-chain .chain-title {
+  font-size: 1rem; font-weight: 700; color: #c62828;
+  display: flex; align-items: center; gap: 8px; margin-bottom: 28px;
+}
+.chain-flow {
+  display: flex; align-items: stretch; gap: 0;
+  overflow-x: auto; padding-bottom: 8px;
+}
+.chain-step {
+  display: flex; flex-direction: column; align-items: stretch;
+  min-width: 148px; flex: 1;
+  position: relative;
+}
+.chain-step .step-box {
+  flex: 1; /* 撑满，与相邻框等高 */
+  padding: 20px 14px;
+  border-radius: 14px; text-align: center;
+  position: relative; cursor: default;
+  transition: transform .2s, box-shadow .2s;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+}
+.chain-step .step-box:hover { transform: translateY(-3px); box-shadow: 0 8px 28px rgba(0,0,0,.12); }
+.chain-step .step-icon {
+  font-size: 2rem; display: block; margin-bottom: 8px;
+}
+.chain-step .step-label {
+  font-size: .82rem; font-weight: 700; margin-bottom: 4px;
+}
+.chain-step .step-desc {
+  font-size: .75rem; color: rgba(0,0,0,.55); line-height: 1.4;
+}
+.step-patient { background: linear-gradient(135deg, #e8f5e9, #c8e6c9); border: 2px solid #81c784; }
+.step-patient .step-label { color: #2e7d32; }
+.step-upload { background: linear-gradient(135deg, #e3f2fd, #bbdefb); border: 2px solid #64b5f6; }
+.step-upload .step-label { color: #1565c0; }
+.step-alert { background: linear-gradient(135deg, #fff3e0, #ffe0b2); border: 2px solid #ffb74d; position: relative; }
+.step-alert .step-label { color: #e65100; }
+.step-alert .alert-badge {
+  position: absolute; top: -10px; right: -10px;
+  background: #c62828; color: #fff;
+  font-size: .65rem; font-weight: 700;
+  padding: 3px 8px; border-radius: 20px;
+  white-space: nowrap; animation: pulseBadge 1.8s infinite;
+}
+@keyframes pulseBadge {
+  0%, 100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(198,40,40,.4); }
+  50% { transform: scale(1.08); box-shadow: 0 0 0 6px rgba(198,40,40,0); }
+}
+.step-kf { background: linear-gradient(135deg, #f3e8ff, #e1bee7); border: 2px solid #ba68c8; }
+.step-kf .step-label { color: #6a1b9a; }
+.step-view { background: linear-gradient(135deg, #fce4ec, #f8bbd0); border: 2px solid #f48fb1; }
+.step-view .step-label { color: #880e4f; }
+
+/* Arrow between steps */
+.chain-arrow {
+  display: flex; align-items: center; justify-content: center;
+  padding: 0 6px; flex-shrink: 0; min-width: 44px;
+  /* 与步骤框等高对齐 */
+  align-self: stretch;
+}
+.chain-arrow .arrow-line {
+  display: flex; align-items: center; justify-content: center;
+  flex-direction: column; gap: 2px; height: 100%;
+}
+.chain-arrow .arrow-svg {
+  color: #bbb; font-size: 1.4rem; line-height: 1;
+}
+.chain-arrow .arrow-txt {
+  font-size: .66rem; color: #bbb; white-space: nowrap; text-align: center;
+}
+
+/* Interactive demo inside the chain */
+.bp-demo-panel {
+  margin-top: 28px; border-radius: 14px;
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+  padding: 24px; color: #fff;
+  display: flex; gap: 24px; align-items: flex-start;
+  flex-wrap: wrap;
+}
+.bp-demo-panel .panel-label {
+  font-size: .8rem; color: rgba(255,255,255,.6); margin-bottom: 6px;
+}
+.bp-demo-panel .demo-screen {
+  flex: 1; min-width: 260px;
+  background: rgba(255,255,255,.06); border-radius: 12px;
+  padding: 18px;
+}
+.bp-demo-panel .demo-screen h4 {
+  font-size: .88rem; font-weight: 700; margin-bottom: 12px;
+  display: flex; align-items: center; gap: 6px;
+}
+/* Patient upload side */
+.bp-upload-form .field-row {
+  display: flex; gap: 10px; margin-bottom: 8px; align-items: center;
+}
+.bp-upload-form label {
+  font-size: .78rem; color: rgba(255,255,255,.7); width: 60px; flex-shrink: 0;
+}
+.bp-upload-form input[type="number"] {
+  flex: 1; background: rgba(255,255,255,.12); border: 1px solid rgba(255,255,255,.2);
+  border-radius: 8px; padding: 8px 12px; color: #fff; font-size: .88rem;
+  outline: none; transition: border-color .2s;
+}
+.bp-upload-form input[type="number"]:focus { border-color: #7efccc; }
+.bp-upload-form input[type="number"]::placeholder { color: rgba(255,255,255,.35); }
+.btn-upload {
+  width: 100%; margin-top: 12px; padding: 10px;
+  background: linear-gradient(135deg, #0a8a6e, #078a6a);
+  border: none; border-radius: 10px; color: #fff;
+  font-size: .88rem; font-weight: 600; cursor: pointer;
+  transition: opacity .2s;
+}
+.btn-upload:hover { opacity: .88; }
+/* Alert notice side */
+.alert-notice-list { display: flex; flex-direction: column; gap: 10px; }
+.alert-notice-item {
+  background: rgba(255,255,255,.06); border-radius: 10px;
+  padding: 12px 14px; display: flex; align-items: center; gap: 10px;
+  border-left: 3px solid #c62828; cursor: pointer; transition: background .2s;
+}
+.alert-notice-item:hover { background: rgba(255,255,255,.12); }
+.alert-notice-item .notice-dot {
+  width: 8px; height: 8px; border-radius: 50%; background: #c62828; flex-shrink: 0;
+  animation: pulseDot 1.5s infinite;
+}
+@keyframes pulseDot {
+  0%, 100% { opacity: 1; } 50% { opacity: .3; }
+}
+.alert-notice-item .notice-info { flex: 1; }
+.alert-notice-item .notice-name { font-size: .84rem; font-weight: 600; }
+.alert-notice-item .notice-bp { font-size: .78rem; color: #ff6b6b; margin-top: 2px; }
+.alert-notice-item .notice-time { font-size: .7rem; color: rgba(255,255,255,.45); margin-top: 1px; }
+.btn-view-record {
+  flex-shrink: 0; padding: 6px 12px;
+  background: #c62828; border: none; border-radius: 8px;
+  color: #fff; font-size: .75rem; font-weight: 600; cursor: pointer;
+  transition: background .2s;
+}
+.btn-view-record:hover { background: #9b1b1b; }
+/* Customer info modal */
+.cust-modal-overlay {
+  display: none; position: fixed; inset: 0; z-index: 300;
+  background: rgba(0,0,0,.7); align-items: center; justify-content: center;
+  padding: 24px;
+}
+.cust-modal-overlay.show { display: flex; }
+.cust-modal {
+  background: #fff; border-radius: 20px; padding: 28px 32px;
+  max-width: 480px; width: 100%; position: relative;
+  box-shadow: 0 16px 64px rgba(0,0,0,.3);
+  animation: modalIn .25s ease;
+}
+@keyframes modalIn {
+  from { opacity: 0; transform: scale(.92) translateY(20px); }
+  to   { opacity: 1; transform: scale(1) translateY(0); }
+}
+.cust-modal .modal-close {
+  position: absolute; top: 16px; right: 18px;
+  background: #f5f5f5; border: none; border-radius: 50%;
+  width: 36px; height: 36px; font-size: 1.1rem; cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  transition: background .2s;
+}
+.cust-modal .modal-close:hover { background: #e0e0e0; }
+.cust-modal .modal-header {
+  display: flex; align-items: center; gap: 10px; margin-bottom: 20px;
+}
+.cust-modal .modal-header .alert-icon {
+  width: 42px; height: 42px; border-radius: 50%;
+  background: #fce4ec; display: flex; align-items: center; justify-content: center;
+  font-size: 1.3rem; flex-shrink: 0;
+}
+.cust-modal .modal-header h3 { font-size: 1.05rem; font-weight: 700; color: #c62828; }
+.cust-modal .info-section { margin-bottom: 18px; }
+.cust-modal .info-section h4 {
+  font-size: .8rem; color: #999; font-weight: 600; margin-bottom: 10px;
+  text-transform: uppercase; letter-spacing: .5px;
+}
+.cust-modal .info-row {
+  display: flex; justify-content: space-between;
+  padding: 8px 0; border-bottom: 1px solid #f0f0f0;
+  font-size: .88rem;
+}
+.cust-modal .info-row:last-child { border-bottom: none; }
+.cust-modal .info-row .key { color: #666; }
+.cust-modal .info-row .val { font-weight: 600; color: #2d3436; }
+.cust-modal .info-row .val.danger { color: #c62828; }
+.cust-modal .info-row .val.warn { color: #e65100; }
+.cust-modal .modal-actions {
+  display: flex; gap: 10px; margin-top: 18px;
+}
+.cust-modal .btn-action {
+  flex: 1; padding: 10px; border-radius: 10px;
+  border: none; font-size: .88rem; font-weight: 600; cursor: pointer;
+  transition: opacity .2s;
+}
+.cust-modal .btn-action:hover { opacity: .85; }
+.cust-modal .btn-primary { background: #7c3aed; color: #fff; }
+.cust-modal .btn-secondary { background: #0a8a6e; color: #fff; }
+/* Upload success / alert trigger feedback */
+.feedback-msg {
+  margin-top: 10px; padding: 10px 14px; border-radius: 10px;
+  font-size: .8rem; font-weight: 600; display: none;
+}
+.feedback-msg.show { display: block; }
+.feedback-msg.success { background: #e6faf3; color: #0a8a6e; border: 1px solid #b2dfdb; }
+.feedback-msg.danger  { background: #fce4ec; color: #c62828; border: 1px solid #f48fb1; }
+
+/* ========== Lightbox ========== */
+.lightbox-overlay {
+  display: none; position: fixed; inset: 0; z-index: 200;
+  background: rgba(0,0,0,.85);
+  align-items: center; justify-content: center;
+  padding: 24px; cursor: zoom-out;
+}
+.lightbox-overlay.show { display: flex; }
+.lightbox-overlay img {
+  max-width: 95vw; max-height: 92vh;
+  object-fit: contain; border-radius: 8px;
+  box-shadow: 0 8px 48px rgba(0,0,0,.4);
+}
+.lightbox-close {
+  position: fixed; top: 20px; right: 28px; z-index: 201;
+  color: #fff; font-size: 2rem; cursor: pointer;
+  background: rgba(0,0,0,.4); border: none;
+  width: 48px; height: 48px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  transition: background .2s;
+}
+.lightbox-close:hover { background: rgba(0,0,0,.7); }
+
+/* ========== Footer ========== */
+.footer {
+  text-align: center; padding: 40px 24px;
+  color: #999; font-size: .82rem;
+  border-top: 1px solid #e0e0e0;
+  margin-top: 32px;
+}
+
+/* ========== Responsive ========== */
+@media (max-width: 768px) {
+  .hero h1 { font-size: 1.4rem; }
+  .hero .sub { font-size: .9rem; }
+  .section { padding: 32px 16px 24px; }
+  .video-grid { grid-template-columns: 1fr; }
+  .material-layout { grid-template-columns: 1fr; }
+  .service-grid { grid-template-columns: 1fr; }
+  .top-nav .nav-links a { padding: 12px 12px; font-size: .8rem; }
+  .chain-flow { flex-direction: column; }
+  .chain-arrow { transform: rotate(90deg); padding: 6px 0; }
+  .bp-demo-panel { flex-direction: column; }
+}
+@media (min-width: 769px) and (max-width: 1024px) {
+  .video-grid { grid-template-columns: repeat(2, 1fr); }
+  .material-layout { grid-template-columns: 240px 240px 1fr; }
+}
+
+/* ========== Scroll active indicator ========== */
+.section-anchor { scroll-margin-top: 64px; }
+</style>
+</head>
+<body>
+
+<!-- ====== Top Navigation ====== -->
+<nav class="top-nav">
+  <div class="nav-inner">
+    <div class="logo"><span class="ico">🫀</span> 防梗防猝行动</div>
+    <div class="nav-links">
+      <a href="#brand" data-section="brand">品牌传播</a>
+      <a href="#guide" data-section="guide">患者操作指引</a>
+      <a href="#educate" data-section="educate">患者教育</a>
+      <a href="#material" data-section="material">活动物料</a>
+      <a href="#service" data-section="service">客服支撑</a>
+      <a href="#data" data-section="data">数据系统</a>
+    </div>
+  </div>
+</nav>
+
+<!-- ====== Hero ====== -->
+<div class="hero">
+  <h1>"防梗防猝-健康中国行"<span class="accent">家庭血压监测普及计划</span>实施保障</h1>
+  <p class="sub">清血八味片 × 智能血压计 · 全链路活动素材展示</p>
+  <div class="tag-row">
+    <span class="tag">🎬 公益宣传</span>
+    <span class="tag">📚 科普教育</span>
+    <span class="tag">💊 品牌推广</span>
+    <span class="tag">🩺 慢病管理</span>
+  </div>
+</div>
+
+<!-- ====== 1. 品牌传播区 ====== -->
+<div class="section-anchor" id="brand"></div>
+<section class="section">
+  <div class="section-head">
+    <div class="icon-circle" style="background:#e6faf3;color:#0a8a6e;">🎬</div>
+    <h2>品牌传播区</h2>
+    <span class="desc">电视投放 · 公益科普 · 品牌广告</span>
+  </div>
+  <div class="video-grid">
+    <!-- V1 公益宣传片 -->
+    <div class="video-card">
+      <div class="video-wrap">
+        <video controls preload="metadata" poster="">
+          <source src="https://pusheng.oss-cn-beijing.aliyuncs.com/30%E7%A7%92%E7%9A%84%E5%85%AC%E7%9B%8A%E7%89%87.mp4" type="video/mp4">
+          您的浏览器不支持视频播放
+        </video>
+      </div>
+      <div class="card-body">
+        <span class="tag-sm tag-brand">V1 · 公益片</span>
+        <h3>30秒公益宣传片</h3>
+        <p class="note">电视投放版 · 防梗防猝公益宣传</p>
+      </div>
+    </div>
+    <!-- V2 清血八味小课堂 -->
+    <div class="video-card">
+      <div class="video-wrap">
+        <video controls preload="metadata">
+          <source src="https://pusheng.oss-cn-beijing.aliyuncs.com/2%E5%88%86%E9%92%9F%E7%9A%84%E6%B8%85%E8%A1%80%E5%B0%8F%E8%AF%BE%E5%A0%82.mp4" type="video/mp4">
+          您的浏览器不支持视频播放
+        </video>
+      </div>
+      <div class="card-body">
+        <span class="tag-sm tag-brand">V2 · 科普专题</span>
+        <h3>清血八味小课堂 · 科普专题</h3>
+        <p class="note">2分钟 · 科普知识讲解</p>
+      </div>
+    </div>
+    <!-- V3 品牌广告片 -->
+    <div class="video-card">
+      <div class="video-wrap">
+        <video controls preload="metadata">
+          <source src="https://pusheng.oss-cn-beijing.aliyuncs.com/%E5%93%81%E7%89%8C%E7%A1%AC%E5%B9%BF1%E5%88%86%E9%92%9F.mp4" type="video/mp4">
+          您的浏览器不支持视频播放
+        </video>
+      </div>
+      <div class="card-body">
+        <span class="tag-sm tag-brand">V3 · 品牌广告</span>
+        <h3>品牌硬广 · 1分钟</h3>
+        <p class="note">企业微信私域投放版</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ====== 2. 患者操作指引区（新增）====== -->
+<div class="section-anchor" id="guide"></div>
+<section class="section">
+  <div class="section-head">
+    <div class="icon-circle" style="background:#e8f4fd;color:#0066cc;">📱</div>
+    <h2>患者操作指引区</h2>
+    <span class="desc">活动报名操作指引视频 · 帮助患者快速上手</span>
+  </div>
+  <div class="guide-card">
+    <div class="guide-video">
+      <video controls preload="metadata">
+        <source src="https://pusheng.oss-cn-beijing.aliyuncs.com/2195f82d445856dcea8c12ea0e194aed.mp4" type="video/mp4">
+        您的浏览器不支持视频播放
+      </video>
+    </div>
+    <div class="guide-body">
+      <span class="tag-sm tag-guide" style="display:inline-block;margin-bottom:8px;">操作指引</span>
+      <h3>📋 活动报名操作指引视频</h3>
+      <p class="note">手把手引导患者完成活动报名 · 扫码、填写信息、确认参与全流程讲解</p>
+    </div>
+  </div>
+</section>
+
+<!-- ====== 3. 患者教育区 ====== -->
+<div class="section-anchor" id="educate"></div>
+<section class="section">
+  <div class="section-head">
+    <div class="icon-circle" style="background:#eaf0ff;color:#3366cc;">📚</div>
+    <h2>患者教育区</h2>
+    <span class="desc">防梗防猝第一课 · 系列课程</span>
+  </div>
+  <div class="course-series">
+    <!-- 7课截图网格 -->
+    <div class="course-screenshots">
+      <div class="course-shot-card" onclick="openLightboxImg('https://pusheng.oss-cn-beijing.aliyuncs.com/xkt-video-2.png')">
+        <img class="shot-thumb" src="https://pusheng.oss-cn-beijing.aliyuncs.com/xkt-video-2.png" alt="防梗防猝第一课-1" loading="lazy">
+        <div class="shot-label"><span class="shot-num">1</span>防梗防猝第一课</div>
+      </div>
+      <div class="course-shot-card" onclick="openLightboxImg('https://pusheng.oss-cn-beijing.aliyuncs.com/xkt-video-3.png')">
+        <img class="shot-thumb" src="https://pusheng.oss-cn-beijing.aliyuncs.com/xkt-video-3.png" alt="防梗防猝第一课-2" loading="lazy">
+        <div class="shot-label"><span class="shot-num">2</span>防梗防猝第一课</div>
+      </div>
+      <div class="course-shot-card" onclick="openLightboxImg('https://pusheng.oss-cn-beijing.aliyuncs.com/xkt-video-1.png')">
+        <img class="shot-thumb" src="https://pusheng.oss-cn-beijing.aliyuncs.com/xkt-video-1.png" alt="防梗防猝第一课-3" loading="lazy">
+        <div class="shot-label"><span class="shot-num">3</span>防梗防猝第一课</div>
+      </div>
+      <div class="course-shot-card" onclick="openLightboxImg('https://pusheng.oss-cn-beijing.aliyuncs.com/xkt-video-4.png')">
+        <img class="shot-thumb" src="https://pusheng.oss-cn-beijing.aliyuncs.com/xkt-video-4.png" alt="防梗防猝第一课-4" loading="lazy">
+        <div class="shot-label"><span class="shot-num">4</span>防梗防猝第一课</div>
+      </div>
+      <div class="course-shot-card" onclick="openLightboxImg('https://pusheng.oss-cn-beijing.aliyuncs.com/xkt-video-5.png')">
+        <img class="shot-thumb" src="https://pusheng.oss-cn-beijing.aliyuncs.com/xkt-video-5.png" alt="防梗防猝第一课-5" loading="lazy">
+        <div class="shot-label"><span class="shot-num">5</span>防梗防猝第一课</div>
+      </div>
+      <div class="course-shot-card" onclick="openLightboxImg('https://pusheng.oss-cn-beijing.aliyuncs.com/xkt-video-6.png')">
+        <img class="shot-thumb" src="https://pusheng.oss-cn-beijing.aliyuncs.com/xkt-video-6.png" alt="防梗防猝第一课-6" loading="lazy">
+        <div class="shot-label"><span class="shot-num">6</span>防梗防猝第一课</div>
+      </div>
+      <div class="course-shot-card" onclick="openLightboxImg('https://pusheng.oss-cn-beijing.aliyuncs.com/xkt-video-7.png')">
+        <img class="shot-thumb" src="https://pusheng.oss-cn-beijing.aliyuncs.com/xkt-video-7.png" alt="防梗防猝第一课-7" loading="lazy">
+        <div class="shot-label"><span class="shot-num">7</span>防梗防猝第一课</div>
+      </div>
+    </div>
+
+    <!-- 分割线 -->
+    <div class="course-divider">
+      <div class="div-line"></div>
+      <div class="div-label">▶ 点击下方播放第1期完整视频</div>
+      <div class="div-line"></div>
+    </div>
+
+    <!-- 视频播放区（直接显示） -->
+    <div class="course-video-area" id="courseVideoArea">
+      <video id="ep1Video" controls preload="metadata">
+        <source src="https://pusheng.oss-cn-beijing.aliyuncs.com/%E9%98%B2%E6%A2%97%E9%98%B2%E7%8C%9D%E5%81%A5%E5%BA%B7%E8%AF%BE%E7%AC%AC1%E6%9C%9F.mp4" type="video/mp4">
+        您的浏览器不支持视频播放
+      </video>
+    </div>
+  </div>
+</section>
+
+<!-- ====== 4. 活动物料区 ====== -->
+<div class="section-anchor" id="material"></div>
+<section class="section">
+  <div class="section-head">
+    <div class="icon-circle" style="background:#fff6e6;color:#cc7a00;">🖼</div>
+    <h2>活动物料区</h2>
+    <span class="desc">海报 · 三折页 · 点击图片可放大</span>
+  </div>
+  <div class="material-layout">
+    <!-- 左侧：活动海报 -->
+    <div class="image-card" onclick="openLightbox(this)">
+      <div class="img-wrap portrait">
+        <img src="https://pusheng.oss-cn-beijing.aliyuncs.com/%E6%B4%BB%E5%8A%A8%E6%B5%B7%E6%8A%A5.png" alt="药房端活动海报" loading="lazy">
+      </div>
+      <div class="card-label">
+        🏥 药房端活动海报（竖版）
+        <span class="zoom-hint">🔍 点击放大</span>
+      </div>
+    </div>
+    <!-- 中间：买赠海报（新增竖版） -->
+    <div class="image-card" onclick="openLightbox(this)">
+      <div class="img-wrap portrait">
+        <img src="https://pusheng.oss-cn-beijing.aliyuncs.com/0422-33.png" alt="药房端买赠海报" loading="lazy">
+      </div>
+      <div class="card-label">
+        🎁 药房端买赠海报（竖版）
+        <span class="zoom-hint">🔍 点击放大</span>
+      </div>
+    </div>
+    <!-- 右侧：三折页轮播橱窗 -->
+    <div class="brochure-carousel" id="brochureCarousel">
+      <div class="carousel-container">
+        <div class="carousel-track" id="carouselTrack">
+          <!-- Slide 1: 正面 -->
+          <div class="carousel-slide">
+            <img src="https://pusheng.oss-cn-beijing.aliyuncs.com/%E4%B8%89%E6%8A%98%E9%A1%B51.jpeg"
+                 alt="活动宣传三折页正面" loading="lazy"
+                 onclick="openLightboxImg('https://pusheng.oss-cn-beijing.aliyuncs.com/%E4%B8%89%E6%8A%98%E9%A1%B51.jpeg')">
+          </div>
+          <!-- Slide 2: 反面 -->
+          <div class="carousel-slide">
+            <img src="https://pusheng.oss-cn-beijing.aliyuncs.com/%E4%B8%89%E6%8A%98%E9%A1%B52.png"
+                 alt="活动宣传三折页反面" loading="lazy"
+                 onclick="openLightboxImg('https://pusheng.oss-cn-beijing.aliyuncs.com/%E4%B8%89%E6%8A%98%E9%A1%B52.png')">
+          </div>
+        </div>
+      </div>
+      <div class="carousel-btns">
+        <button class="carousel-arrow" onclick="moveCarousel(-1)">◀</button>
+        <div class="carousel-dots">
+          <button class="carousel-dot active" data-idx="0" onclick="goToSlide(0)"></button>
+          <button class="carousel-dot" data-idx="1" onclick="goToSlide(1)"></button>
+        </div>
+        <button class="carousel-arrow" onclick="moveCarousel(1)">▶</button>
+      </div>
+      <div class="carousel-label">📄 活动三折页 · 左右滑动查看正反面（点击图片可放大）</div>
+    </div>
+  </div>
+</section>
+
+<!-- ====== 5. 客服支撑区 ====== -->
+<div class="section-anchor" id="service"></div>
+<section class="section">
+  <div class="section-head">
+    <div class="icon-circle" style="background:#f3e8ff;color:#7c3aed;">💬</div>
+    <h2>客服支撑区</h2>
+    <span class="desc">培训视频 · 标准话术</span>
+  </div>
+  <div class="service-grid">
+    <!-- 高血压培训视频（图片展示） -->
+    <div class="service-card">
+      <div class="svc-img" onclick="openLightboxImg('https://pusheng.oss-cn-beijing.aliyuncs.com/%E6%88%AA%E5%B1%8F2026-04-22%2016.23.50.png')" style="cursor:pointer;">
+        <img src="https://pusheng.oss-cn-beijing.aliyuncs.com/%E6%88%AA%E5%B1%8F2026-04-22%2016.23.50.png" alt="高血压培训视频截图" loading="lazy" style="max-height:420px;">
+      </div>
+      <div class="svc-body">
+        <h3>🎓 高血压培训视频</h3>
+        <p style="font-size:.8rem;color:#999;margin-top:4px;">点击图片可放大查看</p>
+      </div>
+    </div>
+    <!-- W2 客服话术页面 -->
+    <div class="service-card">
+      <div class="svc-iframe">
+        <iframe src="https://xudongdedong1988.github.io/video/0415a.html"
+                title="客服标准话术"
+                loading="lazy"></iframe>
+      </div>
+      <div class="svc-body">
+        <h3>📖 客服标准话术页面</h3>
+        <a class="open-link" href="https://xudongdedong1988.github.io/video/0415a.html" target="_blank" rel="noopener">🔗 新窗口打开体验 →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ====== 6. 数据系统区 ====== -->
+<div class="section-anchor" id="data"></div>
+<section class="section">
+  <div class="section-head">
+    <div class="icon-circle" style="background:#fce4ec;color:#c62828;">📊</div>
+    <h2>数据系统区</h2>
+    <span class="desc">顾客血压周期性分析报告 · 血压异常提醒链路</span>
+  </div>
+  <div class="data-grid">
+    <!-- 血压分析报告 -->
+    <div class="data-card">
+      <div class="data-iframe">
+        <iframe src="https://qxxzs.mqyy.cn/bpQuery"
+                title="血压周期分析报告"
+                loading="lazy"
+                style="min-height:600px;"></iframe>
+      </div>
+      <div class="data-body">
+        <h3>📈 血压周期性分析报告系统</h3>
+        <p class="note">S1 · 定期生成顾客血压数据分析报告</p>
+        <a class="open-link" href="https://qxxzs.mqyy.cn/bpQuery" target="_blank" rel="noopener">🔗 新窗口打开系统 →</a>
+      </div>
+    </div>
+
+    <!-- 血压异常提醒链路（新增交互演示）-->
+    <div class="bp-alert-chain">
+      <div class="chain-title">
+        🚨 血压异常提醒链路 · 顾客自测上传 → 自动识别异常 → 客服实时接收提醒 → 查看顾客信息
+      </div>
+
+      <!-- 流程步骤图 -->
+      <div class="chain-flow">
+        <div class="chain-step">
+          <div class="step-box step-patient">
+            <span class="step-icon">🧑‍⚕️</span>
+            <div class="step-label">顾客自行测量</div>
+            <div class="step-desc">使用绑定的智能血压计在家自测血压</div>
+          </div>
+        </div>
+        <div class="chain-arrow">
+          <div class="arrow-line">
+            <span class="arrow-svg">→</span>
+            <span class="arrow-txt">上传数据</span>
+          </div>
+        </div>
+        <div class="chain-step">
+          <div class="step-box step-upload">
+            <span class="step-icon">📲</span>
+            <div class="step-label">数据上传系统</div>
+            <div class="step-desc">血压数值自动同步至后台数据库</div>
+          </div>
+        </div>
+        <div class="chain-arrow">
+          <div class="arrow-line">
+            <span class="arrow-svg">→</span>
+            <span class="arrow-txt">识别异常</span>
+          </div>
+        </div>
+        <div class="chain-step">
+          <div class="step-box step-alert" style="position:relative;">
+            <span class="alert-badge">⚠ 异常</span>
+            <span class="step-icon">🔔</span>
+            <div class="step-label">系统自动预警</div>
+            <div class="step-desc">血压超出正常范围时触发异常提醒</div>
+          </div>
+        </div>
+        <div class="chain-arrow">
+          <div class="arrow-line">
+            <span class="arrow-svg">→</span>
+            <span class="arrow-txt">推送提醒</span>
+          </div>
+        </div>
+        <div class="chain-step">
+          <div class="step-box step-kf">
+            <span class="step-icon">🧑‍💼</span>
+            <div class="step-label">客服收到提醒</div>
+            <div class="step-desc">客服工作台显示该顾客的血压异常通知</div>
+          </div>
+        </div>
+        <div class="chain-arrow">
+          <div class="arrow-line">
+            <span class="arrow-svg">→</span>
+            <span class="arrow-txt">点击查看</span>
+          </div>
+        </div>
+        <div class="chain-step">
+          <div class="step-box step-view">
+            <span class="step-icon">📋</span>
+            <div class="step-label">获取顾客信息</div>
+            <div class="step-desc">点击"查看记录"可查看顾客基本档案及历史血压</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 交互演示面板 -->
+      <div class="bp-demo-panel">
+        <!-- 左侧：顾客上传血压模拟 -->
+        <div class="demo-screen" style="max-width:280px;">
+          <h4>📲 顾客端 · 上传血压数值</h4>
+          <div class="bp-upload-form">
+            <div class="field-row">
+              <label>收缩压</label>
+              <input type="number" id="inputSystolic" placeholder="如：160" min="60" max="250">
+              <span style="font-size:.78rem;color:rgba(255,255,255,.6);margin-left:4px;">mmHg</span>
+            </div>
+            <div class="field-row">
+              <label>舒张压</label>
+              <input type="number" id="inputDiastolic" placeholder="如：100" min="40" max="150">
+              <span style="font-size:.78rem;color:rgba(255,255,255,.6);margin-left:4px;">mmHg</span>
+            </div>
+            <div class="field-row">
+              <label>心率</label>
+              <input type="number" id="inputHeartRate" placeholder="如：88" min="30" max="220">
+              <span style="font-size:.78rem;color:rgba(255,255,255,.6);margin-left:4px;">bpm</span>
+            </div>
+            <button class="btn-upload" onclick="submitBP()">📤 上传测量记录</button>
+            <div class="feedback-msg" id="feedbackMsg"></div>
+          </div>
+        </div>
+
+        <!-- 右侧：客服提醒列表 -->
+        <div class="demo-screen" style="flex:1;">
+          <h4>🧑‍💼 客服工作台 · 血压异常提醒</h4>
+          <div class="alert-notice-list" id="alertList">
+            <!-- 默认两条示例 -->
+            <div class="alert-notice-item">
+              <div class="notice-dot"></div>
+              <div class="notice-info">
+                <div class="notice-name">张阿姨（138****2210）</div>
+                <div class="notice-bp">⚠ 收缩压 178 / 舒张压 108 mmHg（高血压Ⅱ级）</div>
+                <div class="notice-time">2026-04-22 09:14</div>
+              </div>
+              <button class="btn-view-record" onclick="openCustModal('张阿姨','138****2210','178','108','88 bpm','女','68岁','高血压病史8年，长期服用清血八味片','2026-04-22 09:14')">查看记录</button>
+            </div>
+            <div class="alert-notice-item">
+              <div class="notice-dot"></div>
+              <div class="notice-info">
+                <div class="notice-name">李大爷（139****5530）</div>
+                <div class="notice-bp">⚠ 收缩压 165 / 舒张压 99 mmHg（高血压Ⅰ级）</div>
+                <div class="notice-time">2026-04-22 08:52</div>
+              </div>
+              <button class="btn-view-record" onclick="openCustModal('李大爷','139****5530','165','99','92 bpm（偏快）','男','72岁','高血压病史12年，有冠心病史','2026-04-22 08:52')">查看记录</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div><!-- /.bp-alert-chain -->
+  </div>
+</section>
+
+<!-- ====== Footer ====== -->
+<div class="footer">
+  <p>普生控股 · 市场二部 | 防梗防猝-健康中国行 · 家庭血压监测普及计划实施保障</p>
+  <p style="margin-top:4px;">仅供内部展示使用 · V2</p>
+</div>
+
+<!-- ====== Lightbox ====== -->
+<div class="lightbox-overlay" id="lightbox" onclick="closeLightbox()">
+  <button class="lightbox-close" onclick="closeLightbox()">✕</button>
+  <img id="lightboxImg" src="" alt="放大预览">
+</div>
+
+<!-- ====== 顾客信息 Modal ====== -->
+<div class="cust-modal-overlay" id="custModal" onclick="closeCustModal(event)">
+  <div class="cust-modal" onclick="event.stopPropagation()">
+    <button class="modal-close" onclick="closeCustModal()">✕</button>
+    <div class="modal-header">
+      <div class="alert-icon">🚨</div>
+      <div>
+        <h3>血压异常 · 顾客档案</h3>
+        <div style="font-size:.78rem;color:#999;margin-top:2px;">点击"查看记录"后展示</div>
+      </div>
+    </div>
+    <div class="info-section">
+      <h4>基本信息</h4>
+      <div class="info-row"><span class="key">姓名</span><span class="val" id="mName">—</span></div>
+      <div class="info-row"><span class="key">手机号</span><span class="val" id="mPhone">—</span></div>
+      <div class="info-row"><span class="key">性别</span><span class="val" id="mGender">—</span></div>
+      <div class="info-row"><span class="key">年龄</span><span class="val" id="mAge">—</span></div>
+      <div class="info-row"><span class="key">病史</span><span class="val" id="mHistory" style="max-width:240px;text-align:right;line-height:1.4;">—</span></div>
+    </div>
+    <div class="info-section">
+      <h4>本次异常血压</h4>
+      <div class="info-row"><span class="key">收缩压</span><span class="val danger" id="mSystolic">—</span></div>
+      <div class="info-row"><span class="key">舒张压</span><span class="val danger" id="mDiastolic">—</span></div>
+      <div class="info-row"><span class="key">心率</span><span class="val warn" id="mHeartRate">—</span></div>
+      <div class="info-row"><span class="key">测量时间</span><span class="val" id="mTime">—</span></div>
+      <div class="info-row"><span class="key">风险等级</span><span class="val warn" id="mRisk">—</span></div>
+    </div>
+    <div class="modal-actions">
+      <button class="btn-action btn-secondary" onclick="closeCustModal()">✅ 已知晓，关闭</button>
+      <button class="btn-action btn-primary" onclick="closeCustModal()">💬 立即联系顾客</button>
+    </div>
+  </div>
+</div>
+
+<!-- ====== Scripts ====== -->
+<script>
+// ---- Lightbox ----
+function openLightbox(card) {
+  var img = card.querySelector('img');
+  if (!img) return;
+  showLightboxSrc(img.src);
+}
+function openLightboxImg(src) {
+  showLightboxSrc(src);
+}
+function showLightboxSrc(src) {
+  var overlay = document.getElementById('lightbox');
+  var lbImg = document.getElementById('lightboxImg');
+  lbImg.src = src;
+  overlay.classList.add('show');
+  document.body.style.overflow = 'hidden';
+}
+function closeLightbox() {
+  var overlay = document.getElementById('lightbox');
+  overlay.classList.remove('show');
+  document.body.style.overflow = '';
+}
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') { closeLightbox(); closeCustModal(); }
+});
+
+// ---- Course Video (always visible) ----
+// No toggle needed — video is shown directly below the screenshots.
+
+// ---- Carousel Slider for Brochures ----
+var carouselIdx = 0;
+var carouselTotal = 2;
+function updateCarousel() {
+  var track = document.getElementById('carouselTrack');
+  if (!track) return;
+  track.style.transform = 'translateX(-' + (carouselIdx * 100) + '%)';
+  var dots = document.querySelectorAll('.carousel-dot');
+  dots.forEach(function(d, i) {
+    d.classList.toggle('active', i === carouselIdx);
+  });
+}
+function moveCarousel(dir) {
+  carouselIdx += dir;
+  if (carouselIdx < 0) carouselIdx = carouselTotal - 1;
+  if (carouselIdx >= carouselTotal) carouselIdx = 0;
+  updateCarousel();
+}
+function goToSlide(idx) {
+  carouselIdx = idx;
+  updateCarousel();
+}
+
+// ---- Blood Pressure Alert Chain ----
+function submitBP() {
+  var sys = parseInt(document.getElementById('inputSystolic').value);
+  var dia = parseInt(document.getElementById('inputDiastolic').value);
+  var hr  = parseInt(document.getElementById('inputHeartRate').value);
+  var fb  = document.getElementById('feedbackMsg');
+
+  if (!sys || !dia || isNaN(sys) || isNaN(dia)) {
+    fb.className = 'feedback-msg show danger';
+    fb.textContent = '⚠ 请填写完整的收缩压和舒张压数值';
+    return;
+  }
+
+  var isAbnormal = sys >= 140 || dia >= 90;
+  var hrAbnormal = !isNaN(hr) && (hr < 60 || hr > 100);
+
+  if (!isAbnormal && !hrAbnormal) {
+    fb.className = 'feedback-msg show success';
+    fb.textContent = '✅ 数据已上传，血压及心率均正常，无需提醒';
+    return;
+  }
+
+  var msgs = [];
+  if (isAbnormal) msgs.push('血压异常');
+  if (hrAbnormal) msgs.push('心率异常');
+  fb.className = 'feedback-msg show danger';
+  fb.textContent = '🚨 ' + msgs.join('、') + '！已自动推送提醒至客服工作台';
+
+  var now = new Date();
+  var timeStr = now.getFullYear() + '-'
+    + String(now.getMonth()+1).padStart(2,'0') + '-'
+    + String(now.getDate()).padStart(2,'0') + ' '
+    + String(now.getHours()).padStart(2,'0') + ':'
+    + String(now.getMinutes()).padStart(2,'0');
+
+  var risk = '';
+  if (sys >= 180 || dia >= 110) risk = '高血压危象';
+  else if (sys >= 160 || dia >= 100) risk = '高血压Ⅱ级';
+  else if (isAbnormal) risk = '高血压Ⅰ级';
+  else risk = '血压正常';
+
+  var hrStr = isNaN(hr) ? '—' : hr + ' bpm' + (hrAbnormal ? (hr < 60 ? '（偏慢）' : '（偏快）') : '');
+
+  var list = document.getElementById('alertList');
+  var item = document.createElement('div');
+  item.className = 'alert-notice-item';
+  item.style.animation = 'modalIn .3s ease';
+  item.innerHTML = '<div class="notice-dot"></div>'
+    + '<div class="notice-info">'
+    + '<div class="notice-name">演示顾客（模拟上传）</div>'
+    + '<div class="notice-bp">⚠ 收缩压 ' + sys + ' / 舒张压 ' + dia + ' mmHg　心率 ' + hrStr + '（' + risk + '）</div>'
+    + '<div class="notice-time">' + timeStr + '</div>'
+    + '</div>'
+    + '<button class="btn-view-record" onclick="openCustModal(\'演示顾客\',\'138****0000\',\'' + sys + '\',\'' + dia + '\',\'' + hrStr + '\',\'—\',\'—\',\'演示数据\',\'' + timeStr + '\')">查看记录</button>';
+  list.insertBefore(item, list.firstChild);
+}
+
+// ---- Customer Modal ----
+function openCustModal(name, phone, sys, dia, heartRate, gender, age, history, time) {
+  document.getElementById('mName').textContent = name;
+  document.getElementById('mPhone').textContent = phone;
+  document.getElementById('mGender').textContent = gender;
+  document.getElementById('mAge').textContent = age;
+  document.getElementById('mHistory').textContent = history;
+  document.getElementById('mSystolic').textContent = sys + ' mmHg';
+  document.getElementById('mDiastolic').textContent = dia + ' mmHg';
+  document.getElementById('mHeartRate').textContent = heartRate || '—';
+  document.getElementById('mTime').textContent = time;
+
+  var sysN = parseInt(sys), diaN = parseInt(dia);
+  var risk = '';
+  if (sysN >= 180 || diaN >= 110) risk = '⚠ 高血压危象（极高风险）';
+  else if (sysN >= 160 || diaN >= 100) risk = '⚠ 高血压Ⅱ级（高风险）';
+  else if (sysN >= 140 || diaN >= 90) risk = '⚠ 高血压Ⅰ级（中风险）';
+  else risk = '血压正常，心率异常';
+  document.getElementById('mRisk').textContent = risk;
+
+  document.getElementById('custModal').classList.add('show');
+  document.body.style.overflow = 'hidden';
+}
+function closeCustModal(e) {
+  if (e && e.target !== document.getElementById('custModal')) return;
+  document.getElementById('custModal').classList.remove('show');
+  document.body.style.overflow = '';
+}
+
+// ---- Nav active state on scroll ----
+(function() {
+  var sections = document.querySelectorAll('.section-anchor');
+  var links = document.querySelectorAll('.nav-links a');
+
+  function onScroll() {
+    var scrollY = window.scrollY + 80;
+    var current = '';
+    sections.forEach(function(sec) {
+      if (sec.offsetTop <= scrollY) {
+        current = sec.id;
+      }
+    });
+    links.forEach(function(link) {
+      link.classList.remove('active');
+      if (link.getAttribute('data-section') === current) {
+        link.classList.add('active');
+      }
+    });
+  }
+
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+})();
+</script>
+
+</body>
+</html>
