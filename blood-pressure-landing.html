@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>血压监测 防梗防猝 — 家庭血压监测普及计划</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'PingFang SC', 'Microsoft YaHei', sans-serif;
+      background: #f0f6ff;
+      min-height: 100vh;
+    }
+
+    /* ===== HEADER ===== */
+    .header {
+      background: linear-gradient(180deg, #d6eaf8 0%, #eaf4fb 60%, #f0f6ff 100%);
+      position: relative;
+      overflow: hidden;
+      padding-bottom: 30px;
+    }
+
+    /* Top bar */
+    .top-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 20px 10px;
+    }
+
+    .top-bar-left {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo-tv {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 13px;
+      color: #c0392b;
+      font-weight: bold;
+    }
+
+    .logo-tv svg {
+      width: 22px;
+      height: 22px;
+    }
+
+    .divider-v {
+      width: 1px;
+      height: 22px;
+      background: #bbb;
+    }
+
+    .sponsor-tag {
+      background: linear-gradient(135deg, #e74c3c, #c0392b);
+      color: #fff;
+      font-size: 11px;
+      padding: 3px 8px;
+      border-radius: 4px;
+      font-weight: 500;
+    }
+
+    .top-bar-right {
+      text-align: right;
+    }
+
+    .slogan-right {
+      font-size: 13px;
+      color: #e74c3c;
+      font-weight: bold;
+      line-height: 1.5;
+    }
+
+    /* Mountain background decoration */
+    .mountain-bg {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 160px;
+      overflow: hidden;
+      pointer-events: none;
+    }
+
+    .mountain-bg svg {
+      width: 100%;
+      height: 100%;
+    }
+
+    /* Hero text area */
+    .hero-text {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      padding: 20px 20px 10px;
+    }
+
+    .hero-title {
+      font-size: 38px;
+      font-weight: 900;
+      color: #1a3a6e;
+      letter-spacing: 2px;
+      text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      line-height: 1.2;
+    }
+
+    .hero-title .red {
+      color: #e74c3c;
+    }
+
+    .hero-subtitle {
+      font-size: 16px;
+      color: #2c6fa8;
+      margin-top: 8px;
+      letter-spacing: 1px;
+    }
+
+    .em-dash {
+      color: #7fb3d3;
+    }
+
+    .hero-badges {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      margin-top: 14px;
+    }
+
+    .hero-badge {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      font-size: 15px;
+      color: #1a3a6e;
+      font-weight: 600;
+    }
+
+    .hero-badge .check-icon {
+      width: 20px;
+      height: 20px;
+      background: #2980b9;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-size: 11px;
+    }
+
+    /* ===== MAIN CONTENT ===== */
+    .main-content {
+      max-width: 500px;
+      margin: 0 auto;
+      padding: 0 16px 40px;
+    }
+
+    /* ===== VIDEO SECTION ===== */
+    .video-section {
+      margin-top: -10px;
+      position: relative;
+      z-index: 3;
+    }
+
+    .video-card {
+      background: #fff;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.12);
+      border: 1px solid rgba(255,255,255,0.8);
+    }
+
+    .video-wrapper {
+      position: relative;
+      width: 100%;
+      background: #c8dff0;
+    }
+
+    .video-wrapper video {
+      width: 100%;
+      display: block;
+      max-height: 280px;
+      object-fit: cover;
+    }
+
+    /* Custom video controls overlay */
+    .video-wrapper video::-webkit-media-controls {
+      background: rgba(0,0,0,0.3);
+    }
+
+    /* ===== IMAGE SECTION ===== */
+    .image-section {
+      margin-top: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .image-card {
+      background: #fff;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+    }
+
+    .image-card img {
+      width: 100%;
+      display: block;
+    }
+
+    /* ===== CTA BUTTON ===== */
+    .cta-section {
+      margin-top: 24px;
+      text-align: center;
+    }
+
+    .cta-button {
+      display: inline-block;
+      background: linear-gradient(135deg, #e74c3c, #c0392b);
+      color: #fff;
+      font-size: 18px;
+      font-weight: bold;
+      padding: 16px 40px;
+      border-radius: 50px;
+      text-decoration: none;
+      letter-spacing: 1px;
+      box-shadow: 0 4px 16px rgba(231,76,60,0.4);
+      cursor: pointer;
+      border: none;
+      transition: transform 0.2s, box-shadow 0.2s;
+      width: 100%;
+      max-width: 320px;
+    }
+
+    .cta-button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(231,76,60,0.5);
+    }
+
+    .cta-button::after {
+      content: ' ›';
+      font-size: 20px;
+    }
+
+    /* ===== FOOTER ===== */
+    .footer {
+      text-align: center;
+      padding: 20px;
+      color: #999;
+      font-size: 12px;
+    }
+
+    /* Decorative birds */
+    .birds {
+      position: absolute;
+      top: 40px;
+      right: 30px;
+      opacity: 0.5;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <div class="header">
+    <!-- Mountain background -->
+    <div class="mountain-bg">
+      <svg viewBox="0 0 500 160" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+        <!-- Far mountains -->
+        <path d="M0,160 L0,100 Q60,60 120,80 Q180,40 240,70 Q300,30 360,65 Q420,40 500,75 L500,160 Z" fill="#c5dff0" opacity="0.5"/>
+        <!-- Mid mountains -->
+        <path d="M0,160 L0,120 Q80,80 160,100 Q220,70 300,95 Q380,65 460,90 L500,85 L500,160 Z" fill="#a8ccdf" opacity="0.6"/>
+        <!-- Near mountains -->
+        <path d="M0,160 L0,140 Q100,110 200,130 Q300,100 400,125 L500,115 L500,160 Z" fill="#8bb8d0" opacity="0.5"/>
+      </svg>
+    </div>
+
+    <!-- Top bar -->
+    <div class="top-bar">
+      <div class="top-bar-left">
+        <div class="logo-tv">
+          <svg viewBox="0 0 24 24" fill="currentColor">
+            <path d="M21 3H3c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h5l-1 1v1h10v-1l-1-1h5c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 14H3V5h18v12z"/>
+          </svg>
+          吉林电视台生活频道
+        </div>
+        <div class="divider-v"></div>
+        <div class="sponsor-tag">清血八味片</div>
+      </div>
+      <div class="top-bar-right">
+        <div class="slogan-right">防梗防猝<br>健康中国行</div>
+      </div>
+    </div>
+
+    <!-- Hero text -->
+    <div class="hero-text">
+      <div class="hero-title">血压监测 防梗防<span class="red">猝</span></div>
+      <div class="hero-subtitle"><span class="em-dash">—</span> 家庭血压监测普及计划 <span class="em-dash">—</span></div>
+      <div class="hero-badges">
+        <div class="hero-badge">
+          <div class="check-icon">✓</div>
+          早监测
+        </div>
+        <div class="hero-badge">
+          <div class="check-icon">✓</div>
+          早发现
+        </div>
+        <div class="hero-badge">
+          <div class="check-icon">✓</div>
+          早干预
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MAIN CONTENT -->
+  <div class="main-content">
+
+    <!-- VIDEO -->
+    <div class="video-section">
+      <div class="video-card">
+        <div class="video-wrapper">
+          <video
+            controls
+            preload="metadata"
+            poster=""
+            playsinline
+          >
+            <source src="https://pusheng.oss-cn-beijing.aliyuncs.com/30%E7%A7%92%E7%9A%84%E5%85%AC%E7%9B%8A%E7%89%87.mp4" type="video/mp4">
+            您的浏览器不支持视频播放
+          </video>
+        </div>
+      </div>
+    </div>
+
+    <!-- IMAGES -->
+    <div class="image-section">
+      <div class="image-card">
+        <img src="https://pusheng.oss-cn-beijing.aliyuncs.com/0422-2.png" alt="血压健康介绍信息图" loading="lazy">
+      </div>
+      <div class="image-card">
+        <img src="https://pusheng.oss-cn-beijing.aliyuncs.com/002.png" alt="活动参与介绍信息图" loading="lazy">
+      </div>
+      <div class="image-card">
+        <img src="https://pusheng.oss-cn-beijing.aliyuncs.com/003.png" alt="活动参与介绍信息图2" loading="lazy">
+      </div>
+    </div>
+
+    <!-- CTA -->
+    <div class="cta-section">
+      <a class="cta-button" href="tel:0431-81920000">
+        免费领取医用血压计1台
+      </a>
+    </div>
+
+  </div>
+
+  <div class="footer">
+    © 2024 家庭血压监测普及计划 · 吉林电视台生活频道
+  </div>
+
+</body>
+</html>
