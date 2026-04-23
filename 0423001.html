@@ -1,0 +1,1357 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>防梗防猝·健康中国行｜家庭血压监测普及计划 — 吉林市场</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700&family=Noto+Sans+SC:wght@300;400;500;700&display=swap');
+  :root {
+    --red:#C0392B;--red-dark:#922B21;--red-light:#FADBD8;--red-mid:#E74C3C;
+    --gold:#B7860B;--gold-light:#FEF9E7;--gold-mid:#F4D03F;
+    --teal:#0E6655;--teal-light:#D5F5E3;--teal-mid:#1ABC9C;
+    --ink:#1A1A2E;--ink-mid:#2C3E50;--gray:#566573;
+    --gray-light:#F2F3F4;--gray-border:#E5E7EA;--white:#FFFFFF;
+    --card-shadow:0 2px 12px rgba(0,0,0,0.07);
+    --wx-green:#07C160;--wx-bg:#EDEDED;--wx-bubble-me:#95EC69;--wx-bubble-other:#fff;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{font-family:'Noto Sans SC','PingFang SC','Microsoft YaHei',sans-serif;color:var(--ink);background:#F7F8FA;line-height:1.7;font-size:15px;}
+
+  /* NAV */
+  .nav{position:fixed;top:0;left:0;right:0;z-index:100;background:var(--ink);display:flex;align-items:center;padding:0 2rem;height:52px;}
+  .nav-logo{color:#fff;font-family:'Noto Serif SC',serif;font-size:14px;font-weight:600;letter-spacing:.05em;margin-right:2rem;white-space:nowrap;}
+  .nav-logo span{color:var(--gold-mid);}
+  .nav-links{display:flex;gap:0;flex:1;overflow-x:auto;}
+  .nav-links a{color:rgba(255,255,255,.65);font-size:13px;text-decoration:none;padding:0 12px;height:52px;display:flex;align-items:center;white-space:nowrap;border-bottom:2px solid transparent;transition:color .2s,border-color .2s;}
+  .nav-links a:hover,.nav-links a.active{color:#fff;border-bottom-color:var(--gold-mid);}
+
+  /* LAYOUT */
+  .page{max-width:960px;margin:0 auto;padding:72px 1.5rem 4rem;}
+
+  /* HERO */
+  .hero{background:var(--ink);color:#fff;padding:0;margin-bottom:2.5rem;border-radius:16px;overflow:hidden;position:relative;}
+  .hero-inner{padding:3rem 3rem 2.5rem;position:relative;z-index:2;}
+  .hero-badge{display:inline-block;background:var(--red);color:#fff;font-size:11px;font-weight:500;letter-spacing:.1em;padding:4px 12px;border-radius:4px;margin-bottom:1.2rem;}
+  .hero h1{font-family:'Noto Serif SC',serif;font-size:2rem;font-weight:700;line-height:1.3;margin-bottom:.6rem;}
+  .hero h1 em{color:var(--gold-mid);font-style:normal;}
+  .hero-sub{color:rgba(255,255,255,.65);font-size:14px;margin-bottom:2rem;}
+  .hero-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(255,255,255,.1);border-radius:10px;overflow:hidden;}
+  .hero-stat{background:rgba(255,255,255,.06);padding:1rem;text-align:center;}
+  .hero-stat-num{font-size:1.6rem;font-weight:700;color:var(--gold-mid);display:block;}
+  .hero-stat-label{font-size:11px;color:rgba(255,255,255,.5);margin-top:2px;}
+  .hero-deco{position:absolute;right:2rem;top:50%;transform:translateY(-50%);font-size:8rem;opacity:.04;font-family:'Noto Serif SC',serif;z-index:1;user-select:none;pointer-events:none;}
+
+  /* SECTION */
+  .section{margin-bottom:2.5rem;scroll-margin-top:64px;}
+  .section-header{display:flex;align-items:center;gap:10px;margin-bottom:1.2rem;}
+  .section-num{background:var(--red);color:#fff;font-size:12px;font-weight:700;width:24px;height:24px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+  .section-title{font-family:'Noto Serif SC',serif;font-size:1.1rem;font-weight:700;color:var(--ink);}
+  .section-line{flex:1;height:1px;background:var(--gray-border);}
+
+  /* CARDS */
+  .card{background:var(--white);border-radius:12px;border:1px solid var(--gray-border);padding:1.25rem 1.5rem;box-shadow:var(--card-shadow);}
+  .card-grid{display:grid;gap:1rem;}
+  .card-grid-2{grid-template-columns:1fr 1fr;}
+  .card-grid-3{grid-template-columns:1fr 1fr 1fr;}
+
+  /* CHAIN */
+  .chain{display:flex;align-items:stretch;gap:0;overflow-x:auto;background:var(--white);border-radius:12px;border:1px solid var(--gray-border);padding:1.25rem;box-shadow:var(--card-shadow);}
+  .chain-step{flex:1;min-width:100px;text-align:center;position:relative;}
+  .chain-step+.chain-step::before{content:'→';position:absolute;left:-10px;top:50%;transform:translateY(-50%);color:var(--red);font-size:16px;font-weight:700;}
+  .chain-icon{font-size:1.4rem;margin-bottom:6px;display:block;}
+  .chain-label{font-size:12px;color:var(--gray);line-height:1.4;}
+  .chain-label strong{display:block;font-size:13px;color:var(--ink);font-weight:500;}
+
+  /* PIPELINE */
+  .pipe-row{display:flex;align-items:stretch;gap:0;}
+  .pipe-box{flex:1;padding:.8rem 1rem;border:1px solid var(--gray-border);background:var(--white);font-size:13px;text-align:center;}
+  .pipe-box:first-child{border-radius:8px 0 0 8px;}
+  .pipe-box:last-child{border-radius:0 8px 8px 0;}
+  .pipe-box+.pipe-box{border-left:none;}
+  .pipe-head{font-size:11px;font-weight:500;color:var(--red);margin-bottom:4px;letter-spacing:.05em;}
+  .pipe-connector{display:flex;justify-content:center;padding:6px 0;color:var(--gray);font-size:18px;}
+
+  /* STATUS */
+  .status-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;}
+  .status-box{border-radius:10px;padding:1rem 1.25rem;border:1px solid;}
+  .status-box.success{background:#F0FBF4;border-color:#A8DDB5;}
+  .status-box.warning{background:#FFF8EE;border-color:#F5CBA7;}
+  .status-box-header{font-size:13px;font-weight:500;margin-bottom:8px;display:flex;align-items:center;gap:6px;}
+  .dot-success{width:8px;height:8px;border-radius:50%;background:#27AE60;flex-shrink:0;}
+  .dot-warning{width:8px;height:8px;border-radius:50%;background:#E67E22;flex-shrink:0;}
+  .status-steps{list-style:none;}
+  .status-steps li{font-size:12px;color:var(--gray);padding:3px 0 3px 14px;position:relative;border-bottom:1px solid rgba(0,0,0,.04);}
+  .status-steps li:last-child{border-bottom:none;}
+  .status-steps li::before{content:'·';position:absolute;left:4px;color:var(--gray);font-size:16px;line-height:1;}
+
+  /* COLLAPSE */
+  .collapse-section{margin-bottom:.75rem;border-radius:10px;overflow:hidden;border:1px solid var(--gray-border);box-shadow:var(--card-shadow);}
+  .collapse-header{background:var(--ink);color:#fff;padding:10px 16px;cursor:pointer;display:flex;align-items:center;justify-content:space-between;user-select:none;transition:background .2s;}
+  .collapse-header:hover{background:#2C3E50;}
+  .collapse-header-text{font-size:13px;font-weight:500;letter-spacing:.03em;}
+  .collapse-arrow{font-size:12px;transition:transform .3s;color:var(--gold-mid);}
+  .collapse-arrow.open{transform:rotate(180deg);}
+  .collapse-body{display:none;background:var(--white);}
+  .collapse-body.open{display:block;}
+
+  /* ROLE TABLE */
+  .role-table{width:100%;border-collapse:collapse;font-size:13px;}
+  .role-table th{background:var(--gray-light);padding:8px 12px;text-align:left;font-weight:500;font-size:12px;color:var(--gray);border-bottom:1px solid var(--gray-border);}
+  .role-table td{padding:8px 12px;vertical-align:top;border-bottom:1px solid var(--gray-border);line-height:1.5;}
+  .role-table tr:last-child td{border-bottom:none;}
+  .role-badge{display:inline-block;font-size:11px;padding:2px 8px;border-radius:4px;font-weight:500;white-space:nowrap;}
+  .badge-biz{background:#FEF3CD;color:#7D4E00;}
+  .badge-cs{background:#D6EAF8;color:#1A5276;}
+  .badge-chain{background:#D5F5E3;color:#1E8449;}
+  .badge-clerk{background:#F9EBEA;color:#922B21;}
+
+  /* SCRIPT CARDS */
+  .script-card{background:var(--white);border:1px solid var(--gray-border);border-radius:10px;overflow:hidden;margin-bottom:1rem;box-shadow:var(--card-shadow);}
+  .script-header{background:var(--gray-light);padding:8px 14px;display:flex;align-items:center;gap:8px;border-bottom:1px solid var(--gray-border);}
+  .script-scenario{font-size:12px;color:var(--gray);}
+  .script-body{padding:1rem 1.25rem;}
+  .script-quote{background:#F8FAFB;border-left:3px solid var(--teal-mid);border-radius:0 6px 6px 0;padding:.8rem 1rem;font-size:13px;color:var(--ink-mid);line-height:1.8;}
+
+  /* TIMELINE */
+  .timeline{position:relative;padding-left:24px;}
+  .timeline::before{content:'';position:absolute;left:8px;top:0;bottom:0;width:1px;background:var(--gray-border);}
+  .tl-item{position:relative;margin-bottom:1rem;}
+  .tl-dot{position:absolute;left:-20px;top:4px;width:10px;height:10px;border-radius:50%;background:var(--red);border:2px solid var(--white);box-shadow:0 0 0 1px var(--gray-border);}
+  .tl-dot.urgent{background:var(--red-dark);}
+  .tl-day{font-size:11px;font-weight:700;color:var(--red);margin-bottom:2px;text-transform:uppercase;letter-spacing:.05em;}
+  .tl-action{font-size:13px;font-weight:500;color:var(--ink);}
+  .tl-desc{font-size:12px;color:var(--gray);margin-top:2px;}
+
+  /* DRUG / BP TABLES */
+  .drug-table{width:100%;border-collapse:collapse;font-size:13px;}
+  .drug-table th{background:var(--red-light);padding:8px 12px;text-align:left;font-weight:500;font-size:12px;color:var(--red-dark);border-bottom:1px solid #F5CBA7;}
+  .drug-table td{padding:9px 12px;vertical-align:top;border-bottom:1px solid var(--gray-border);line-height:1.6;}
+  .drug-table tr:last-child td{border-bottom:none;}
+  .drug-table tr:nth-child(even) td{background:#FDFBFB;}
+  .bp-table{width:100%;border-collapse:collapse;font-size:13px;}
+  .bp-table th{background:var(--teal-light);padding:8px 12px;text-align:left;font-weight:500;font-size:12px;color:var(--teal);border-bottom:1px solid #A2D9CE;}
+  .bp-table td{padding:9px 12px;vertical-align:middle;border-bottom:1px solid var(--gray-border);}
+  .bp-table tr:last-child td{border-bottom:none;}
+  .bp-value{font-weight:600;color:var(--red-dark);font-size:13px;}
+
+  /* NODES */
+  .node-list{display:flex;flex-direction:column;gap:.75rem;}
+  .node-item{display:flex;align-items:flex-start;gap:12px;background:var(--white);border:1px solid var(--gray-border);border-radius:10px;padding:1rem;box-shadow:var(--card-shadow);}
+  .node-num{width:28px;height:28px;border-radius:50%;background:var(--red);color:#fff;font-size:13px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;}
+  .node-content{flex:1;}
+  .node-title{font-size:14px;font-weight:500;margin-bottom:2px;}
+  .node-desc{font-size:12px;color:var(--gray);}
+
+  /* INCENTIVE */
+  .incentive-card{background:linear-gradient(135deg,#1A1A2E 0%,#922B21 100%);border-radius:14px;padding:2rem;color:#fff;text-align:center;position:relative;overflow:hidden;}
+  .incentive-card::before{content:'¥';position:absolute;right:1.5rem;top:50%;transform:translateY(-50%);font-size:8rem;opacity:.06;font-family:'Noto Serif SC',serif;font-weight:700;}
+  .incentive-amount{font-size:3rem;font-weight:700;color:var(--gold-mid);font-family:'Noto Serif SC',serif;}
+  .incentive-label{font-size:13px;color:rgba(255,255,255,.7);margin-top:4px;}
+  .incentive-rules{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1px;background:rgba(255,255,255,.15);border-radius:10px;overflow:hidden;margin-top:1.5rem;}
+  .incentive-rule{background:rgba(255,255,255,.08);padding:.75rem;font-size:12px;color:rgba(255,255,255,.75);text-align:center;}
+  .incentive-rule strong{display:block;color:#fff;font-size:13px;margin-bottom:3px;font-weight:500;}
+
+  /* TIP BOX */
+  .tip-box{background:#EBF5FB;border-left:3px solid #2E86C1;border-radius:0 8px 8px 0;padding:.75rem 1rem;font-size:13px;color:#1A5276;margin:.75rem 0;}
+
+  /* ===== WECHAT MOCKUP ===== */
+  .wx-phone{width:260px;background:#fff;border-radius:28px;border:3px solid #222;box-shadow:0 8px 32px rgba(0,0,0,.18);overflow:hidden;flex-shrink:0;}
+  .wx-statusbar{background:#07C160;height:22px;display:flex;align-items:center;justify-content:flex-end;padding:0 12px;}
+  .wx-statusbar span{color:#fff;font-size:10px;}
+  .wx-titlebar{background:#EDEDED;padding:8px 12px;display:flex;align-items:center;gap:8px;border-bottom:1px solid #D9D9D9;}
+  .wx-back{color:#07C160;font-size:16px;}
+  .wx-name{font-size:13px;font-weight:500;flex:1;text-align:center;}
+  .wx-dots{color:#999;font-size:16px;}
+  .wx-body{background:#EDEDED;padding:10px 8px;min-height:320px;display:flex;flex-direction:column;gap:8px;overflow:hidden;}
+  .wx-msg{display:flex;align-items:flex-start;gap:6px;max-width:100%;}
+  .wx-msg.me{flex-direction:row-reverse;}
+  .wx-avatar{width:32px;height:32px;border-radius:4px;flex-shrink:0;object-fit:cover;background:#ccc;display:flex;align-items:center;justify-content:center;font-size:12px;color:#fff;font-weight:700;}
+  .wx-avatar.me-av{background:#07C160;}
+  .wx-avatar.other-av{background:#5B8CDB;}
+  .wx-bubble{background:var(--wx-bubble-other);border-radius:4px 8px 8px 4px;padding:7px 10px;font-size:11.5px;line-height:1.5;max-width:160px;color:#1a1a1a;word-break:break-all;}
+  .wx-msg.me .wx-bubble{background:var(--wx-bubble-me);border-radius:8px 4px 4px 8px;}
+  .wx-transfer{background:#fff;border-radius:6px;padding:8px 10px;display:flex;align-items:center;gap:8px;max-width:160px;border:1px solid #E0E0E0;}
+  .wx-transfer-icon{width:28px;height:28px;background:#FA8C16;border-radius:4px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:14px;flex-shrink:0;}
+  .wx-transfer-text{font-size:10px;color:#666;}
+  .wx-transfer-amt{font-size:13px;font-weight:700;color:#222;}
+  .wx-img-msg{background:#fff;border-radius:6px;overflow:hidden;max-width:120px; border:1px solid #e0e0e0;}
+  .wx-img-msg img{width:100%;display:block;}
+  .wx-video-thumb{background:#222;border-radius:6px;width:130px;height:72px;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden; border:1px solid #ddd;}
+  .wx-video-thumb img{width:100%;height:100%;object-fit:cover;opacity:.7;}
+  .wx-play-icon{position:absolute;width:28px;height:28px;background:rgba(255,255,255,.85);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;}
+  .wx-timestamp{text-align:center;font-size:10px;color:#999;margin:2px 0;}
+
+  /* 病历报告SVG卡片 */
+  .wx-medical-card{background:#fff;border-radius:6px;overflow:hidden;max-width:120px;border:1px solid #e0e0e0;padding:8px;}
+
+  /* 血压查询系统截图模拟 */
+  .wx-bp-query-screenshot{background:#fff;border-radius:6px;overflow:hidden;max-width:150px;border:1px solid #e0e0e0;}
+
+  /* STEP TABS */
+  .step-tabs{display:flex;gap:0;margin-bottom:0;border-radius:10px 10px 0 0;overflow:hidden;border:1px solid var(--gray-border);border-bottom:none;}
+  .step-tab{flex:1;padding:10px 6px;text-align:center;cursor:pointer;background:var(--gray-light);font-size:12px;font-weight:500;color:var(--gray);border-right:1px solid var(--gray-border);transition:background .2s,color .2s;}
+  .step-tab:last-child{border-right:none;}
+  .step-tab.active{background:var(--red);color:#fff;}
+  .step-tab-num{display:block;font-size:16px;margin-bottom:2px;}
+  .step-panels{border:1px solid var(--gray-border);border-radius:0 0 10px 10px;background:#fff;overflow:hidden;}
+  .step-panel{display:none;padding:1.25rem;}
+  .step-panel.active{display:flex;gap:1.5rem;align-items:flex-start;flex-wrap:wrap;}
+  .step-desc{flex:1;min-width:200px;}
+  .step-desc h4{font-size:14px;font-weight:500;margin-bottom:.5rem;color:var(--ink);}
+  .step-desc p{font-size:12px;color:var(--gray);line-height:1.7;margin-bottom:.5rem;}
+  .step-desc ul{list-style:none;padding:0;}
+  .step-desc ul li{font-size:12px;color:var(--gray);padding:2px 0 2px 14px;position:relative;}
+  .step-desc ul li::before{content:'✓';position:absolute;left:0;color:var(--teal-mid);font-size:11px;}
+  .step-mockup{flex-shrink:0;display:flex;justify-content:center;}
+
+  /* BP QUERY IFRAME */
+  .bp-query-frame{width:100%;height:480px;border:none;border-radius:10px;display:block;}
+
+  /* ASSETS */
+  .asset-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;}
+  .asset-card{border-radius:10px;overflow:hidden;border:1px solid var(--gray-border);background:var(--white);box-shadow:var(--card-shadow);}
+  .asset-card-full{grid-column:1/-1;}
+  .asset-label{padding:8px 12px;font-size:12px;color:var(--gray);border-top:1px solid var(--gray-border);background:#fff;}
+  
+  /* Images show fully without crop */
+  .img-wrap { overflow: hidden; background: var(--gray-light); }
+  .img-wrap img { width: 100%; height: auto; display: block; object-fit: contain; }
+
+  /* TRAINING VIDEO */
+  .training-video-wrap{border-radius:10px;overflow:hidden;border:1px solid var(--gray-border);box-shadow:var(--card-shadow);margin-bottom:1rem; background:#000;}
+  .training-video-wrap video{width:100%;display:block;max-height:500px;}
+
+  /* CONVERSION TAGS — 机会点价值等级：t1 高（红）· t2 中（黄）· t3 基础（绿） */
+  .conv-tag{display:inline-block;font-size:10px;padding:1px 8px;border-radius:10px;margin-left:4px;font-weight:500;letter-spacing:.02em;white-space:nowrap;vertical-align:middle;border:1px solid transparent;transition:all .2s;}
+  .conv-tag.t1{background:#FDEDEC;color:#922B21;border-color:#F5CBCC;}
+  .conv-tag.t2{background:#FEF9E7;color:#7D4E00;border-color:#F9E79F;}
+  .conv-tag.t3{background:#E9F7EF;color:#1E8449;border-color:#A9DFBF;}
+  .conv-tag:hover{transform:translateY(-1px);box-shadow:0 2px 6px rgba(0,0,0,.08);}
+
+  /* ROLE LANE — 第五板块岗位单行布局 */
+  .role-lane{display:flex;align-items:flex-start;gap:1rem;background:var(--white);border:1px solid var(--gray-border);border-radius:12px;padding:1rem 1.2rem;margin-bottom:.85rem;box-shadow:var(--card-shadow);transition:transform .2s,box-shadow .2s;}
+  .role-lane:hover{transform:translateY(-2px);box-shadow:0 6px 18px rgba(0,0,0,.08);}
+  .role-lane-head{flex-shrink:0;width:92px;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:.5rem .4rem;border-right:1px dashed var(--gray-border);align-self:stretch;}
+  .role-lane-head .role-badge{display:block;text-align:center;margin-bottom:.3rem;font-size:12px;padding:3px 10px;}
+  .role-lane-head-desc{font-size:10.5px;color:var(--gray);text-align:center;line-height:1.4;}
+  .role-lane-body{flex:1;min-width:0;}
+  .role-lane-body ul{list-style:none;padding:0;margin:0;font-size:12.5px;display:grid;grid-template-columns:1fr;gap:2px;}
+  .role-lane-body ul li{padding:4px 0 4px 14px;position:relative;color:var(--gray);line-height:1.65;}
+  .role-lane-body ul li::before{content:'·';position:absolute;left:0;font-weight:700;}
+  .role-lane.lane-cs .role-lane-body ul li::before{color:var(--red);}
+  .role-lane.lane-chain .role-lane-body ul li::before{color:var(--teal-mid);}
+  .role-lane.lane-biz .role-lane-body ul li::before{color:var(--gold);}
+  .role-lane.lane-clerk .role-lane-body ul li::before{color:var(--gray);}
+
+  /* 机会点颜色图例 */
+  .legend-row{display:flex;flex-wrap:wrap;gap:.75rem;align-items:center;background:#F8F9FA;border:1px dashed var(--gray-border);border-radius:8px;padding:.6rem .9rem;margin-bottom:1rem;font-size:12px;color:var(--gray);}
+  .legend-row strong{color:var(--ink);font-weight:600;margin-right:4px;}
+
+  /* ROLE TABLE INTERACTIONS */
+  table tbody tr{transition:background .2s;}
+  table tbody tr:hover{background:#FDFDFE;}
+  table tbody td ul li{transition:color .15s;}
+  table tbody td ul li:hover{color:var(--ink) !important;}
+
+  /* CHAIN STEP HOVER */
+  .chain-step{transition:transform .2s;cursor:default;}
+  .chain-step:hover{transform:translateY(-3px);}
+  .chain-step:hover .chain-icon{transform:scale(1.15);}
+  .chain-icon{transition:transform .25s;display:inline-block;}
+
+  /* STEP TAB HOVER */
+  .step-tab:not(.active):hover{background:#E8EAED;color:var(--ink);}
+
+  /* HERO VISUAL ANIMATION */
+  @keyframes kv-pulse{0%,100%{opacity:.8;}50%{opacity:1;}}
+  .hero-visual>div:first-child{animation:kv-pulse 4s ease-in-out infinite;}
+
+  /* FOOTER */
+  .footer{text-align:center;padding:2rem;color:var(--gray);font-size:12px;border-top:1px solid var(--gray-border);margin-top:3rem;}
+
+  @media print{.nav{display:none;}.page{padding-top:1rem;}.hero{border-radius:0;}}
+  @media(max-width:640px){
+    .card-grid-2,.card-grid-3{grid-template-columns:1fr;}
+    .hero h1{font-size:1.4rem;}
+    .hero-stats{grid-template-columns:1fr 1fr;}
+    .asset-grid{grid-template-columns:1fr;}
+    .status-grid{grid-template-columns:1fr;}
+    .incentive-rules{grid-template-columns:1fr;}
+    .step-panel.active{flex-direction:column;}
+    .wx-phone{width:100%;max-width:280px;}
+    .step-tabs{flex-wrap:wrap;}
+    .step-tab{flex:1 1 45%;}
+    .role-lane{flex-direction:column;}
+    .role-lane-head{width:100%;flex-direction:row;justify-content:flex-start;gap:.6rem;border-right:none;border-bottom:1px dashed var(--gray-border);padding-bottom:.5rem;margin-bottom:.5rem;}
+    .role-lane-head-desc{text-align:left;}
+    .legend-row{flex-direction:column;align-items:flex-start;}
+  }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-logo">防梗防猝·<span>健康中国行</span></div>
+  <div class="nav-links">
+    <a href="#overview">活动概览</a>
+    <a href="#logic">活动宗旨</a>
+    <a href="#flow">渠道链路</a>
+    <a href="#rules">参与规则</a>
+    <a href="#activation">流程图解</a>
+    <a href="#roles">岗位职责</a>
+    <a href="#qa">常见问题</a>
+  </div>
+</nav>
+
+<div class="page">
+
+  <div class="hero" id="overview">
+    <div class="hero-deco">血压</div>
+    <div class="hero-inner">
+      <div class="hero-badge">吉林市场 · 内部执行手册 2026</div>
+      <h1>防梗防猝·<em>健康中国行</em><br>家庭血压监测普及计划</h1>
+      <p class="hero-sub">公益背书 + 数据驱动 + 精准服务 · 全闭环活动链路</p>
+      <div class="hero-stats">
+        <div class="hero-stat"><span class="hero-stat-num">3</span><span class="hero-stat-label">核心渠道链路</span></div>
+        <div class="hero-stat"><span class="hero-stat-num">30</span><span class="hero-stat-label">天打卡周期</span></div>
+        <div class="hero-stat"><span class="hero-stat-num">20</span><span class="hero-stat-label">元契约金</span></div>
+        <div class="hero-stat"><span class="hero-stat-num">26</span><span class="hero-stat-label">天达标退还</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section" id="logic">
+    <div class="section-header"><div class="section-num">一</div><div class="section-title">活动宗旨与核心逻辑</div><div class="section-line"></div></div>
+    <div class="card" style="margin-bottom:1rem;">
+      <p style="font-size:13px;color:var(--gray);line-height:1.8;">以 <strong style="color:var(--ink);">公益背书 + 数据驱动 + 精准服务</strong> 为核心，依托中国民族医药协会"防梗防猝健康中国行"公益背书，面向高血压目标人群，通过<strong style="color:var(--ink);">公益宣传片引流、健康驿站合作、终端检测科普活动</strong>三大独立渠道精准触达，以医用智能血压计赋能顾客建立每日监测习惯，配合契约金机制强化行为依从性，在30天监测周期内积累真实健康数据，系统驱动精准干预，最终实现销售转化与长期慢病管理的全闭环目标。</p>
+    </div>
+    <!-- 活动主视觉图片 -->
+    <div class="hero-visual" style="border-radius:14px;overflow:hidden;border:1px solid var(--gray-border);box-shadow:var(--card-shadow);background:#f0f0f0;position:relative;min-height:280px;">
+      <img src="https://pusheng.oss-cn-beijing.aliyuncs.com/%E4%B8%BB%E9%A2%98%E6%B4%BB%E5%8A%A8%E4%B8%BBPV.png" alt="活动主视觉海报" style="width:100%;height:100%;object-fit:cover;display:block;">
+    </div>
+  </div>
+
+  <div class="section" id="flow">
+    <div class="section-header"><div class="section-num">二</div><div class="section-title">三大渠道活动链路</div><div class="section-line"></div></div>
+    <div class="card" style="margin-bottom:1rem;">
+      <div class="pipe-head" style="margin-bottom:10px;font-size:15px;font-weight:600;">三大独立引流渠道（三大独立渠道交叉引流，并非各自沉淀）</div>
+      <div class="pipe-row">
+        <div class="pipe-box" style="border-radius:8px 0 0 8px;"><div class="pipe-head">① 公益宣传片引流</div>电视端内容触达<br>电话/企微主动进线报名</div>
+        <div class="pipe-box"><div class="pipe-head">② 健康驿站合作</div>连锁药店慢病管理<br>门店海报邀约/企微纳新</div>
+        <div class="pipe-box" style="border-radius:0 8px 8px 0;"><div class="pipe-head">③ 终端检测科普活动</div>业务/动销师进店<br>血压检测+现场科普</div>
+      </div>
+      <div class="pipe-connector">↓</div>
+      <div class="pipe-head" style="margin:4px 0 10px;text-align:center;font-size:15px;font-weight:600;">统一活动链路（所有渠道共用）</div>
+      <div class="chain" style="box-shadow:none;border:1px dashed var(--gray-border);">
+        <div class="chain-step"><span class="chain-icon">📝</span><div class="chain-label"><strong>报名登记</strong>企微添加+信息采集</div></div>
+        <div class="chain-step"><span class="chain-icon">📦</span><div class="chain-label"><strong>血压计领取</strong>邮寄/企业微信到店缴契约金</div></div>
+        <div class="chain-step"><span class="chain-icon">📊</span><div class="chain-label"><strong>测量上传</strong>30天每日打卡</div></div>
+        <div class="chain-step"><span class="chain-icon">💬</span><div class="chain-label"><strong>报告解读</strong>阶段性干预分析</div></div>
+        <div class="chain-step"><span class="chain-icon">💰</span><div class="chain-label"><strong>契约金退还</strong>打卡≥26天达标</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section" id="rules">
+    <div class="section-header"><div class="section-num">三</div><div class="section-title">顾客活动参与规则</div><div class="section-line"></div></div>
+
+    <!-- 血压计介绍卡片 -->
+    <div class="card" style="margin-bottom:1rem;">
+      <div style="display:flex;align-items:flex-start;gap:1.25rem;flex-wrap:wrap;">
+        <div style="flex-shrink:0;width:56px;height:56px;background:linear-gradient(135deg,var(--red),var(--red-dark));border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:2rem;">🩺</div>
+        <div style="flex:1;min-width:200px;">
+          <div style="font-size:15px;font-weight:700;color:var(--ink);margin-bottom:.4rem;">活动核心权益 · 医用智能血压计</div>
+          <p style="font-size:13px;color:var(--gray);line-height:1.8;margin-bottom:.75rem;">参与本次活动即可领取专业<strong style="color:var(--ink);">医用级智能血压计</strong>一台，满足家庭日常血压监测需求，助力建立科学、规律的健康管理习惯。</p>
+          <div class="card-grid card-grid-3" style="gap:.75rem;">
+            <div style="background:var(--red-light);border-radius:10px;padding:.75rem 1rem;text-align:center;">
+              <div style="font-size:1.4rem;margin-bottom:.3rem;">🔊</div>
+              <div style="font-size:13px;font-weight:600;color:var(--red-dark);margin-bottom:.2rem;">语音播报</div>
+              <div style="font-size:11px;color:var(--gray);">测量结果实时语音播报，老年人无需看屏幕即可知晓数值</div>
+            </div>
+            <div style="background:#EBF5FB;border-radius:10px;padding:.75rem 1rem;text-align:center;">
+              <div style="font-size:1.4rem;margin-bottom:.3rem;">📱</div>
+              <div style="font-size:13px;font-weight:600;color:#1A5276;margin-bottom:.2rem;">小程序同步</div>
+              <div style="font-size:11px;color:var(--gray);">与清血小助手小程序数据自动同步，拍照一键上传，历史数据随时查看</div>
+            </div>
+            <div style="background:var(--teal-light);border-radius:10px;padding:.75rem 1rem;text-align:center;">
+              <div style="font-size:1.4rem;margin-bottom:.3rem;">📊</div>
+              <div style="font-size:13px;font-weight:600;color:var(--teal);margin-bottom:.2rem;">数据管理</div>
+              <div style="font-size:11px;color:var(--gray);">系统自动生成血压趋势图与阶段性健康报告，专业客服跟进解读</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 参与规则三卡片 -->
+    <div class="card-grid card-grid-3" style="gap:1rem;margin-bottom:1rem;">
+
+      <!-- 参与规则 -->
+      <div style="background:var(--white);border:1px solid var(--gray-border);border-radius:12px;overflow:hidden;box-shadow:var(--card-shadow);">
+        <div style="background:var(--ink);padding:.75rem 1rem;display:flex;align-items:center;gap:.5rem;">
+          <span style="font-size:1rem;">📋</span>
+          <span style="font-size:13px;font-weight:600;color:#fff;">参与规则</span>
+        </div>
+        <div style="padding:1rem;">
+          <ul style="list-style:none;padding:0;margin:0;">
+            <li style="font-size:12px;color:var(--gray);padding:.4rem 0 .4rem 1.1rem;position:relative;border-bottom:1px solid var(--gray-border);background:#FEF9E7;">
+              <span style="position:absolute;left:0;color:var(--red);font-weight:700;">·</span>
+              <strong style="color:var(--red-dark);">活动受众条件：患有高血压的患者，且为60岁以上老年人</strong>，方可报名
+            </li>
+            <li style="font-size:12px;color:var(--gray);padding:.4rem 0 .4rem 1.1rem;position:relative;border-bottom:1px solid var(--gray-border);">
+              <span style="position:absolute;left:0;color:var(--red);font-weight:700;">·</span>
+              添加企微客服，提交<strong style="color:var(--ink);">姓名、电话、病历、购药证明</strong>
+            </li>
+            <li style="font-size:12px;color:var(--gray);padding:.4rem 0 .4rem 1.1rem;position:relative;border-bottom:1px solid var(--gray-border);">
+              <span style="position:absolute;left:0;color:var(--red);font-weight:700;">·</span>
+              客服审核通过后，缴纳 <strong style="color:var(--red-dark);">20元契约金</strong>
+            </li>
+            <li style="font-size:12px;color:var(--gray);padding:.4rem 0 .4rem 1.1rem;position:relative;border-bottom:1px solid var(--gray-border);">
+              <span style="position:absolute;left:0;color:var(--red);font-weight:700;">·</span>
+              支持<strong style="color:var(--ink);">邮寄货到付款</strong>、<strong style="color:var(--ink);">企业微信缴纳</strong>或<strong style="color:var(--ink);">到店现场缴纳</strong>三种方式
+            </li>
+            <li style="font-size:12px;color:var(--gray);padding:.4rem 0 0 1.1rem;position:relative;">
+              <span style="position:absolute;left:0;color:var(--red);font-weight:700;">·</span>
+              每人限领一台，需符合高血压慢病管理适用条件
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- 打卡规则 -->
+      <div style="background:var(--white);border:1px solid var(--gray-border);border-radius:12px;overflow:hidden;box-shadow:var(--card-shadow);">
+        <div style="background:var(--teal);padding:.75rem 1rem;display:flex;align-items:center;gap:.5rem;">
+          <span style="font-size:1rem;">📆</span>
+          <span style="font-size:13px;font-weight:600;color:#fff;">打卡规则</span>
+        </div>
+        <div style="padding:1rem;">
+          <ul style="list-style:none;padding:0;margin:0;">
+            <li style="font-size:12px;color:var(--gray);padding:.4rem 0 .4rem 1.1rem;position:relative;border-bottom:1px solid var(--gray-border);">
+              <span style="position:absolute;left:0;color:var(--teal-mid);font-weight:700;">·</span>
+              领取血压计后起算，连续监测 <strong style="color:var(--ink);">30天</strong>
+            </li>
+            <li style="font-size:12px;color:var(--gray);padding:.4rem 0 .4rem 1.1rem;position:relative;border-bottom:1px solid var(--gray-border);">
+              <span style="position:absolute;left:0;color:var(--teal-mid);font-weight:700;">·</span>
+              每日需上传血压数值至<strong style="color:var(--ink);">清血小助手</strong>小程序完成打卡
+            </li>
+            <li style="font-size:12px;color:var(--gray);padding:.4rem 0 .4rem 1.1rem;position:relative;border-bottom:1px solid var(--gray-border);">
+              <span style="position:absolute;left:0;color:var(--teal-mid);font-weight:700;">·</span>
+              建议早晚各测一次，每日8:30客服推送打卡提醒
+            </li>
+            <li style="font-size:12px;color:var(--gray);padding:.4rem 0 0 1.1rem;position:relative;">
+              <span style="position:absolute;left:0;color:var(--teal-mid);font-weight:700;">·</span>
+              不会操作可拍照发给客服，由客服协助录入
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- 退还规则 -->
+      <div style="background:var(--white);border:1px solid var(--gray-border);border-radius:12px;overflow:hidden;box-shadow:var(--card-shadow);">
+        <div style="background:var(--gold);padding:.75rem 1rem;display:flex;align-items:center;gap:.5rem;">
+          <span style="font-size:1rem;">💰</span>
+          <span style="font-size:13px;font-weight:600;color:#fff;">契约金退还规则</span>
+        </div>
+        <div style="padding:1rem;">
+          <ul style="list-style:none;padding:0;margin:0;">
+            <li style="font-size:12px;color:var(--gray);padding:.4rem 0 .4rem 1.1rem;position:relative;border-bottom:1px solid var(--gray-border);">
+              <span style="position:absolute;left:0;color:var(--gold);font-weight:700;">·</span>
+              30天内完成 <strong style="color:var(--red-dark);">≥26天</strong> 血压打卡即达标
+            </li>
+            <li style="font-size:12px;color:var(--gray);padding:.4rem 0 .4rem 1.1rem;position:relative;border-bottom:1px solid var(--gray-border);">
+              <span style="position:absolute;left:0;color:var(--gold);font-weight:700;">·</span>
+              达标后 <strong style="color:var(--ink);">7个工作日内</strong> 原路全额退还20元契约金
+            </li>
+            <li style="font-size:12px;color:var(--gray);padding:.4rem 0 .4rem 1.1rem;position:relative;border-bottom:1px solid var(--gray-border);">
+              <span style="position:absolute;left:0;color:var(--gold);font-weight:700;">·</span>
+              未达标：契约金可<strong style="color:var(--ink);">全额抵扣</strong>产品购买费用，无使用期限
+            </li>
+            <li style="font-size:12px;color:var(--gray);padding:.4rem 0 0 1.1rem;position:relative;">
+              <span style="position:absolute;left:0;color:var(--gold);font-weight:700;">·</span>
+              退还流程：客服统计达标名单 → 文员审核 → 办理退还
+            </li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="section" id="activation">
+    <div class="section-header"><div class="section-num">四</div><div class="section-title">顾客参与全流程图解（以顾客视角为核心）</div><div class="section-line"></div></div>
+    <p style="font-size:12px;color:var(--gray);margin-bottom:12px;"><strong style="color:var(--ink);">血压计交付方式：</strong>邮寄（货到付款缴契约金）· 到店领取（现场缴契约金或企业微信缴契约金）· 线下场景增加店员实操演示</p>
+
+    <div class="step-tabs">
+      <div class="step-tab active" onclick="switchStep(0)"><span class="step-tab-num">①</span>报名登记</div>
+      <div class="step-tab" onclick="switchStep(1)"><span class="step-tab-num">②</span>血压计领取</div>
+      <div class="step-tab" onclick="switchStep(2)"><span class="step-tab-num">③</span>测量上传</div>
+      <div class="step-tab" onclick="switchStep(3)"><span class="step-tab-num">④</span>报告解读</div>
+      <div class="step-tab" onclick="switchStep(4)"><span class="step-tab-num">⑤</span>契约金退还</div>
+    </div>
+    <div class="step-panels">
+
+      <!-- 步骤①：注册绑定 — 病历图改为SVG病历报告 -->
+      <div class="step-panel active" id="step-0">
+        <div class="step-mockup">
+          <div class="wx-phone">
+            <div class="wx-statusbar"><span>09:41</span></div>
+            <div class="wx-titlebar">
+              <span class="wx-back">‹</span>
+              <span class="wx-name">清血八味片黄老师</span>
+              <span class="wx-dots">···</span>
+            </div>
+            <div class="wx-body" id="wx-chat-0">
+              <div class="wx-timestamp">10:02</div>
+              <div class="wx-msg">
+                <div class="wx-avatar other-av">黄</div>
+                <div class="wx-bubble" style="background:#fff;">欢迎您参与本次活动！请上传您的<strong>姓名、电话、病历、药店店名</strong>，核实后即可安排领取血压计 🩺</div>
+              </div>
+              <div class="wx-msg me" id="wx-reply-1" style="opacity:0;transition:opacity .5s;">
+                <div class="wx-avatar me-av">客</div>
+                <div class="wx-bubble">黄肖桐，17664051298，国大红旗街店</div>
+              </div>
+              <!-- ★ 修改点1：病历图从电脑图改为SVG病历报告 -->
+              <div class="wx-msg me" id="wx-reply-2" style="opacity:0;transition:opacity .5s;">
+                <div class="wx-avatar me-av">客</div>
+                <div class="wx-medical-card">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 110 150" width="110" height="150">
+                    <!-- 纸张背景 -->
+                    <rect width="110" height="150" fill="#FAFAFA" rx="2"/>
+                    <!-- 顶部红色标题栏 -->
+                    <rect width="110" height="28" fill="#C0392B" rx="2"/>
+                    <rect x="0" y="24" width="110" height="4" fill="#C0392B"/>
+                    <!-- 标题文字 -->
+                    <text x="55" y="11" font-family="sans-serif" font-size="7.5" fill="#fff" text-anchor="middle" font-weight="bold">病  历  报  告</text>
+                    <text x="55" y="22" font-family="sans-serif" font-size="5" fill="rgba(255,255,255,0.75)" text-anchor="middle">MEDICAL RECORD REPORT</text>
+                    <!-- 医院章图标 -->
+                    <circle cx="90" cy="14" r="9" fill="none" stroke="rgba(255,255,255,0.4)" stroke-width="1"/>
+                    <text x="90" y="12" font-family="sans-serif" font-size="5" fill="rgba(255,255,255,0.6)" text-anchor="middle">医院</text>
+                    <text x="90" y="18" font-family="sans-serif" font-size="4.5" fill="rgba(255,255,255,0.6)" text-anchor="middle">专用章</text>
+                    <!-- 分割线 -->
+                    <line x1="8" y1="36" x2="102" y2="36" stroke="#E0E0E0" stroke-width="0.5"/>
+                    <!-- 患者信息区 -->
+                    <text x="8" y="46" font-family="sans-serif" font-size="5.5" fill="#333" font-weight="bold">患者信息</text>
+                    <text x="8" y="56" font-family="sans-serif" font-size="5" fill="#666">姓名：黄肖桐</text>
+                    <text x="8" y="65" font-family="sans-serif" font-size="5" fill="#666">性别：男　　年龄：62岁</text>
+                    <text x="8" y="74" font-family="sans-serif" font-size="5" fill="#666">就诊日期：2026-03-15</text>
+                    <line x1="8" y1="79" x2="102" y2="79" stroke="#E0E0E0" stroke-width="0.5"/>
+                    <!-- 诊断信息 -->
+                    <text x="8" y="89" font-family="sans-serif" font-size="5.5" fill="#333" font-weight="bold">诊断结果</text>
+                    <rect x="8" y="93" width="94" height="14" fill="#FFF3F3" rx="2"/>
+                    <text x="12" y="101" font-family="sans-serif" font-size="5" fill="#C0392B" font-weight="bold">▸ 原发性高血压（2级）</text>
+                    <text x="8" y="117" font-family="sans-serif" font-size="5" fill="#666">血压：158/96 mmHg</text>
+                    <text x="8" y="126" font-family="sans-serif" font-size="5" fill="#666">用药：苯磺酸氨氯地平片</text>
+                    <line x1="8" y1="131" x2="102" y2="131" stroke="#E0E0E0" stroke-width="0.5"/>
+                    <!-- 底部签章 -->
+                    <text x="8" y="141" font-family="sans-serif" font-size="4.5" fill="#999">主治医师：李__（签章）</text>
+                    <circle cx="92" cy="140" r="7" fill="none" stroke="#C0392B" stroke-width="0.8" stroke-dasharray="2,1" opacity="0.5"/>
+                    <text x="92" y="138" font-family="sans-serif" font-size="3.5" fill="#C0392B" text-anchor="middle" opacity="0.6">科室</text>
+                    <text x="92" y="143" font-family="sans-serif" font-size="3.5" fill="#C0392B" text-anchor="middle" opacity="0.6">专用</text>
+                  </svg>
+                </div>
+              </div>
+              <div class="wx-msg" id="wx-reply-3" style="opacity:0;transition:opacity .5s;">
+                <div class="wx-avatar other-av">黄</div>
+                <div class="wx-bubble" style="background:#fff;">✅ 经核实，您的信息已通过审核，符合参与本次活动条件！稍后会有专属客服联系您，告知血压计领取安排 😊</div>
+              </div>
+              <div class="wx-msg me" id="wx-reply-4" style="opacity:0;transition:opacity .5s;">
+                <div class="wx-avatar me-av">客</div>
+                <div class="wx-bubble">好的，谢谢！</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="step-desc">
+          <h4>步骤1：报名登记</h4>
+          <p>顾客添加企微后，客服引导完成信息登记，经审核确认符合参与条件后，标记为报名成功，后续专属客服跟进血压计领取安排。</p>
+          <ul>
+            <li>添加企微，收到自动欢迎语</li>
+            <li>上传姓名、电话、病历、购药证明</li>
+            <li>客服完成信息核实审核</li>
+            <li>审核通过，报名登记完成</li>
+          </ul>
+          <div class="tip-box" style="margin-top:1rem;">💡 动画演示：对话气泡依次出现，还原真实沟通节奏。点击下方「播放」可重新演示。</div>
+          <button onclick="replayChat(0)" style="margin-top:.75rem;padding:6px 16px;background:var(--red);color:#fff;border:none;border-radius:6px;font-size:12px;cursor:pointer;">▶ 重新演示对话</button>
+        </div>
+      </div>
+
+      <!-- 步骤②：血压计领取 -->
+      <div class="step-panel" id="step-1">
+        <div class="step-mockup">
+          <div class="wx-phone">
+            <div class="wx-statusbar"><span>09:41</span></div>
+            <div class="wx-titlebar">
+              <span class="wx-back">‹</span>
+              <span class="wx-name">清血八味片黄老师</span>
+              <span class="wx-dots">···</span>
+            </div>
+            <div class="wx-body" id="wx-chat-1">
+              <div class="wx-wx-timestamp">报名审核通过</div>
+              <div class="wx-timestamp">14:05</div>
+              <div class="wx-msg">
+                <div class="wx-avatar other-av">黄</div>
+                <div class="wx-bubble" style="background:#fff;">黄阿姨您好！您的报名已审核通过 🎉 我们将为您安排邮寄血压计，货到付款20元契约金，请确认收货地址：<br><strong>吉林市解放大路XX号，黄肖桐，176-6405-XXXX</strong><br>请确认是否正确？</div>
+              </div>
+              <div class="wx-msg me" id="wx1-r1" style="opacity:0;transition:opacity .5s;">
+                <div class="wx-avatar me-av">客</div>
+                <div class="wx-bubble">地址正确，谢谢！</div>
+              </div>
+              <div class="wx-msg" id="wx1-r2" style="opacity:0;transition:opacity .5s;">
+                <div class="wx-avatar other-av">黄</div>
+                <div class="wx-bubble" style="background:#fff;">好的，今天安排发货，预计1-2天收到，收到后请签收并支付20元契约金，我会及时跟进 📦</div>
+              </div>
+              <div class="wx-timestamp" id="wx1-t3" style="opacity:0;transition:opacity .5s;">2天后</div>
+              <div class="wx-msg" id="wx1-r3" style="opacity:0;transition:opacity .5s;">
+                <div class="wx-avatar other-av">黄</div>
+                <div class="wx-bubble" style="background:#fff;">黄阿姨，您好！血压计到了吗？签收后请查看操作视频，按步骤完成首次测量并打卡 🩺</div>
+              </div>
+              <div class="wx-msg" id="wx1-r4" style="opacity:0;transition:opacity .5s;">
+                <div class="wx-avatar other-av">黄</div>
+                <div class="wx-video-thumb" style="background: url('https://placehold.co/130x72/1A1A2E/F4D03F?text=▶+血压计使用教程') center/cover;">
+                  <div class="wx-play-icon">▶</div>
+                </div>
+              </div>
+              <div class="wx-msg me" id="wx1-r5" style="opacity:0;transition:opacity .5s;">
+                <div class="wx-avatar me-av">客</div>
+                <div class="wx-bubble">收到了，视频看了，刚测完了！</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="step-desc">
+          <h4>步骤2：血压计领取</h4>
+          <p>客服电话/企微沟通，告知参与规则，确认收货地址后安排邮寄，货到付款缴20元契约金。收到后客服主动跟进，推送操作视频，引导完成首次测量打卡。</p>
+          <ul>
+            <li>客服确认顾客收货地址，安排当天发货</li>
+            <li>顾客收到后，货到付款支付20元契约金</li>
+            <li>客服1-2天后主动跟进确认收货情况</li>
+            <li>发送血压计操作使用视频</li>
+            <li>引导顾客完成首次测量并上传数据打卡</li>
+          </ul>
+          <button onclick="replayChat(1)" style="margin-top:.75rem;padding:6px 16px;background:var(--red);color:#fff;border:none;border-radius:6px;font-size:12px;cursor:pointer;">▶ 重新演示对话</button>
+        </div>
+      </div>
+
+      <!-- 步骤③：上传数据 — ★ 修改点2：增加"请查看操作视频"文案及视频消息 -->
+      <div class="step-panel" id="step-2">
+        <div class="step-mockup">
+          <div class="wx-phone">
+            <div class="wx-statusbar"><span>09:41</span></div>
+            <div class="wx-titlebar">
+              <span class="wx-back">‹</span>
+              <span class="wx-name">清血八味片黄老师</span>
+              <span class="wx-dots">···</span>
+            </div>
+            <div class="wx-body" id="wx-chat-2">
+              <div class="wx-timestamp">08:31</div>
+              <div class="wx-msg">
+                <div class="wx-avatar other-av">黄</div>
+                <div class="wx-bubble" style="background:#fff;">王阿姨早上好！今天记得测血压啦，测完后<strong>打开清血小助手，拍照上传</strong>就行，超简单，请查看操作视频 📲</div>
+              </div>
+              <!-- ★ 新增操作视频消息，紧跟文案后 -->
+              <div class="wx-msg" id="wx2-v0" style="opacity:0;transition:opacity .5s;">
+                <div class="wx-avatar other-av">黄</div>
+                <div class="wx-video-thumb" style="background: url('https://placehold.co/130x72/2C3E50/F4D03F?text=▶+上传操作视频') center/cover;">
+                  <div class="wx-play-icon">▶</div>
+                </div>
+              </div>
+              <div class="wx-msg me" id="wx2-r1" style="opacity:0;transition:opacity .5s;">
+                <div class="wx-avatar me-av">客</div>
+                <div class="wx-img-msg">
+                  <img src="https://images.unsplash.com/photo-1631549916768-4119b2e5f926?auto=format&fit=crop&w=300&q=80" alt="血压数据照片" style="width:120px; object-fit:cover;">
+                </div>
+              </div>
+              <div class="wx-msg me" id="wx2-r2" style="opacity:0;transition:opacity .5s;">
+                <div class="wx-avatar me-av">客</div>
+                <div class="wx-bubble">今天135/85，脉搏74</div>
+              </div>
+              <div class="wx-msg" id="wx2-r3" style="opacity:0;transition:opacity .5s;">
+                <div class="wx-avatar other-av">黄</div>
+                <div class="wx-bubble" style="background:#fff;">👍 数据已记录！今天是第8天打卡，坚持下去，满26天就能退契约金啦！</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="step-desc">
+          <h4>步骤3：测量与数据上传</h4>
+          <p>每日测量后通过小程序拍照上传，或发送到企微由客服协助录入，完成当日打卡。客服每日8:30推送提醒，24小时内跟进未打卡顾客。</p>
+          <ul>
+            <li>打开「清血小助手」小程序</li>
+            <li>拍照识别屏幕数值（自动OCR）</li>
+            <li>或手动输入高压/低压/脉搏</li>
+            <li>系统自动标记打卡日期</li>
+            <li>不会操作可直接发给客服协助录入</li>
+          </ul>
+          <button onclick="replayChat(2)" style="margin-top:.75rem;padding:6px 16px;background:var(--red);color:#fff;border:none;border-radius:6px;font-size:12px;cursor:pointer;">▶ 重新演示对话</button>
+        </div>
+      </div>
+
+      <!-- 步骤④：自动分析 — ★ 修改点3：增加血压查询系统SVG截图 -->
+      <div class="step-panel" id="step-3">
+        <div class="step-mockup">
+          <div class="wx-phone">
+            <div class="wx-statusbar"><span>09:41</span></div>
+            <div class="wx-titlebar">
+              <span class="wx-back">‹</span>
+              <span class="wx-name">清血八味片黄老师</span>
+              <span class="wx-dots">···</span>
+            </div>
+            <div class="wx-body" id="wx-chat-3">
+              <div class="wx-timestamp">第10天</div>
+              <div class="wx-msg">
+                <div class="wx-avatar other-av">黄</div>
+                <div class="wx-bubble" style="background:#fff;">王阿姨您好！您已坚持打卡10天🎉，系统生成了<strong>阶段性血压分析报告</strong>，请查收：</div>
+              </div>
+              <div class="wx-msg" id="wx3-r1" style="opacity:0;transition:opacity .5s;">
+                <div class="wx-avatar other-av">黄</div>
+                <div class="wx-img-msg" style="max-width:140px;">
+                  <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=300&q=80" alt="血压趋势图" style="width:140px; object-fit:cover;">
+                </div>
+              </div>
+              <div class="wx-msg" id="wx3-r2" style="opacity:0;transition:opacity .5s;">
+                <div class="wx-avatar other-av">黄</div>
+                <div class="wx-bubble" style="background:#fff;">您的血压整体偏高，且波动明显，这说明血管可能不够通畅，降压药只是治标，建议考虑清血护管方案 💊</div>
+              </div>
+              <!-- ★ 新增：血压查询系统截图（SVG模拟） -->
+              <div class="wx-msg" id="wx3-r2-img" style="opacity:0;transition:opacity .5s;">
+                <div class="wx-avatar other-av">黄</div>
+                <div class="wx-bp-query-screenshot">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 150 200" width="150" height="200">
+                    <!-- 背景 -->
+                    <rect width="150" height="200" fill="#F5F7FA"/>
+                    <!-- 顶部标题栏 -->
+                    <rect width="150" height="32" fill="#1A1A2E"/>
+                    <text x="75" y="13" font-family="sans-serif" font-size="6.5" fill="#F4D03F" text-anchor="middle" font-weight="bold">清血小助手</text>
+                    <text x="75" y="24" font-family="sans-serif" font-size="5" fill="rgba(255,255,255,0.6)" text-anchor="middle">血压记录查询系统</text>
+                    <!-- 用户信息条 -->
+                    <rect x="0" y="32" width="150" height="22" fill="#fff" />
+                    <circle cx="18" cy="43" r="7" fill="#5B8CDB"/>
+                    <text x="18" y="46" font-family="sans-serif" font-size="6" fill="#fff" text-anchor="middle" font-weight="bold">王</text>
+                    <text x="30" y="40" font-family="sans-serif" font-size="5.5" fill="#333" font-weight="bold">王阿姨</text>
+                    <text x="30" y="49" font-family="sans-serif" font-size="4.5" fill="#999">已打卡 10 / 30 天</text>
+                    <rect x="110" y="37" width="32" height="12" fill="#EBF5FB" rx="3"/>
+                    <text x="126" y="46" font-family="sans-serif" font-size="5" fill="#1A5276" text-anchor="middle">查询记录</text>
+                    <!-- 分割线 -->
+                    <line x1="0" y1="54" x2="150" y2="54" stroke="#E5E7EA" stroke-width="0.5"/>
+                    <!-- 血压概况卡片 -->
+                    <rect x="6" y="58" width="138" height="42" fill="#fff" rx="4" />
+                    <rect x="6" y="58" width="138" height="42" fill="none" stroke="#E5E7EA" stroke-width="0.5" rx="4"/>
+                    <text x="12" y="68" font-family="sans-serif" font-size="5" fill="#566573" font-weight="bold">近10天血压均值</text>
+                    <!-- 高压 -->
+                    <text x="18" y="82" font-family="sans-serif" font-size="13" fill="#C0392B" font-weight="bold">142</text>
+                    <text x="18" y="90" font-family="sans-serif" font-size="4.5" fill="#999">收缩压(高压)</text>
+                    <!-- 分隔符 -->
+                    <text x="60" y="84" font-family="sans-serif" font-size="10" fill="#CCC">/</text>
+                    <!-- 低压 -->
+                    <text x="70" y="82" font-family="sans-serif" font-size="13" fill="#E67E22" font-weight="bold">91</text>
+                    <text x="70" y="90" font-family="sans-serif" font-size="4.5" fill="#999">舒张压(低压)</text>
+                    <!-- 脉搏 -->
+                    <text x="108" y="78" font-family="sans-serif" font-size="10" fill="#27AE60" font-weight="bold">76</text>
+                    <text x="108" y="86" font-family="sans-serif" font-size="4" fill="#999">次/分</text>
+                    <text x="108" y="92" font-family="sans-serif" font-size="4" fill="#999">脉搏</text>
+                    <!-- 状态标签 -->
+                    <rect x="6" y="102" width="138" height="14" fill="#FFF3F3" rx="3"/>
+                    <circle cx="16" cy="109" r="3" fill="#C0392B"/>
+                    <text x="22" y="113" font-family="sans-serif" font-size="5" fill="#C0392B">⚠ 血压偏高，建议关注并干预</text>
+                    <!-- 折线图区域 -->
+                    <rect x="6" y="119" width="138" height="52" fill="#fff" rx="4"/>
+                    <rect x="6" y="119" width="138" height="52" fill="none" stroke="#E5E7EA" stroke-width="0.5" rx="4"/>
+                    <text x="12" y="128" font-family="sans-serif" font-size="4.5" fill="#566573" font-weight="bold">血压趋势图（近10天）</text>
+                    <!-- Y轴标签 -->
+                    <text x="10" y="138" font-family="sans-serif" font-size="3.5" fill="#CCC">160</text>
+                    <text x="10" y="148" font-family="sans-serif" font-size="3.5" fill="#CCC">140</text>
+                    <text x="10" y="158" font-family="sans-serif" font-size="3.5" fill="#CCC">120</text>
+                    <!-- 参考线 -->
+                    <line x1="22" y1="148" x2="140" y2="148" stroke="#FADBD8" stroke-width="0.5" stroke-dasharray="2,2"/>
+                    <text x="140" y="147" font-family="sans-serif" font-size="3" fill="#C0392B">140</text>
+                    <!-- 高压折线 -->
+                    <polyline points="24,152 36,148 48,150 60,145 72,143 84,147 96,141 108,144 120,146 132,142"
+                      fill="none" stroke="#C0392B" stroke-width="1.2" stroke-linejoin="round"/>
+                    <!-- 低压折线 -->
+                    <polyline points="24,162 36,160 48,161 60,158 72,156 84,159 96,155 108,157 120,159 132,156"
+                      fill="none" stroke="#E67E22" stroke-width="1" stroke-linejoin="round"/>
+                    <!-- 图例 -->
+                    <rect x="30" y="166" width="6" height="2" fill="#C0392B" rx="1"/>
+                    <text x="38" y="168" font-family="sans-serif" font-size="3.5" fill="#666">高压</text>
+                    <rect x="68" y="166" width="6" height="2" fill="#E67E22" rx="1"/>
+                    <text x="76" y="168" font-family="sans-serif" font-size="3.5" fill="#666">低压</text>
+                    <!-- 底部打卡进度 -->
+                    <rect x="6" y="174" width="138" height="20" fill="#F0FBF4" rx="4"/>
+                    <rect x="6" y="174" width="138" height="20" fill="none" stroke="#A8DDB5" stroke-width="0.5" rx="4"/>
+                    <text x="12" y="183" font-family="sans-serif" font-size="4.5" fill="#1E8449" font-weight="bold">打卡进度</text>
+                    <!-- 进度条 -->
+                    <rect x="12" y="187" width="120" height="4" fill="#E0E0E0" rx="2"/>
+                    <rect x="12" y="187" width="40" height="4" fill="#27AE60" rx="2"/>
+                    <text x="134" y="191" font-family="sans-serif" font-size="4" fill="#27AE60" text-anchor="end">10/30天</text>
+                  </svg>
+                </div>
+              </div>
+              <div class="wx-msg me" id="wx3-r3" style="opacity:0;transition:opacity .5s;">
+                <div class="wx-avatar me-av">客</div>
+                <div class="wx-bubble">那我该怎么办呢？</div>
+              </div>
+              <div class="wx-msg" id="wx3-r4" style="opacity:0;transition:opacity .5s;">
+                <div class="wx-avatar other-av">黄</div>
+                <div class="wx-bubble" style="background:#fff;">我们有专属的清血八味片疗程方案，您的20元契约金可以全额抵扣，现在了解一下吗？</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="step-desc">
+          <h4>步骤4：专业报告解读</h4>
+          <p>系统自动生成血压趋势图与阶段性健康分析报告，客服结合历史数据曲线进行精准干预，推进转化。</p>
+          <ul>
+            <li>系统自动生成血压历史曲线与趋势图</li>
+            <li>第2/4/7/10/21天节点主动推送阶段报告</li>
+            <li>血压异常立即触发紧急回访</li>
+            <li>结合数据讲解降压药局限性与清血八味片价值</li>
+            <li>契约金可全额抵扣产品费用</li>
+          </ul>
+          <button onclick="replayChat(3)" style="margin-top:.75rem;padding:6px 16px;background:var(--red);color:#fff;border:none;border-radius:6px;font-size:12px;cursor:pointer;">▶ 重新演示对话</button>
+        </div>
+      </div>
+
+      <!-- 步骤⑤：契约金退还 -->
+      <div class="step-panel" id="step-4">
+        <div class="step-mockup">
+          <div class="wx-phone">
+            <div class="wx-statusbar"><span>09:41</span></div>
+            <div class="wx-titlebar">
+              <span class="wx-back">‹</span>
+              <span class="wx-name">清血八味片黄老师</span>
+              <span class="wx-dots">···</span>
+            </div>
+            <div class="wx-body" id="wx-chat-4">
+              <div class="wx-timestamp">第30天</div>
+              <div class="wx-msg">
+                <div class="wx-avatar other-av">黄</div>
+                <div class="wx-bubble" style="background:#fff;">🎉 恭喜您完成30天打卡！您共打卡 <strong>28天</strong>，已满足退还条件，契约金将在7个工作日内原路退回 💰</div>
+              </div>
+              <div class="wx-msg me" id="wx4-r1" style="opacity:0;transition:opacity .5s;">
+                <div class="wx-avatar me-av">客</div>
+                <div class="wx-bubble">太好了！谢谢！</div>
+              </div>
+              <div class="wx-msg" id="wx4-r2" style="opacity:0;transition:opacity .5s;">
+                <div class="wx-avatar other-av">黄</div>
+                <div class="wx-bubble" style="background:#fff;">根据您30天的血压数据，我们为您整理了完整的健康报告，建议继续使用清血八味片巩固效果，现在有专属疗程优惠，契约金可全额抵扣，了解一下吗？</div>
+              </div>
+              <div class="wx-msg me" id="wx4-r3" style="opacity:0;transition:opacity .5s;">
+                <div class="wx-avatar me-av">客</div>
+                <div class="wx-bubble">好的，你说说看～</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="step-desc">
+          <h4>步骤5：契约金退还</h4>
+          <p>30天打卡期满，文员审核达标名单，客服办理契约金退还，并趁热打铁推进疗程复购转化。</p>
+          <ul>
+            <li>打卡≥26天：7个工作日内原路全额退还20元契约金</li>
+            <li>未达标：契约金可全额抵扣清血八味片购买费用</li>
+            <li>出具完整30天健康报告，结合数据推疗程方案</li>
+            <li>纳入慢病管理，持续触达，建立长期服务关系</li>
+          </ul>
+          <div class="tip-box" style="margin-top:1rem;">💡 契约金无使用期限，未退还者随时可抵扣产品费用，是重要的二次转化切入点。</div>
+          <button onclick="replayChat(4)" style="margin-top:.75rem;padding:6px 16px;background:var(--red);color:#fff;border:none;border-radius:6px;font-size:12px;cursor:pointer;">▶ 重新演示对话</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- 标题五：各岗位承接与转化（交互式三渠道tab切换 · 单行岗位布局） -->
+  <div class="section" id="roles">
+    <div class="section-header"><div class="section-num">五</div><div class="section-title">各岗位承接与转化</div><div class="section-line"></div></div>
+    <p style="font-size:12px;color:var(--gray);margin-bottom:10px;"><strong style="color:var(--ink);">交互说明：</strong>点击下方渠道标签，依次查看该渠道下<strong style="color:var(--ink);">客服 / 连锁 / 动销 / 文员</strong>四大岗位的承接与转化机会点。</p>
+
+    <!-- 机会点颜色等级图例 -->
+    <div class="legend-row">
+      <strong>机会点等级：</strong>
+      <span><span class="conv-tag t1">高价值机会</span>直接促成成交或关键转化节点</span>
+      <span><span class="conv-tag t2">中等机会</span>沟通铺垫、意向培育</span>
+      <span><span class="conv-tag t3">基础机会</span>触达布控、流量入口</span>
+    </div>
+
+    <!-- 渠道Tab切换器 -->
+    <div class="step-tabs">
+      <div class="step-tab active" onclick="switchChannel(0)"><span class="step-tab-num">①</span>公益宣传片引流</div>
+      <div class="step-tab" onclick="switchChannel(1)"><span class="step-tab-num">②</span>健康驿站合作</div>
+      <div class="step-tab" onclick="switchChannel(2)"><span class="step-tab-num">③</span>终端检测科普活动</div>
+    </div>
+
+    <div class="step-panels" style="margin-bottom:1.5rem;padding:1rem 1rem .4rem;background:#FAFBFC;">
+
+      <!-- 渠道① 公益宣传片引流 -->
+      <div class="step-panel active" id="channel-0" style="display:block;padding:.2rem 0 0;">
+        <!-- 客服 -->
+        <div class="role-lane lane-cs">
+          <div class="role-lane-head">
+            <span class="role-badge badge-cs">客服</span>
+            <div class="role-lane-head-desc">进线承接 · 全周期跟进</div>
+          </div>
+          <div class="role-lane-body">
+            <ul>
+              <li>接听进线电话/企微，1分钟内响应，首次建立信任 <span class="conv-tag t1">高价值机会</span></li>
+              <li>讲解活动规则，引导信息登记与审核，完成报名 <span class="conv-tag t1">高价值机会</span></li>
+              <li>确认邮寄地址，安排血压计发货，同步契约金缴纳 <span class="conv-tag t2">中等机会</span></li>
+              <li>每日8:30推送打卡提醒，跟进未打卡用户 <span class="conv-tag t3">基础机会</span></li>
+              <li>血压异常即时回访，阶段性报告解读 <span class="conv-tag t1">高价值机会</span></li>
+              <li>结合血压数据讲解清血八味片疗程方案，促成首单 <span class="conv-tag t1">高价值机会</span></li>
+              <li>打卡达标审核，办理契约金退还 <span class="conv-tag t3">基础机会</span></li>
+              <li>契约金退还时推荐疗程复购，引导二次转化 <span class="conv-tag t1">高价值机会</span></li>
+              <li>未达标用户以契约金全额抵扣产品购买 <span class="conv-tag t2">中等机会</span></li>
+            </ul>
+          </div>
+        </div>
+        <!-- 连锁 -->
+        <div class="role-lane lane-chain">
+          <div class="role-lane-head">
+            <span class="role-badge badge-chain">连锁</span>
+            <div class="role-lane-head-desc">门店承接 · 宣传片转介</div>
+          </div>
+          <div class="role-lane-body">
+            <ul>
+              <li>熟悉宣传片播放内容，引导顾客添加活动指定客服 <span class="conv-tag t2">中等机会</span></li>
+              <li>顾客到店咨询宣传片内容时，主动引导活动报名 <span class="conv-tag t1">高价值机会</span></li>
+              <li>顾客到店购药时，结合宣传片主题沟通活动权益 <span class="conv-tag t2">中等机会</span></li>
+              <li>承接宣传片引流到店顾客的疑问解答与报名引导 <span class="conv-tag t1">高价值机会</span></li>
+            </ul>
+          </div>
+        </div>
+        <!-- 动销 -->
+        <div class="role-lane lane-biz">
+          <div class="role-lane-head">
+            <span class="role-badge badge-biz">动销</span>
+            <div class="role-lane-head-desc">培训督导 · 二次传播</div>
+          </div>
+          <div class="role-lane-body">
+            <ul>
+              <li>培训门店店员宣传片标准话术，统一传播口径 <span class="conv-tag t3">基础机会</span></li>
+              <li>做好连锁合作方与顾客疑问解答，引导报名 <span class="conv-tag t2">中等机会</span></li>
+              <li>巡店督导宣传片二次传播与引流转化效果 <span class="conv-tag t3">基础机会</span></li>
+            </ul>
+          </div>
+        </div>
+        <!-- 文员 -->
+        <div class="role-lane lane-clerk">
+          <div class="role-lane-head">
+            <span class="role-badge badge-clerk">文员</span>
+            <div class="role-lane-head-desc">数据支撑 · 流程审核</div>
+          </div>
+          <div class="role-lane-body">
+            <ul>
+              <li>客户信息录入建档，标签管理，设备发放记录</li>
+              <li>打卡数据监控，每日进度汇总</li>
+              <li>达标名单审核，契约金退还流程报备</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- 渠道② 健康驿站合作 -->
+      <div class="step-panel" id="channel-1" style="display:none;padding:.2rem 0 0;">
+        <!-- 客服 -->
+        <div class="role-lane lane-cs">
+          <div class="role-lane-head">
+            <span class="role-badge badge-cs">客服</span>
+            <div class="role-lane-head-desc">承接报名 · 长期跟进</div>
+          </div>
+          <div class="role-lane-body">
+            <ul>
+              <li>承接健康驿站报名客户，1分钟内响应 <span class="conv-tag t1">高价值机会</span></li>
+              <li>讲解活动规则，引导信息登记与审核 <span class="conv-tag t1">高价值机会</span></li>
+              <li>确认邮寄地址，安排血压计发货 <span class="conv-tag t2">中等机会</span></li>
+              <li>推荐到店激活使用血压计，增加门店复购触点 <span class="conv-tag t2">中等机会</span></li>
+              <li>每日8:30推送打卡提醒，跟进未打卡用户 <span class="conv-tag t3">基础机会</span></li>
+              <li>血压异常即时回访，阶段性报告解读 <span class="conv-tag t1">高价值机会</span></li>
+              <li>结合血压数据讲解清血八味片疗程方案 <span class="conv-tag t1">高价值机会</span></li>
+              <li>打卡达标审核，办理契约金退还 <span class="conv-tag t3">基础机会</span></li>
+              <li>契约金退还时推荐疗程复购，引导二次转化 <span class="conv-tag t1">高价值机会</span></li>
+              <li>未达标用户以契约金全额抵扣产品购买 <span class="conv-tag t2">中等机会</span></li>
+            </ul>
+          </div>
+        </div>
+        <!-- 连锁 -->
+        <div class="role-lane lane-chain">
+          <div class="role-lane-head">
+            <span class="role-badge badge-chain">连锁</span>
+            <div class="role-lane-head-desc">邀约到店 · 场景转化</div>
+          </div>
+          <div class="role-lane-body">
+            <ul>
+              <li>门店海报张贴，邀约目标会员到店参与 <span class="conv-tag t3">基础机会</span></li>
+              <li>引导扫码添加企微，完成活动报名 <span class="conv-tag t1">高价值机会</span></li>
+              <li>顾客到店购药时主动介绍活动，拓宽报名入口 <span class="conv-tag t2">中等机会</span></li>
+              <li>凡到店会员均可沟通活动，提升参与转化概率 <span class="conv-tag t2">中等机会</span></li>
+              <li>现场激活血压计，指导顾客正确操作使用 <span class="conv-tag t2">中等机会</span></li>
+              <li>到店复测血压，结合数据引导清血八味片转化 <span class="conv-tag t1">高价值机会</span></li>
+              <li>达标退还契约金时引导疗程加购 <span class="conv-tag t1">高价值机会</span></li>
+            </ul>
+          </div>
+        </div>
+        <!-- 动销 -->
+        <div class="role-lane lane-biz">
+          <div class="role-lane-head">
+            <span class="role-badge badge-biz">动销</span>
+            <div class="role-lane-head-desc">拓点签约 · 驿站运营</div>
+          </div>
+          <div class="role-lane-body">
+            <ul>
+              <li>推进健康驿站门店合作协议签订 <span class="conv-tag t3">基础机会</span></li>
+              <li>物料配送，门店活动支持与督导 <span class="conv-tag t3">基础机会</span></li>
+              <li>培训店员血压健康沟通话术，带动到店报名 <span class="conv-tag t2">中等机会</span></li>
+              <li>跟踪驿站渠道转化数据，及时调优策略 <span class="conv-tag t2">中等机会</span></li>
+              <li>结合驿站复测数据推动疗程加购 <span class="conv-tag t1">高价值机会</span></li>
+            </ul>
+          </div>
+        </div>
+        <!-- 文员 -->
+        <div class="role-lane lane-clerk">
+          <div class="role-lane-head">
+            <span class="role-badge badge-clerk">文员</span>
+            <div class="role-lane-head-desc">数据支撑 · 流程审核</div>
+          </div>
+          <div class="role-lane-body">
+            <ul>
+              <li>客户信息录入建档，标签管理，设备发放记录</li>
+              <li>打卡数据监控，每日进度汇总</li>
+              <li>达标名单审核，契约金退还流程报备</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- 渠道③ 终端检测科普活动 -->
+      <div class="step-panel" id="channel-2" style="display:none;padding:.2rem 0 0;">
+        <!-- 客服 -->
+        <div class="role-lane lane-cs">
+          <div class="role-lane-head">
+            <span class="role-badge badge-cs">客服</span>
+            <div class="role-lane-head-desc">现场承接 · 活动后跟进</div>
+          </div>
+          <div class="role-lane-body">
+            <ul>
+              <li>配合动销人员承接活动门店现场报名客户 <span class="conv-tag t1">高价值机会</span></li>
+              <li>当日现场添加企微，跟进报名审核 <span class="conv-tag t1">高价值机会</span></li>
+              <li>活动后24小时内主动回访未报名顾客 <span class="conv-tag t2">中等机会</span></li>
+              <li>跟进血压异常顾客，阶段性报告解读 <span class="conv-tag t1">高价值机会</span></li>
+              <li>结合血压数据讲解清血八味片疗程方案 <span class="conv-tag t1">高价值机会</span></li>
+              <li>打卡达标审核，办理契约金退还 <span class="conv-tag t3">基础机会</span></li>
+              <li>契约金退还时推荐疗程复购，引导二次转化 <span class="conv-tag t1">高价值机会</span></li>
+            </ul>
+          </div>
+        </div>
+        <!-- 连锁 -->
+        <div class="role-lane lane-chain">
+          <div class="role-lane-head">
+            <span class="role-badge badge-chain">连锁</span>
+            <div class="role-lane-head-desc">场地支持 · 到店承接</div>
+          </div>
+          <div class="role-lane-body">
+            <ul>
+              <li>配合动销师活动开展，提供场地与人员支持 <span class="conv-tag t3">基础机会</span></li>
+              <li>现场引导顾客完成血压检测与活动报名 <span class="conv-tag t1">高价值机会</span></li>
+              <li>凡到店顾客均可沟通活动，拓宽报名入口 <span class="conv-tag t2">中等机会</span></li>
+              <li>承接活动后顾客到店购买需求 <span class="conv-tag t1">高价值机会</span></li>
+              <li>为契约金退还顾客推荐疗程加购 <span class="conv-tag t1">高价值机会</span></li>
+            </ul>
+          </div>
+        </div>
+        <!-- 动销 -->
+        <div class="role-lane lane-biz">
+          <div class="role-lane-head">
+            <span class="role-badge badge-biz">动销</span>
+            <div class="role-lane-head-desc">主导活动 · 现场转化</div>
+          </div>
+          <div class="role-lane-body">
+            <ul>
+              <li>进驻重点门店，主导现场检测科普活动 <span class="conv-tag t1">高价值机会</span></li>
+              <li>现场讲解活动规则，完成报名引导 <span class="conv-tag t1">高价值机会</span></li>
+              <li>血压计库存管理，现场激活演示 <span class="conv-tag t3">基础机会</span></li>
+              <li>现场对高血压顾客直接推介清血八味片 <span class="conv-tag t1">高价值机会</span></li>
+              <li>整合门店数据，协助客服后续转化跟进 <span class="conv-tag t2">中等机会</span></li>
+              <li>复测达标顾客现场推动疗程加购 <span class="conv-tag t1">高价值机会</span></li>
+            </ul>
+          </div>
+        </div>
+        <!-- 文员 -->
+        <div class="role-lane lane-clerk">
+          <div class="role-lane-head">
+            <span class="role-badge badge-clerk">文员</span>
+            <div class="role-lane-head-desc">数据支撑 · 流程审核</div>
+          </div>
+          <div class="role-lane-body">
+            <ul>
+              <li>客户信息录入建档，标签管理，设备发放记录</li>
+              <li>打卡数据监控，每日进度汇总</li>
+              <li>达标名单审核，契约金退还流程报备</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- 意向度量化筛选漏斗模型 -->
+    <div class="section-header" style="margin-top:1.5rem;"><div style="font-size:13px;font-weight:600;color:var(--ink);">🎯 意向度量化判别 · 顾客标签体系</div><div class="section-line" style="margin-left:10px;"></div></div>
+    <p style="font-size:12px;color:var(--gray);margin-bottom:1rem;">基于顾客在活动全链路中的行为数据，从<strong style="color:var(--ink);">依从性、危机感、认知度</strong>三个维度进行量化评分，自动生成精准的顾客画像，为后续销售转化提供数据支撑。</p>
+
+    <!-- 三维标签卡片 -->
+    <div class="card-grid card-grid-3" style="gap:1rem;margin-bottom:1.25rem;">
+      <div style="background:var(--white);border:1px solid var(--gray-border);border-radius:12px;padding:1.25rem;box-shadow:var(--card-shadow);">
+        <div style="width:48px;height:48px;background:linear-gradient(135deg,#5B8CDB,#2E6DC1);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.5rem;margin-bottom:.75rem;">📋</div>
+        <div style="font-size:14px;font-weight:600;color:var(--ink);margin-bottom:.3rem;">依从性标签</div>
+        <div style="font-size:12px;color:var(--red-dark);font-weight:500;margin-bottom:.5rem;">打卡满26次 → 高素质、易沟通客户</div>
+        <p style="font-size:12px;color:var(--gray);line-height:1.7;">这类用户执行力强、配合度高，是最佳的长期慢病管理目标客户，推荐优先跟进。</p>
+      </div>
+      <div style="background:var(--white);border:1px solid var(--gray-border);border-radius:12px;padding:1.25rem;box-shadow:var(--card-shadow);">
+        <div style="width:48px;height:48px;background:linear-gradient(135deg,#E67E22,#D35400);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.5rem;margin-bottom:.75rem;">⚠️</div>
+        <div style="font-size:14px;font-weight:600;color:var(--ink);margin-bottom:.3rem;">危机感标签</div>
+        <div style="font-size:12px;color:var(--red-dark);font-weight:500;margin-bottom:.5rem;">血压频繁异常且接受了回访 → 刚需、高急迫客户</div>
+        <p style="font-size:12px;color:var(--gray);line-height:1.7;">健康意识已被唤醒，对调理产品有明确需求，转化成功率最高，应作为重点攻坚对象。</p>
+      </div>
+      <div style="background:var(--white);border:1px solid var(--gray-border);border-radius:12px;padding:1.25rem;box-shadow:var(--card-shadow);">
+        <div style="width:48px;height:48px;background:linear-gradient(135deg,#1ABC9C,#0E6655);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.5rem;margin-bottom:.75rem;">🧠</div>
+        <div style="font-size:14px;font-weight:600;color:var(--ink);margin-bottom:.3rem;">认知度标签</div>
+        <div style="font-size:12px;color:var(--red-dark);font-weight:500;margin-bottom:.5rem;">完整观看了科普内容 → 高认可度客户</div>
+        <p style="font-size:12px;color:var(--gray);line-height:1.7;">已经建立了科学的健康管理认知，信任度高，适合做疗程推荐和复购培育。</p>
+      </div>
+    </div>
+
+    <!-- 顾客画像分级参考表 -->
+    <div class="card" style="padding:0;overflow:hidden;">
+      <div style="background:var(--gray-light);padding:.75rem 1.25rem;border-bottom:1px solid var(--gray-border);text-align:center;">
+        <span style="font-size:13px;font-weight:600;color:var(--ink);">🎯 顾客画像分级参考</span>
+      </div>
+      <table style="width:100%;border-collapse:collapse;font-size:12px;">
+        <thead>
+          <tr style="background:#F8F9FA;">
+            <th style="padding:9px 14px;text-align:left;font-weight:600;color:var(--gray);border-bottom:1px solid var(--gray-border);width:130px;">客户等级</th>
+            <th style="padding:9px 14px;text-align:center;font-weight:600;color:var(--gray);border-bottom:1px solid var(--gray-border);">依从性</th>
+            <th style="padding:9px 14px;text-align:center;font-weight:600;color:var(--gray);border-bottom:1px solid var(--gray-border);">危机感</th>
+            <th style="padding:9px 14px;text-align:center;font-weight:600;color:var(--gray);border-bottom:1px solid var(--gray-border);">认知度</th>
+            <th style="padding:9px 14px;text-align:right;font-weight:600;color:var(--gray);border-bottom:1px solid var(--gray-border);">策略建议</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr style="border-bottom:1px solid var(--gray-border);">
+            <td style="padding:10px 14px;"><span style="background:#C0392B;color:#fff;font-size:11px;font-weight:600;padding:3px 10px;border-radius:20px;">S级·核心客户</span></td>
+            <td style="padding:10px 14px;text-align:center;"><span style="color:#27AE60;font-weight:600;">✓ 满打</span></td>
+            <td style="padding:10px 14px;text-align:center;"><span style="color:#E67E22;font-weight:600;">✓ 频异常</span></td>
+            <td style="padding:10px 14px;text-align:center;"><span style="color:#27AE60;font-weight:600;">✓ 全看完</span></td>
+            <td style="padding:10px 14px;text-align:right;color:var(--gray);">直接推疗程，成交率最高</td>
+          </tr>
+          <tr style="border-bottom:1px solid var(--gray-border);">
+            <td style="padding:10px 14px;"><span style="background:#E67E22;color:#fff;font-size:11px;font-weight:600;padding:3px 10px;border-radius:20px;">A级·优质客户</span></td>
+            <td style="padding:10px 14px;text-align:center;"><span style="color:#27AE60;font-weight:600;">✓ 满打</span></td>
+            <td style="padding:10px 14px;text-align:center;"><span style="color:var(--gray);">○ 偶异常</span></td>
+            <td style="padding:10px 14px;text-align:center;"><span style="color:#27AE60;font-weight:600;">✓ 看过半</span></td>
+            <td style="padding:10px 14px;text-align:right;color:var(--gray);">先服务再转化，建立信任后推产品</td>
+          </tr>
+          <tr style="border-bottom:1px solid var(--gray-border);">
+            <td style="padding:10px 14px;"><span style="background:#F4D03F;color:#7D4E00;font-size:11px;font-weight:600;padding:3px 10px;border-radius:20px;">B级·潜力客户</span></td>
+            <td style="padding:10px 14px;text-align:center;"><span style="color:var(--gray);">○ 未满</span></td>
+            <td style="padding:10px 14px;text-align:center;"><span style="color:#E67E22;font-weight:600;">✓ 频异常</span></td>
+            <td style="padding:10px 14px;text-align:center;"><span style="color:var(--gray);">✕ 少看</span></td>
+            <td style="padding:10px 14px;text-align:right;color:var(--gray);">加强患教唤醒认知，培养依从性</td>
+          </tr>
+          <tr>
+            <td style="padding:10px 14px;"><span style="background:#BDC3C7;color:#fff;font-size:11px;font-weight:600;padding:3px 10px;border-radius:20px;">C级·一般客户</span></td>
+            <td style="padding:10px 14px;text-align:center;"><span style="color:var(--gray);">✕ 少打</span></td>
+            <td style="padding:10px 14px;text-align:center;"><span style="color:var(--gray);">○ 正常</span></td>
+            <td style="padding:10px 14px;text-align:center;"><span style="color:var(--gray);">✕ 少看</span></td>
+            <td style="padding:10px 14px;text-align:right;color:var(--gray);">持续触达保持联系，等待时机成熟</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+  </div>
+
+  <!-- 标题六：常见问题答疑（Q&A） -->
+  <div class="section" id="qa">
+    <div class="section-header"><div class="section-num">六</div><div class="section-title">常见问题答疑（Q&amp;A）</div><div class="section-line"></div></div>
+
+    <!-- Q1 -->
+    <div class="collapse-section">
+      <div class="collapse-header" onclick="toggleCollapse(this)">
+        <span class="collapse-header-text">Q1：为什么本次活动选择血压计作为切入点？为什么锁定高血压人群？</span>
+        <span class="collapse-arrow">▼</span>
+      </div>
+      <div class="collapse-body">
+        <div style="padding:1.2rem 1.5rem;font-size:13px;color:var(--ink-mid);line-height:1.85;">
+          <p style="margin-bottom:.8rem;"><strong style="color:var(--red-dark);">答：</strong>本次活动之所以选择血压计为切入工具、并锁定高血压人群，主要基于以下三方面的战略考量。</p>
+          <p style="margin-bottom:.6rem;"><strong style="color:var(--ink);">第一，客户资源基础扎实。</strong>连锁药店及合作渠道已沉淀大量高血压患者会员，客户对药店具备较高的信任度，沟通成本低、触达效率高，无需从零建立认知。</p>
+          <p style="margin-bottom:.6rem;"><strong style="color:var(--ink);">第二，品类定位契合战略需求。</strong>高血压在慢病管理中具备明显的"战略位置"——患者基数大、用药周期长、对心梗脑梗高度担忧；而多数患者尚未意识到血压波动比单纯的高数值更危险。清血八味片的核心价值并非"降压"，而是<strong style="color:var(--red-dark);">血压波动管理与心脑血管意外的预防</strong>，这恰好直击高血压人群最关心的健康风险。</p>
+          <p style="margin-bottom:.8rem;"><strong style="color:var(--ink);">第三，血压计具备高性价比与高粘性。</strong>该设备成本可控、使用频次高、价值感强，患者领取意愿高、使用依从性好，能够形成每日互动与数据沉淀，较传统赠品或优惠券更有利于长期关系建立。</p>
+          <div class="tip-box" style="margin-top:.75rem;">一句话概括：<strong>以一台血压计打开高血压患者的服务入口，以清血八味片承接心脑血管风险防控需求</strong>。本次活动并非销售血压计，而是在建立信任与构建干预起点。</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Q2 -->
+    <div class="collapse-section">
+      <div class="collapse-header" onclick="toggleCollapse(this)">
+        <span class="collapse-header-text">Q2：本方案与以往的大礼包、24片促销活动在本质上有何区别？</span>
+        <span class="collapse-arrow">▼</span>
+      </div>
+      <div class="collapse-body">
+        <div style="padding:1.2rem 1.5rem;font-size:13px;color:var(--ink-mid);line-height:1.85;">
+          <p style="margin-bottom:.8rem;"><strong style="color:var(--red-dark);">答：</strong>以往的大礼包及24片活动，核心逻辑是<strong style="color:var(--ink);">前端一次性成交</strong>，活动结束即意味着客户关系的终止，后端缺乏持续触点。</p>
+          <p style="margin-bottom:1rem;">本方案采用全新逻辑：<strong style="color:var(--red-dark);">前端以低成本建立客户联系，后端通过数据驱动实现持续干预与转化</strong>。两者的本质差异可对比如下：</p>
+
+          <div style="overflow-x:auto;margin-bottom:1rem;">
+            <table style="width:100%;border-collapse:collapse;font-size:12.5px;border:1px solid var(--gray-border);border-radius:8px;overflow:hidden;">
+              <thead>
+                <tr style="background:var(--ink);color:#fff;">
+                  <th style="padding:10px 14px;text-align:left;font-weight:600;">对比维度</th>
+                  <th style="padding:10px 14px;text-align:left;font-weight:600;">以往活动（大礼包 / 24片）</th>
+                  <th style="padding:10px 14px;text-align:left;font-weight:600;">本次方案（血压计 + 清血八味片）</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr style="border-bottom:1px solid var(--gray-border);">
+                  <td style="padding:9px 14px;font-weight:500;color:var(--ink);">核心逻辑</td>
+                  <td style="padding:9px 14px;color:var(--gray);">一次性促销</td>
+                  <td style="padding:9px 14px;color:var(--red-dark);font-weight:500;">持续性健康管理</td>
+                </tr>
+                <tr style="border-bottom:1px solid var(--gray-border);background:#FDFBFB;">
+                  <td style="padding:9px 14px;font-weight:500;color:var(--ink);">客户关系</td>
+                  <td style="padding:9px 14px;color:var(--gray);">短期交易</td>
+                  <td style="padding:9px 14px;color:var(--red-dark);font-weight:500;">长期跟进</td>
+                </tr>
+                <tr style="border-bottom:1px solid var(--gray-border);">
+                  <td style="padding:9px 14px;font-weight:500;color:var(--ink);">数据支撑</td>
+                  <td style="padding:9px 14px;color:var(--gray);">无数据沉淀</td>
+                  <td style="padding:9px 14px;color:var(--red-dark);font-weight:500;">沉淀真实血压监测数据</td>
+                </tr>
+                <tr style="background:#FDFBFB;">
+                  <td style="padding:9px 14px;font-weight:500;color:var(--ink);">转化方式</td>
+                  <td style="padding:9px 14px;color:var(--gray);">活动期内集中冲单</td>
+                  <td style="padding:9px 14px;color:var(--red-dark);font-weight:500;">基于数据持续跟进、自然转化</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <p style="margin-bottom:.6rem;font-weight:500;color:var(--ink);">方案的四大核心优势：</p>
+          <ul style="list-style:none;padding:0;margin:0 0 .75rem 0;">
+            <li style="padding:4px 0 4px 20px;position:relative;"><span style="position:absolute;left:0;color:var(--red);font-weight:700;">①</span><strong style="color:var(--ink);">信任建立更扎实</strong>——血压计作为实物化的健康关怀载体，非促销式触达，患者接受度更高。</li>
+            <li style="padding:4px 0 4px 20px;position:relative;"><span style="position:absolute;left:0;color:var(--red);font-weight:700;">②</span><strong style="color:var(--ink);">数据基础更真实</strong>——每日测量形成连续血压数据，为精准干预提供客观依据。</li>
+            <li style="padding:4px 0 4px 20px;position:relative;"><span style="position:absolute;left:0;color:var(--red);font-weight:700;">③</span><strong style="color:var(--ink);">干预时机更前置</strong>——血压波动一旦出现即可预警提示，避免延误至心脑血管意外发生。</li>
+            <li style="padding:4px 0 4px 20px;position:relative;"><span style="position:absolute;left:0;color:var(--red);font-weight:700;">④</span><strong style="color:var(--ink);">转化过程更稳健</strong>——以数据与风险提示说服客户，而非以促销话术逼单，转化质量更高。</li>
+          </ul>
+
+          <div class="tip-box">概括而言：<strong>以往是"售出一盒是一盒"，本方案则是"管理一位客户、成交一笔订单、沉淀一名长期用户"</strong>。</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Q3 -->
+    <div class="collapse-section">
+      <div class="collapse-header" onclick="toggleCollapse(this)">
+        <span class="collapse-header-text">Q3：本方案主要面向新客户还是老客户？</span>
+        <span class="collapse-arrow">▼</span>
+      </div>
+      <div class="collapse-body">
+        <div style="padding:1.2rem 1.5rem;font-size:13px;color:var(--ink-mid);line-height:1.85;">
+          <p style="margin-bottom:.8rem;"><strong style="color:var(--red-dark);">答：</strong>本方案<strong style="color:var(--ink);">以新客户开发为主，老客户维护为辅</strong>。</p>
+          <p style="margin-bottom:.8rem;"><strong style="color:var(--ink);">新客户优先的原因：</strong>新客户尚未被其他促销活动过度触达，对血压计的健康管理价值具备新鲜感，对清血八味片的品牌认知处于空白期，是建立标准化服务流程的最佳群体。血压计是其开展规律血压管理的起点，清血八味片则是其理解"波动管理"与"心脑血管风险预防"理念的入口。</p>
+          <p style="margin-bottom:.8rem;"><strong style="color:var(--ink);">老客户的处理方式：</strong>符合条件的老客户<strong style="color:var(--red-dark);">可酌情参与，但不作为主要目标人群</strong>。部分老客户曾多次参与促销活动，直接派发血压计易被视作重复套路，反而影响品牌信任。</p>
+          <p style="margin-bottom:.6rem;">若涉及老客户沟通，建议采用<strong style="color:var(--ink);">差异化话术</strong>，将活动定位为健康复盘，而非二次促销：</p>
+          <div class="script-quote" style="margin:.5rem 0;">"本次活动对老客户并非简单赠送血压计，而是为其进行一次阶段性的血压波动评估。若数据显示波动较大，将建议重启清血八味片进行预防性干预，血压计则作为监测效果的工具持续使用。"</div>
+          <div class="tip-box" style="margin-top:.75rem;">通过这一定位，老客户将本次活动理解为<strong>一次新的健康评估服务</strong>，而非重复性促销。</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="footer">防梗防猝·健康中国行 · 家庭血压监测普及计划 · 吉林市场 · 活动方案 V4 · 2026</div>
+
+</div>
+
+<script>
+/* NAV ACTIVE */
+const links=document.querySelectorAll('.nav-links a');
+const sections=document.querySelectorAll('.section,.hero');
+const obs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      const id=e.target.id;
+      links.forEach(l=>l.classList.toggle('active',l.getAttribute('href')==='#'+id));
+    }
+  });
+},{rootMargin:'-30% 0px -60% 0px'});
+sections.forEach(s=>{if(s.id)obs.observe(s);});
+links.forEach(a=>{
+  a.addEventListener('click',e=>{
+    e.preventDefault();
+    const t=document.querySelector(a.getAttribute('href'));
+    if(t)t.scrollIntoView({behavior:'smooth'});
+  });
+});
+
+/* COLLAPSE */
+function toggleCollapse(header){
+  const body=header.nextElementSibling;
+  const arrow=header.querySelector('.collapse-arrow');
+  const isOpen=body.classList.contains('open');
+  body.classList.toggle('open',!isOpen);
+  arrow.classList.toggle('open',!isOpen);
+}
+
+/* STEP TABS */
+function switchStep(idx){
+  const container=document.getElementById('activation');
+  if(!container) return;
+  container.querySelectorAll('.step-tab').forEach((t,i)=>t.classList.toggle('active',i===idx));
+  container.querySelectorAll('.step-panel').forEach((p,i)=>p.classList.toggle('active',i===idx));
+}
+
+/* CHANNEL TABS — 第五板块岗位×渠道交互 */
+function switchChannel(idx){
+  const container=document.getElementById('roles');
+  if(!container) return;
+  container.querySelectorAll('.step-tab').forEach((t,i)=>t.classList.toggle('active',i===idx));
+  container.querySelectorAll('.step-panel').forEach((p,i)=>{
+    p.style.display = (i===idx) ? 'block' : 'none';
+    p.classList.toggle('active',i===idx);
+  });
+}
+
+/* WECHAT ANIMATION */
+const chatConfigs=[
+  // ①报名登记
+  {id:'wx-chat-0',msgs:['wx-reply-1','wx-reply-2','wx-reply-3','wx-reply-4']},
+  // ②血压计领取：邮寄确认→收货→视频
+  {id:'wx-chat-1',msgs:['wx1-r1','wx1-r2','wx1-t3','wx1-r3','wx1-r4','wx1-r5']},
+  // ③测量上传：增加了操作视频 wx2-v0
+  {id:'wx-chat-2',msgs:['wx2-v0','wx2-r1','wx2-r2','wx2-r3']},
+  // ④专业报告解读：增加了血压查询截图 wx3-r2-img
+  {id:'wx-chat-3',msgs:['wx3-r1','wx3-r2','wx3-r2-img','wx3-r3','wx3-r4']},
+  // ⑤契约金退还
+  {id:'wx-chat-4',msgs:['wx4-r1','wx4-r2','wx4-r3']},
+];
+
+function animateChat(chatIdx){
+  const cfg=chatConfigs[chatIdx];
+  cfg.msgs.forEach(id=>{const el=document.getElementById(id);if(el)el.style.opacity='0';});
+  cfg.msgs.forEach((id,i)=>{
+    setTimeout(()=>{
+      const el=document.getElementById(id);
+      if(el){el.style.opacity='1';}
+    },(i+1)*900);
+  });
+}
+
+function replayChat(idx){animateChat(idx);}
+
+/* Auto-start step 0 on load */
+window.addEventListener('load',()=>{
+  setTimeout(()=>animateChat(0),800);
+});
+</script>
+</body>
+</html>
